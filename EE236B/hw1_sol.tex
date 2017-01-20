@@ -67,7 +67,7 @@
 
 \renewcommand{\l}{\left}\renewcommand{\r}{\right}
 
-\newcommand{\casebrak}[2]{\left \{ \begin{array}{ll} {#1}\\{#2} \end{array} \right.}
+\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
 %\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
 %\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
 
@@ -201,12 +201,14 @@ $$\mbox{dist}(x, S) = \inf\{\|x-z\|_2 \mid  z\in S\}$$
 {\it Ans:} \underline{NO}. Consider counterexample with $S = \{z \mid  \|z\|_2 \geq 2\}$ and $T = \{0\}$; the set described in the problem (hereby denoted as $E$) is the complement set of unit disk
 $$E = \{x \mid  \|x\|_2 \geq 1\}$$
 This is true since for $x\in\R^n$, $\mbox{dist}(x, \{0\}) = \|x\|_2$ and 
-$$\mbox{dist}(x, S) = \casebrak{2-\|x\|_2,&\|x\|_2 \leq 2}{0,&\|x\|_2 > 2}$$
+$$\mbox{dist}(x, S) = \casebrak{2-\|x\|_2,\|x\|_2 \leq 2}{0,\|x\|_2 > 2}$$
 And certainly the complement set of unit disk is not convex. \qed \\
 \\
 (f) [HUL93, volume 1, page 93] The set $\{x \mid  x + S_2 \subseteq S_1\}$ where $S_1, S_2 \subseteq \R^n$ with $S_1$ convex. \\
 \\
-{\it Ans:} 
+{\it Ans:} \underline{YES}. Take $x_1, x_2 \in F := \{x \mid x + S_2 \subseteq S_1\}$ and arbitrary $y\in S_2$; we have $x_1 + y, x_2 + y \in S_1$ since $x_1, x_2 \in F$. Now for $\theta \in [0, 1]$, since $S_1$ is convex, 
+$$\theta(x_1+y) + (1-\theta)(x_2 + y)  = \theta x_1 + (1-\theta)x_2 + y\in S_1$$
+Since $y$ was chosen arbitrarily, $\theta x_1 + (1-\theta)x_2 + S_2 \subseteq S_1$; that is, $\theta x_1 + (1-\theta)x_2 \in F$. \qed
 
 
 
@@ -218,6 +220,11 @@ And certainly the complement set of unit disk is not convex. \qed \\
 \noindent Show that if $S_1$ and $S_2$ are convex sets in \red{$\R^m \x \R^{n}$}\footnote{I believe this was a typo in the textbook.}, then so is their partial sum
 $$S = \{(x, y_1+y_2) \mid  x\in \R^m, y_1, y_2 \in \R^n, (x, y_1)\in S_1, (x, y_2)\in S_2\}.$$
 \\
-{\it Ans:}
+{\it Ans:} Take $(x, y_1+y_2), (z, y_3+y_4) \in S$ (where $(x, y_1), (z, y_3) \in S_1, (x, y_2); (z, y_4) \in S_2$) and $\theta \in [0, 1]$; our concern is whether
+$$v := \theta (x, y_1+y_2) + (1-\theta)(z, y_3 + y_4) = (\theta x + (1-\theta)z, \theta y_1+(1-\theta)y_3 + \theta y_2 + (1-\theta)y_4)$$
+is in $S$. Now that both $S_1$ and $S_2$ are convex, we are safe to claim 
+$$\theta (x, y_1) + (1-\theta)(z, y_3) = (\theta x + (1-\theta)z, \theta y_1 + (1-\theta)y_3) \in S_1$$
+$$\theta (x, y_2) + (1-\theta)(z, y_4) = (\theta x + (1-\theta)z, \theta y_2 + (1-\theta)y_4) \in S_2$$
+Note the vector $v$ is exactly the direct sum of these 2 vectors, henceforth it's in $S$. \qed
 
 \end{document}
