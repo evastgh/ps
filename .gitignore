@@ -11,5 +11,4 @@
 *.spl
 .sconsign.dblite
 *.gz
-*.pdf
 *.fdb_latexmk
