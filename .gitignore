@@ -12,3 +12,4 @@
 .sconsign.dblite
 *.gz
 *.fdb_latexmk
+*private*
