@@ -173,5 +173,58 @@
 \subsubsection*{Exercise 3.18 [Boyd \& Vandenberghe, 2004]}
 \noindent Adapt the proof of concavity of the log-determinant function in \S 3.1.5 to show the following. \\
 (a) $f(\vX) = \mathbf{tr}(X^{-1})$ is convex on $\dom f = \vS^n_{++}$.\\
-(b) $f(\vX) = (\det X)^{1/n}$ is concave on $\dom f = \vS^n_{++}$.
+(b) $f(\vX) = (\det X)^{1/n}$ is concave on $\dom f = \vS^n_{++}$.\\
+\\
+{\it Ans:} Here only does part (a). 
+
+
+
+\newpage\subsubsection*{Exercise 3.19 [Boyd \& Vandenberghe, 2004]}
+\noindent {\it Nonnegative weighted sums and integrals.} \\
+(a) Show that $f(x) = \sum^r_{i=1}\alpha_ix_{[i]}$ is a convex function of $x$, where $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_r \geq 0$, and $x_{[i]}$ denotes the $i$th largest component of $x$. (You can use the fact that $f(x) = \sum_{i=1}^k x_{[i]}$ os convex on $\R^n$. )\\
+(b) Let $T(x, \omega)$ denote the trigonometric polynomial
+$$T(x,\omega) = x_1 + x_2 \cos\omega + x_3\cos2\omega + \cdots + x_n\cos(n-1)\omega.$$
+Show that the function
+$$f(x) = -\INT0{2x} \log T(x,\omega)d\omega$$
+is convex on $\{x \in \R^n \mid T(x,\omega)>0, 0\leq \omega \leq 2\pi\}$. \\
+\\
+{\it Ans:} Here only does part (a). 
+
+
+
+\newpage\subsubsection*{Exercise 3.22 [Boyd \& Vandenberghe, 2004]}
+\noindent {\it Composition rules.} Show that the following functions are convex. \\
+(a) $f(x) = -\log(-\log(\sum^m_{i=1} e^{a_i^T x + b_i}))$ on $\dom f = \{x \mid \sum^m_{i=1} e^{a_i^T x + b_i} < 1\}$. You can use the fact that $\log(\sum^n_{i=1} e^{y_i})$ is convex.\\
+(b) $f(x, u, v) = -\sqrt{uv-x^Tx}$ on $\dom f = \{(x,u,v) \mid uv>x^T x, u, v>0\}$. Use the fact that $x^T x/u$ is convex in $(x, u)$ for $u>0$, and that $-\sqrt{x_1x_2}$ is convex on $\R^2_{++}$. \\
+(c) $f(x,u,v) = -\log(uv-x^Tx)$ on $\dom f = \{(x,u,v) \mid uv>x^Tx, u,v>0\}$.\\
+(d) $f(x,t) = -(t^p - \|x\|_p^p)^{1/p}$ where $p>1$ and $\dom f = \{(x, t) \mid t\geq \|x\|_p\}$. You can use the fact that $\|x\|^p_p/u^{p-1}$ is convex in $(x,u)$ for $u>0$ (see exercise 3.23), and that $-x^{1/p}y^{1-1/p}$ is convex on $\R^2_+$ (see exercise 3.16). \\
+(e) $f(x,t) = -\log(t^p - \|x\|_p^p)$ where $p>1$ and $\dom f = \{(x,t) \mid t>\|x\|_p\}$. You can use the fact that $\|x\|^p_p/u^{p-1}$ is convex in $(x,u)$ for $u>0$ (see exercise 3.23).\\
+\\
+{\it Ans:} Here only does part (c). 
+
+
+\newpage\subsubsection*{Additional Exercise 2.5 [Boyd \& Vandenberghe, 2017]}
+\noindent hi\\
+\\
+{\it Ans:} Here only does part (a) and (b). 
+
+
+
+\newpage\subsubsection*{Additional Exercise 2.30 [Boyd \& Vandenberghe, 2017]}
+\noindent hi\\
+\\
+{\it Ans:} 
+
+
+\newpage\subsubsection*{Additional Exercise 2.31 [Boyd \& Vandenberghe, 2017]}
+\noindent hi\\
+\\
+{\it Ans:} 
+
+
+\newpage\subsubsection*{Additional Exercise 3.17 [Boyd \& Vandenberghe, 2017]}
+\noindent hi\\
+\\
+{\it Ans:} 
+
 \end{document}
