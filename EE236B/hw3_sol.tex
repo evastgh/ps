@@ -172,10 +172,11 @@
 \begin{document}
 \subsubsection*{Exercise 3.18 [Boyd \& Vandenberghe, 2004]}
 \noindent Adapt the proof of concavity of the log-determinant function in \S 3.1.5 to show the following. \\
-(a) $f(\vX) = \mathbf{tr}(X^{-1})$ is convex on $\dom f = \vS^n_{++}$.\\
-(b) $f(\vX) = (\det X)^{1/n}$ is concave on $\dom f = \vS^n_{++}$.\\
+(a) $f(X) = \mathbf{tr}(X^{-1})$ is convex on $\dom f = \vS^n_{++}$.\\
+(b) $f(X) = (\det X)^{1/n}$ is concave on $\dom f = \vS^n_{++}$.\\
 \\
-{\it Ans:} Here only does part (a). 
+{\it Ans:} Here only does part (a).  \\
+(a) Let $Z \in \vS^n_{++}$, $V \in \vS^n$, and $(a, b)\subseteq \R$, an interval such that $\forall t \in (a, b), Z + tV \in \vS^n_{++}$. Define $g(t) = f(Z + tV) = \mathbf{tr}((Z+tV)^{-1})$. 
 
 
 
