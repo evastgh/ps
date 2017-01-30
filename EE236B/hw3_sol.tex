@@ -101,7 +101,7 @@
 \newcommand{\ox}{\otimes}
 
 \newcommand\ie{{\it i.e.}}
-\newcommand\dom{\mathbf{dom}}
+\newcommand\dom{\mathbf{dom\:}}
 
 %%% --Frequently used VARIABLES shorthand
 \def\R{\ifmmode\mathbb R\fi}
@@ -204,26 +204,50 @@ is convex on $\{x \in \R^n \mid T(x,\omega)>0, 0\leq \omega \leq 2\pi\}$. \\
 
 
 \newpage\subsubsection*{Additional Exercise 2.5 [Boyd \& Vandenberghe, 2017]}
-\noindent hi\\
-\\
+\noindent {\it A perspective composition rule} [Mar\`echal]. Let $f:\R^n\ra1\R$ be a convex function with $f(0) \leq 0$.\\
+(a) Show that the perspective $tf(x/t)$, with domain $\{(x,t)\mid t>0, x/t \in \dom f\}$, is nonincreasing as a function of $t$. \\
+(b) Let $g$ be concave and positive on its domain. Show that the function
+$$h(x) = g(x)f(x/g(x)), \;\;\; \dom h = \{x\in\dom g\mid x/g(x) \in \dom f\}$$
+is convex. \\
+(c) As an example, show that 
+$$h(x) = \frac{x^Tx}{(\PROD{k=1}n x_k)^{1/n}}, \;\;\; \dom h = \R^n_{++}$$
+is convex.
 {\it Ans:} Here only does part (a) and (b). 
 
 
 
 \newpage\subsubsection*{Additional Exercise 2.30 [Boyd \& Vandenberghe, 2017]}
-\noindent hi\\
-\\
+\noindent {\it Huber penalty.} The infimal convolution of two functions $f$ and $g$ on $\R^n$ is defined as 
+$$h(x) = \inf_y (f(y) + g(x-y))$$
+(see exercise 2.17). Show that the infimal convolution of $f(x) = \|x\|_1$ and $g(x) = (1/2) \|x\|^2_2$, \ie, the function 
+$$h(x) = \inf_y (f(y) + g(x-y)) = \inf_y \l(\|y\|_1 + \/12\|x-y\|^2_2\r)$$
+is the {\it Huber penalty}
+$$h(x) = \SUM{i=1}n \phi(x_i), \;\;\; \phi(u) = \casebrak{u^2/2, |u|\leq 1}{|u|-1/2, |u|>1}$$
 {\it Ans:} 
 
 
 \newpage\subsubsection*{Additional Exercise 2.31 [Boyd \& Vandenberghe, 2017]}
-\noindent hi\\
-\\
+\noindent Suppose the function $h:\R\ra1\R$ is convex, nondecreasing, with $\dom h = \R$, and $h(t) = h(0)$ for $t\leq 0$. \\
+(a) Show that the function $f(x) = h(\|x\|_2)$ is convex on $\R^n$.\\
+(b) Show that the conjugate of $f$ is $f^\ast(y) = h^\ast(\|y\|_2)$.\\
+(c) As an example, derive the conjugate of $f(x) = (1/p)\|x\|^p_2$ for $p>1$, by applying the result of part (b) with the function 
+$$h(t) = \/1p \max \{0, t\}^p = \casebrak{\/1pt^p, t\geq 0}{0, t<0}$$.
 {\it Ans:} 
 
 
 \newpage\subsubsection*{Additional Exercise 3.17 [Boyd \& Vandenberghe, 2017]}
-\noindent hi\\
+\noindent {\it Minimum fuel optimal control.} Solve the minimum fuel optimal control problem described in exercise 4.16 of {\it Convex Optimization}, for the instance with problem data
+$$A = \l[\begin{array}{ccc}
+-1&0.4&0.8\\
+1&0&0\\
+0&1&0\end{array}\r], b = \l[\begin{array}{c}
+1\\
+0\\
+0.3\end{array}\r], x_{des} = \l[\begin{array}{c}
+7\\
+2\\
+-6\end{array}\r], N = 30.$$
+You can do this by forming the LP you found in your solution of exercise 4.16, or more directly using CVX. Plot the actuator signal $u(t)$ as a function of time $t$. \\
 \\
 {\it Ans:} 
 
