@@ -38,7 +38,7 @@
 	% \includegraphics[scale=0.5]{picture name}
 %\usepackage{caption} %%% --some awful package to make caption...
 
-%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
 
 %%% --Text Fonts
 %\usepackage{times} %%% --Times New Roman for LaTeX
@@ -100,7 +100,8 @@
 \newcommand{\x}{\times}
 \newcommand{\ox}{\otimes}
 
-\newcommand\ie{{\it i.e.}}
+\newcommand\ie{{\it i.e. }}
+\newcommand\wrt{{w.r.t. }}
 \newcommand\dom{\mathbf{dom\:}}
 
 %%% --Frequently used VARIABLES shorthand
@@ -172,25 +173,57 @@
 \begin{document}
 \subsubsection*{Exercise 3.18 [Boyd \& Vandenberghe, 2004]}
 \noindent Adapt the proof of concavity of the log-determinant function in \S 3.1.5 to show the following. \\
-(a) $f(X) = \mathbf{tr}(X^{-1})$ is convex on $\dom f = \vS^n_{++}$.\\
+(a) $f(X) = \tr(X^{-1})$ is convex on $\dom f = \vS^n_{++}$.\\
 (b) $f(X) = (\det X)^{1/n}$ is concave on $\dom f = \vS^n_{++}$.\\
 \\
 {\it Ans:} Here only does part (a).  \\
-(a) Let $Z \in \vS^n_{++}$, $V \in \vS^n$, and $(a, b)\subseteq \R$, an interval such that $\forall t \in (a, b), Z + tV \in \vS^n_{++}$. Define $g(t) = f(Z + tV) = \mathbf{tr}((Z+tV)^{-1})$. 
+(a) It suffices to show $g(t) = \tr((X+tZ)^{-1})$ is convex \wrt $t\in [t_0,t_1]$ where $X \in \vS^n_{++}$, $Z \in \vS^n$ and $[t_0, t_1]$ is an interval such that $X+tZ$ remains positive definite. Use this \href{http://math.stackexchange.com/questions/478998/a-property-of-positive-definite-matrices}{property of positive definite matrix}, write 
+$$X = S^{-1}S^{-T}, Z = S^{-1} L S^{-T}$$
+then
+\begin{align*}
+g(t) &= \tr((X+tZ)^{-1})\\
+&= \tr((S^{-1}(I+tL)S^{-T})^{-1})\\
+&= \tr(S (I+tL)^{-1} S^T)\\
+&= \tr(S^TS(I+tL)^{-1})\\
+g'(t) &= \tr\l(S^TS\/{d}{dt} (I+tL)^{-1}\r) \\
+&= -\tr(S^TS(I+tL)^{-1}L(I+tL)^{-1})
+\end{align*}
+Here I made use of the identity 
+\begin{align*}
+I & = A^{-1}(t)A(t)\\
+O &= \l(\frac d{dt}A^{-1}(t)\r) A(t) + A^{-1}(t) A'(t) \\
+\frac d{dt}A^{-1}(t) &= -A^{-1}(t) A'(t) A^{-1}(t)
+\end{align*}
+Now that $I+tL$ and $L$ are both diagonal, they commute. 
+\begin{align*}
+g'(t) &= -\tr(S^TS(I+tL)^{-1}L(I+tL)^{-1})\\
+&= -\tr(S^TS L(I+tL)^{-2}) \\
+g''(t) &= \tr(S^TSL ((I+tL)^{-2}L(I+tL)^{-1} + (I+tL)^{-1}L (I+tL)^{-2})) \\
+&= 2\tr(SL^2 (I+tL)^{-3}S^T)
+\end{align*}
+Since $t$ is such that $X+tZ = S^{-1} (I+tL) S^{-T} \succ 0$, $I+tL$ must be positive diagonal matrix, and $(I+tL)^{-3} \succ 0$; alongside with $L^2 \succeq 0$, we see $L^2(I+tL)^{-3} \succeq 0$, therefore
+$$S L^2 (I+tL)^{-3} S^T \succeq 0$$
+and $g''(t) \geq 0$ (\ie $g$ is convex). \qed
 
 
 
 \newpage\subsubsection*{Exercise 3.19 [Boyd \& Vandenberghe, 2004]}
 \noindent {\it Nonnegative weighted sums and integrals.} \\
-(a) Show that $f(x) = \sum^r_{i=1}\alpha_ix_{[i]}$ is a convex function of $x$, where $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_r \geq 0$, and $x_{[i]}$ denotes the $i$th largest component of $x$. (You can use the fact that $f(x) = \sum_{i=1}^k x_{[i]}$ os convex on $\R^n$. )\\
+(a) Show that $f(x) = \sum^r_{i=1}\alpha_ix_{[i]}$ is a convex function of $x$, where $\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_r \geq 0$, and $x_{[i]}$ denotes the $i$th largest component of $x$. (You can use the fact that $f(x) = \sum_{i=1}^k x_{[i]}$ is convex on $\R^n$. )\\
 (b) Let $T(x, \omega)$ denote the trigonometric polynomial
 $$T(x,\omega) = x_1 + x_2 \cos\omega + x_3\cos2\omega + \cdots + x_n\cos(n-1)\omega.$$
 Show that the function
 $$f(x) = -\INT0{2x} \log T(x,\omega)d\omega$$
 is convex on $\{x \in \R^n \mid T(x,\omega)>0, 0\leq \omega \leq 2\pi\}$. \\
 \\
-{\it Ans:} Here only does part (a). 
-
+{\it Ans:} Here only does part (a). \\
+(a) Let $\beta_i = \alpha_i - \alpha_{i+1}$; then observe
+\begin{align*}
+f(x) & = \SUM{i=1}r \alpha_i x_{[i]} \\
+&= \alpha_r\SUM{i=1}rx_{[i]} + (\alpha_{r-1}-\alpha_r)\SUM{i=1}{r-1}x_{[i]} + \cdots + (\alpha_1 - \alpha_2)\SUM{i=1}1 x_{[i]} \\
+&= \alpha_r \SUM{i=1}r x_{[i]} + \beta_{r-1}\SUM{i=1}{r-1}x_{[i]} + \cdots + \beta_1\SUM{i=1}{1}x_{[i]}
+\end{align*}
+is a linear combination of convex functions with nonnegative coefficients and therefore convex.  \qed
 
 
 \newpage\subsubsection*{Exercise 3.22 [Boyd \& Vandenberghe, 2004]}
@@ -201,7 +234,21 @@ is convex on $\{x \in \R^n \mid T(x,\omega)>0, 0\leq \omega \leq 2\pi\}$. \\
 (d) $f(x,t) = -(t^p - \|x\|_p^p)^{1/p}$ where $p>1$ and $\dom f = \{(x, t) \mid t\geq \|x\|_p\}$. You can use the fact that $\|x\|^p_p/u^{p-1}$ is convex in $(x,u)$ for $u>0$ (see exercise 3.23), and that $-x^{1/p}y^{1-1/p}$ is convex on $\R^2_+$ (see exercise 3.16). \\
 (e) $f(x,t) = -\log(t^p - \|x\|_p^p)$ where $p>1$ and $\dom f = \{(x,t) \mid t>\|x\|_p\}$. You can use the fact that $\|x\|^p_p/u^{p-1}$ is convex in $(x,u)$ for $u>0$ (see exercise 3.23).\\
 \\
-{\it Ans:} Here only does part (c). 
+{\it Ans:} Here only does part (c).  \\
+(c) Let $g(x,u,v) = uv-x^Tx$, then $\nabla g(x,u,v) = [-2x^T, v,u]$ and 
+$$H_g(x,u,v) = \l[\begin{array}{ccc}
+-2I & & \\
+& & 1 \\
+& 1 & \end{array}\r]$$
+and for any $(x,u,v)\in\dom f$, 
+$$[x^T,u,v]\l[\begin{array}{ccc}
+-2I & & \\
+& & 1 \\
+& 1 & \end{array}\r]\l[\begin{array}{c}
+x\\
+u\\
+v\end{array}\r] = -2x^Tx + 2uv >0$$
+That is, $g$ is convex on $\dom f$. Now that $h = -\log(\cdot)$ is convex and nonincreasing, we conclude $f = -\log(g(\cdot))$ is convex on $\dom f$ as well. \qed
 
 
 \newpage\subsubsection*{Additional Exercise 2.5 [Boyd \& Vandenberghe, 2017]}
@@ -232,8 +279,31 @@ $$h(x) = \SUM{i=1}n \phi(x_i), \;\;\; \phi(u) = \casebrak{u^2/2, |u|\leq 1}{|u|-
 (a) Show that the function $f(x) = h(\|x\|_2)$ is convex on $\R^n$.\\
 (b) Show that the conjugate of $f$ is $f^\ast(y) = h^\ast(\|y\|_2)$.\\
 (c) As an example, derive the conjugate of $f(x) = (1/p)\|x\|^p_2$ for $p>1$, by applying the result of part (b) with the function 
-$$h(t) = \/1p \max \{0, t\}^p = \casebrak{\/1pt^p, t\geq 0}{0, t<0}$$.
-{\it Ans:} 
+$$h(t) = \/1p \max \{0, t\}^p = \casebrak{\/1pt^p, t\geq 0}{0, t<0}$$
+{\it Ans:} \\
+(a) Let $g(x) = \|x\|_2$, then 
+\begin{align*}
+\nabla g(x) &= \/{x^T}{\|x\|_2} \\
+H_g(x) &= \/{1}{\|x\|_2^2}\l(I\|x\|_2 - \/{x}{\|x\|_2}x^T\r) \\
+&= \/{1}{\|x\|_2} \l(I - \/{1}{\|x\|_2^2}xx^T\r) \\
+v^T H_g(x) v &= \/{1}{\|x\|_2}\l(\|v\|_2 - \/{(x^T v)^2}{\|x\|^2_2}\r) \geq 0 \mbox{ (by Cauchy inequality)}
+\end{align*}
+Since $h$ is convex and nondecreasing and $g = \|\cdot\|_2$ is convex, the composition $f = h\o g$ must be convex, too. \\
+\\
+(b) By definition,
+\begin{align*}
+f^\ast(y) &= \sup_{x\in \R^n} x^Ty - f(x)\\
+&= \sup_{x\in\R^n} x^Ty-h(\|x\|_2) \\
+&=  \max\l\{\sup_{x\neq 0} \|x\|_2 \l(\/{x}{\|x\|_2}\r)^Ty - h(\|x\|_2), -h(0)\r\}\\
+&= \sup_{x\neq 0} \|x\|_2 \l(\/{x}{\|x\|_2}\r)^Ty  - h(\|x\|_2) \mbox{ \;\;\; (because $-h$ is nonincreasing)} \\
+&= \sup_{x\neq 0} \|x\|_2 \|y\|_2 - h(\|x\|_2) \\
+&= \sup_{t >0} t \|y\|_2 - h(t)
+\end{align*}
+The last equality follows from that the first term is maximized when $x$ is parallel to $y$. Now observe the definition of $h^\ast$
+$$h^\ast(\|y\|_2) = \sup_{t\in \R} t\|y\|_2 - h(t)$$
+This differs from $f^\ast(y)$ only by the range of the minimizing variable (for $f^\ast$ it is $t>0$ and 
+
+
 
 
 \newpage\subsubsection*{Additional Exercise 3.17 [Boyd \& Vandenberghe, 2017]}
