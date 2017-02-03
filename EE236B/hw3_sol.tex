@@ -271,12 +271,28 @@ t_2 f(x/t_2) - t_1 f(x/t_1) & \leq \l(1-\/{t_1}{t_2}\r) f(0) \leq 0
 \end{align*}
 we conclude that $t_2 f(x/t_2) \leq t_1 f(x/t_1)$, and $f$ is nonincreasing. \\
 \\
-(b) For $\theta \in [0, 1]$ and $x,y\in \dom h$,
+(b) First I want to show for $\alpha, \beta \in [0,1]$ with $\alpha + \beta \leq 1$ and $x, y\in\dom f$, 
+$$f(\alpha x + \beta y) \leq \alpha f(x) + \beta f(y)$$
+Let $t = \alpha+\beta\leq 1$ and $\theta = \alpha/t$, then $1-\theta = \beta/t$. The original inequality now becomes
+\begin{align*}
+f(\theta tx + (1-\theta) ty) \leq \theta tf(x) + (1-\theta) tf(y)
+\end{align*}
+This can be proven since $f$ is convex and the perspective $h(t, x) = tf(x/t)$ is nonincreasing \wrt t, 
+\begin{align*}
+f(\theta tx + (1-\theta) ty) &\leq \theta f(tx) + (1-\theta)f(ty) \\
+&= \theta h(1, tx) + (1-\theta) h(1, ty) \\
+&\leq \theta h(t, tx) + (1-\theta) h(t, ty) \\
+&= \theta tf(tx/t) + (1-\theta)tf(ty/t) = \theta tf(x) + (1-\theta)tf(y)
+\end{align*}
+Now for general $\theta \in [0, 1]$ and $x,y\in \dom h$, since $g$ is concave, 
+$$\alpha = \/{\theta g(x)}{g(\theta x + (1-\theta)y)}, \beta = \/{(1-\theta)g(y)}{g(\theta x + (1-\theta)y)} \in [0, 1]$$ 
+and $\alpha + \beta = \/{\theta g(x) + (1-\theta)g(y)}{g(\theta x + (1-\theta)y)}\leq 1$. Apply the above ``lemma", 
 \begin{align*}
 h(\theta x + (1-\theta)y) &= g(\theta x + (1-\theta)y) f\l(\frac{\theta x + (1-\theta)y}{g(\theta x + (1-\theta)y)}\r)\\
 &=g(\theta x + (1-\theta)y) f\l(\/{\theta g(x)}{g(\theta x + (1-\theta)y)}\/{x}{g(x)} + \/{(1-\theta)g(y)}{g(\theta x + (1-\theta)y)}\/{y}{g(y)}\r)\\
-&\leq g(\theta x + (1-\theta)y) \l(\/{\theta g(x)}{g(\theta x + (1-\theta)y)} f({x}/{g(x)}) + \/{(1-\theta)g(y)}{g(\theta x + (1-\theta)y)}f\l({y}/{g(y)}\r)\r) \\
-&= {\theta g(x)}f({x}/{g(x)}) + {(1-\theta)g(y)}f\l({y}/{g(y)}\r) \\
+&= g(\theta x + (1-\theta)y) f\l(\alpha\/{x}{g(x)} + \beta\/{y}{g(y)}\r)\\
+&\leq g(\theta x + (1-\theta)y) \l(\alpha f\l(\/{x}{g(x)}\r) + \beta f\l(\/{y}{g(y)}\r)\r) \\
+&= {\theta g(x)}f\l(\/{x}{g(x)}\r) + {(1-\theta)g(y)}f\l(\/{y}{g(y)}\r) \\
 & = \theta h(x) + (1-\theta)h(y)
 \end{align*}
 (c) Consider $f(x) = x^T x$ and $g(x) = \l(\PROD{k=1}n x_k\r)^{1/n}$; they are both common convex functions. Then
@@ -348,8 +364,13 @@ f^\ast(y) &= \sup_{x\in \R^n} x^Ty - f(x)\\
 \end{align*}
 The last equality follows from that the first term is maximized when $x$ is parallel to $y$. Now observe the definition of $h^\ast$
 $$h^\ast(\|y\|_2) = \sup_{t\in \R} t\|y\|_2 - h(t)$$
-This differs from $f^\ast(y)$ only by the range of the minimizing variable (for $f^\ast$ it is $t>0$ and 
-
+This differs from $f^\ast(y)$ only by the range of the minimizing variable (it's $t>0$ for $f^\ast$ and $t\in \R$ for $h^\ast$); however, since $h(t) = h(0)$ for $t\leq 0$, that is, for any $t <  0$,
+$$t\|y\|_2 - h(t) = t\|y\|_2 - h(0) \leq 0\cdot \|y\|_2 - h(0)$$
+The minimizer for $h^\ast$ can't fall in $(-\infty, 0)$. Therefore we conclude $f^\ast(y) = h^\ast(\|y\|_2)$. \\
+\\
+(c) From the problem settings, $f(x) = \/1p \|x\|^p_2 = h(\|x\|_2)$. To show $f$ is convex, it suffices to show that $h$ is convex, nondecreasing and $h(t) = h(0)$ for $t\leq 0$. $h$ is convex since 
+$$h'(t) = \casebrak{t^{p-1}, t\geq 0}{0, t<0}$$
+is continuous and nondecreasing; $h$ is nondecreasing follows from $p>1$ and $h(t) = h(0)$ for $t\leq 0$ is just a part of the definition. \qed
 
 
 
@@ -365,8 +386,90 @@ $$A = \l[\begin{array}{ccc}
 7\\
 2\\
 -6\end{array}\r], N = 30.$$
-You can do this by forming the LP you found in your solution of exercise 4.16, or more directly using CVX. Plot the actuator signal $u(t)$ as a function of time $t$. \\
+You can do this by forming the LP you found in your solution of exercise 4.16, or more directly using CVX. Plot the actuator signal $u(t)$ as a function of time $t$. 
+\subsubsection*{Exercise 4.16 [Boyd \& Vandenberghe, 2004]}
+{\it Minimum fuel optimal control.} We consider a linear dynamical system with state $x(t) \in \R^n$, $t = 0, \cdots, N$, and actuator or input signal $u(t) \in \R$, for $t=0, \cdots, N-1$. The dynamics of the system is given by the linear recurrence 
+$$x(t+1) = Ax(t) + bu(t), t = 0, \cdots, N-1,$$
+where $A \in \R^{n\x n}$ and $b\in \R^n$ are given. We assume that the initial state is zero, \ie, $x(0) = 0$. \\
+The {\it minimum fuel optimal control problem} is to choose the inputs $u(0), \cdots, u(N-1)$ so as to minimize the total fuel consumed, which is given by
+$$F = \SUM{i=0}{N-1} f(u(t)),$$
+subject to the constraint that $x(N) = x_{des}$, where $N$ is the (given) time horizon, and $x_{des} \in \R^n$ is the (given) desired final or target state. The function $f:\R\ra1\R$ is the {\it fuel use map} for the actuator, and gives the amount of fuel used as a function of the actuator signal amplitude. In this problem we use 
+$$f(a) = \l\{\begin{array}{cc}
+|a| & |a|\leq 1\\
+2|a|-1 & |a| > 1.\end{array}\r.$$
+This means that fuel use is proportional to the absolute value of the actuator signal, for actuator signals between $-1$ and $1$; for larger actuator signals the marginal fuel efficiency is half. \\
+Formulate the minimum fuel optimal control problem as an LP. \\
 \\
 {\it Ans:} 
+The constraint is linear in $u(t)$, since $x(N)$ is a linear combination of $A^{N-1}b, \cdots, Ab, b$ with coefficients $u(0), \cdots, u(N-2), u(N-1)$,
+\begin{align*} x(N) &= Ax(N-1) + bu(N-1)\\
+&= A^2 x(N-2) + Abu(N-2) + bu(N-1)\\
+&= \cdots \\
+&= A^N x(0) + A^{N-1}bu(0) + A^{N-2}bu(1) + \cdots + Abu(N-2) + bu(N-1) \\
+&=A^{N-1}bu(0) + A^{N-2}bu(1) + \cdots + Abu(N-2) + bu(N-1) 
+\end{align*}
+and the original constraint is not much but
+$$x_{des} = A^{N-1}bu(0) + A^{N-2}bu(1) + \cdots + Abu(N-2) + bu(N-1) $$
+On the other hand, by introducing new variable\footnote{credit to \href{http://www.math.ucla.edu/~minhrose/}{Minh Pham} for his great hint!} $y(t)$ with constraints
+$$\pm u(t), \pm 2u(t)-1 \leq y(t)$$
+we find 
+\begin{align*}
+f(u(t)) &= \casebrak{|u(t)|, |u(t)| \leq 1}{2|u(t)|-1, |u(t)|>1}\\
+&= \max\{\pm u(t), \pm 2u(t)-1 \} \\
+&= y(t)
+\end{align*}
+That is, the problem comes with $4*N + 3$ constraints on variables $u(t)$ and $y(t)$ with objective function $F = \SUM{i=0}{N-1} y(t)$. Or more formally speaking, the problem is 
+$$\begin{array}{rl}
+\mbox{minimize} & \mathbf{1}y\\
+\mbox{subject to} & x_{des} = \mathcal K'(A,b)u\\
+& u \leq y\\
+& -u \leq y\\
+& 2u-\mathbf{1} \leq y\\
+& -2u - \mathbf{1} \leq y
+\end{array}$$
+where $\mathcal{K}'(A, b)$ is the Krylov matrix in reverse order
+$$\mathcal K'(A, b) = \l[\begin{array}{cccc}
+A^{N-1}b & \cdots & Ab & b
+\end{array}\r]$$
+Here's the graph of $u(t)$ as a function of $t$ and the codes used to generate the solution. I implemented the direct problem using CVX (plotted as blue line) as well as the linear programming problem (plotted as magenta crosses); it's encouraging that they give the same solution! 
+\begin{center}
+\includegraphics[scale=0.3]{hw3_p317.jpg}
+\end{center}
+\begin{verbatim}
+f=@(x) max(abs(x), 2*abs(x)-1);
+F=@(u) sum(f(u));
+A = [-1,0.4,0.8;1,0,0;0,1,0];
+b = [1;0;0.3];
+x_des = [7;2;-6];
+N = 30;
+KAb = zeros(3,30);
+KAb(:,30) = b;
+for i=29:-1:1
+    KAb(:,i) = A * KAb(:, i+1);
+end
 
+cvx_begin
+    variable u(N);
+    minimize F(u);
+    subject to 
+        KAb*u == x_des;
+cvx_end
+plot(0:29,u','-b');
+
+clear u
+%% alternative solution (LP)
+cvx_begin
+    variable u(2*N);
+    minimize ones(1,N)*u(N+1:end);
+    subject to
+        KAb*u(1:N) == x_des;
+        u(1:N) <= u(N+1:end);
+        -u(1:N) <= u(N+1:end);
+        2*u(1:N)-ones(N,1) <= u(N+1:end);
+        -2*u(1:N)-ones(N,1) <= u(N+1:end);
+cvx_end
+hold on
+handle = plot(0:29,u(1:N)','mx','LineWidth',1.2);
+saveas(handle, 'hw3_p317','jpg');
+\end{verbatim}
 \end{document}
