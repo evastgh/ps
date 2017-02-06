@@ -1,0 +1,256 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn]		%% --to make all equation left-algned
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math 115A Midterm Solution}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}\newcommand{\blue}[1]{\textcolor{blue}{#1}}\newcommand{\red}[1]{\textcolor{red}{#1}}\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+%\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	%\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+%\usepackage{graphicx} \graphicspath{{}}
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Quick Editor Config
+\newcommand{\nid}{\noindent}
+\newcommand{\dps}{\displaystyle}
+
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+\newcommand{\prob}[1]{{\bf {#1}}}
+
+%%% --Quick Math Mode Config
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+\newcommand{\casedef}[4]{\left \{ \begin{array}{ll} {#1} & {#2}\\{#3} & {4} \end{array} \right.}
+\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+\newcommand{\trv}[3]{\l[\begin{array}{c}{#1}\\{#2}\\{#3}\end{array}\r]}
+\newcommand{\fv}[4]{\l[\begin{array}{c}{#1}\\{#2}\\{#3}\\{#4}\end{array}\r]}
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+%%% --Special Math Characters
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\let\slashedO=\O	% put the value of \O at this line to \slashedO
+\def\O{\ifmmode\mathcal O\else\slashedO\fi}	% whenever \O is called it will evaluate the following expression
+% although \newcommand does the same thing as \def, it throws error when overwriting existing command; 
+
+%%% --General Math Symbols/Operators
+\newcommand{\bc}{\because}
+\newcommand{\tf}{\therefore}
+
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+\newcommand{\SUP}[1]{\sup\limits_{#1}}
+
+%\renewcommand{\o}{\circ}
+%\newcommand{\x}{\times}
+%\newcommand{\ox}{\otimes}
+
+%%% --Analysis Symbols
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+
+%%% --Numericals Symbols
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\dt}{\Delta t}
+%\newcommand{\nxt}{^{n+1}}
+%\newcommand{\pvs}{^{n-1}}
+%\newcommand{\hfnxt}{^{n+\frac12}}
+
+%%% --Matrix Analysis Symbols
+\def\tr{\text{tr}}
+\def\vA{\mathbf{A}}
+\def\vB{\mathbf{B}}\def\cB{\mathcal{B}}
+\def\vC{\mathbf{C}}
+\def\vD{\mathbf{D}}
+\def\vE{\mathbf{E}}
+\def\vF{\mathbf{F}}\def\tvF{\tilde{\mathbf{F}}}
+\def\vG{\mathbf{G}}
+\def\vH{\mathbf{H}}
+\def\vI{\mathbf{I}}\def\cI{\mathcal{I}}
+\def\vJ{\mathbf{J}}
+\def\vK{\mathbf{K}}
+\def\vL{\mathbf{L}}\def\cL{\mathcal{L}}
+\def\vM{\mathbf{M}}
+\def\vN{\mathbf{N}}\def\cN{\mathcal{N}}
+\def\vO{\mathbf{O}}
+\def\vP{\mathbf{P}}
+\def\vQ{\mathbf{Q}}
+\def\vR{\mathbf{R}}
+\def\vS{\mathbf{S}}
+\def\vT{\mathbf{T}}
+\def\vU{\mathbf{U}}
+\def\vV{\mathbf{V}}
+\def\vW{\mathbf{W}}
+\def\vX{\mathbf{X}}
+\def\vY{\mathbf{Y}}
+\def\vZ{\mathbf{Z}}
+
+\def\va{\mathbf{a}}
+\def\vb{\mathbf{b}}
+\def\vc{\mathbf{c}}
+\def\vd{\mathbf{d}}
+\def\ve{\mathbf{e}}
+\def\vf{\mathbf{f}}
+\def\vg{\mathbf{g}}
+\def\vh{\mathbf{h}}
+\def\vi{\mathbf{i}}
+\def\vj{\mathbf{j}}
+\def\vk{\mathbf{k}}
+\def\vl{\mathbf{l}}
+\def\vm{\mathbf{m}}
+\def\vn{\mathbf{n}}
+\def\vo{\mathbf{o}}
+\def\vp{\mathbf{p}}
+\def\vq{\mathbf{q}}
+\def\vr{\mathbf{r}}
+\def\vs{\mathbf{s}}
+\def\vt{\mathbf{t}}
+\def\vu{\mathbf{u}}
+\def\vv{\mathbf{v}}\def\tvv{\tilde{\mathbf{v}}}
+\def\vw{\mathbf{w}}
+\def\vx{\mathbf{x}}\def\tvx{\tilde{\mathbf{x}}}
+\def\vy{\mathbf{y}}
+\def\vz{\mathbf{z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsubsection*{Problem 1}
+$V$ is a vector space and $S\subseteq V$.  \\
+\nid (a) $W$ is a subspace of $V$ is $W$ is a vector space with the same operations (addition and scalar multiplication) defined on $V$. \\
+(b) $span(S)$ is the set of all linear combinations of vectors in $S$. \\
+(c) $S$ is linearly dependent if there exists $v_1, \cdots, v_n \in S$ and scalars $a_1, \cdots, a_n \in F$ such that 
+$$a_1v_1 + \cdots + a_nv_n = 0$$
+and not all $a_i$'s are zero.\\
+(d) $S$ is a basis of $V$ if $S$ is linearly independent and $span(S) = V$.\\
+(e) $\dim(V)$ is the unique number of vectors in each basis of $V$. 
+
+
+
+\subsubsection*{Problem 2}
+$V$ is a vector vector space, $S\subseteq V$ is linearly independent and $v \in V\setminus S$. Prove that $S\cup \{v\}$ is linearly dependent if and only if $v\in span(S)$. \\
+\underline{``$\ra2$"} Suppose $S\cup\{v\}$ is linearly dependent, take the vectors $v_1, \cdots, v_n \in S\cup\{v\}$ and scalar $a_1, \cdots, a_n$ such that 
+$$a_1 v_1 + \cdots + a_n v_n = 0$$
+Without loss of generality we can assume $v$ is among these vectors, say, $v_1 = v$. If $a_1 = 0$, then we get 
+$$a_2 v_2 + \cdots + a_n v_n = 0$$
+with $v_2, \cdots, v_n \in S$ and not all $a_2, \cdots, a_n$ are zero. This contradicts the assumption that $S$ is linearly independent. If $a_1 \neq 0$, then we can divide the equation by $a_1$ and get
+$$v + \/{a_2}{a_1} v_2 + \cdots + \/{a_n}{a_1}v_n = 0$$
+Therefore $v = -\/{a_2}{a_1} v_2 + \cdots + \/{a_n}{a_1}v_n$ is a linear combination of vectors $v_2, \cdots, v_n \in S$ and $v\in span(S)$. \\
+\\
+\underline{``$\Leftarrow$"} Suppose $v\in span(S)$; write $v = c_1 u_1 + \cdots + c_n u_n$ where $u_1, \cdots, u_n \in S$ and $c_1, \cdots , c_n$ are scalars. We see
+\begin{align*}
+0 & = -v + c_1 u_1 + \cdots + c_n u_n \\ 
+& = (-1)v + c_1u_1 + \cdots + c_nu_u
+\end{align*}
+is a linear combination of vectors $v, u_1, \cdots, u_n \in S\cup\{v\}$ with not all zero coefficients. In particular, the coefficient of $v$ is $(-1) \neq 0$. \qed
+
+
+
+\subsubsection*{Problem 3}
+(a) \onum1 The zero matrix $O = \ttm 0000$ certainly is a diagonal matrix with zeros as diagonal entries. For diagonal matrices $A = \ttm{a_1}00{a_2}, B = \ttm{b_1}00{b_2}$ and scalar $c\in\R$, \onum2 the sum $A+B = \ttm{a_1+b_1}00{a_2+b_2}$ and \onum3 the scalar multiple $cA = \ttm{ca_1}00{ca_2}$ are both diagonal. Therefore $W$ is closed under addition and scalar multiplication. By Theorem in textbook, $W$ is a subspace of $M_{2\times 2}(\R)$.  \\
+(b, c) $S = \l\{\ttm1000,\ttm0001\r\} \subseteq W$ is a basis since 
+$$a\ttm1000 + b\ttm0001 = \ttm a00b= \ttm0000 \Leftrightarrow a = b = 0 \mbox{ (linear independence)}$$
+and 
+$$\forall A = \ttm a00b \in W, A = a\ttm1000 + b\ttm0001 \in span(S)\mbox{ ($S$ spans $W$)}$$
+Also, $dim(W) = \#S = 2$.  \\
+(d) Consider $T = \l\{\ttm 0100, \ttm0010\r\}$; $S\cup T$ is a basis of $M_{2\times 2}(\R)$ because
+$$a\ttm1000 + b\ttm0001 + c\ttm0100 + d\ttm0010= \ttm acdb =\ttm0000 \Leftrightarrow a = b = c = d = 0$$
+and 
+$$\forall A = \ttm abcd \in M_{2\times2}(\R), A = a\ttm1000 + b\ttm0100 + c\ttm0010+ d\ttm0001 \in span(S\cup T)$$
+
+
+
+\subsubsection*{Problem 4}
+(a) $V$ is a vector space and $W_1, W_2$ are subspaces of $V$. Prove that if $W_1$ and $W_2$ are finite dimensional then so is $W_1 + W_2$. \\
+Take basis $\beta_1 = \{v_1, \cdots, v_n\}, \beta_2 = \{u_1, \cdots, u_m\}$ of $W_1, W_2$, respectively, then
+$$W_1 = \{a_1 v_1 + \cdots a_nv_n \mid a_1, \cdots , a_n \in F\}, W_2 = \{c_1u_1 + \cdots + c_mu_m \mid c_1, \cdots, c_m \in F\}$$
+Now by definition of summed spaces, 
+$$W_1 + W_2 = \{(a_1v_1 + \cdots + a_nv_n) + (c_1u_1 + \cdots + c_mu_m) \mid a_1, \cdots, a_n, c_1, \cdots, c_m \in F\} = span(\beta_1 \cup \beta_2)$$
+is generated by a finite set $\beta_1 \cup \beta_2$. By theorem in textbook, we can reduce the generating set $\{v_1, \cdots, v_n, u_1, \cdots, u_m\}$ to a basis, which can contain at most $n+m$ vectors and is henceforth finite. \\
+(b) Take basis $\beta_0 = \{t_1, \cdots, t_r\}$ of $W_1 \cap W_2$; extend $\beta_0$ to a basis of $W_1$ as $\{t_1, \cdots, t_r, v_{r+1}, \cdots, v_n\}$ (note the dimension of $W_1$ is still $n$ as in the previous part), extend it similarly with $W_2$ and get $\{t_1, \cdots, t_r, u_{r+1}, \cdots, u_m\}$. With the same notion in part (a), we get 
+$$W_1 + W_2 = span(\{t_1, \cdots, t_r, v_{r+1}, \cdots, v_n, u_{r+1}, \cdots, u_m\})$$
+Suppose $a_1t_1 + \cdots + a_rt_r + b_{r+1} v_{r+1} + \cdots + b_nv_n + c_{r+1}u_{r+1} + \cdots c_m u_m = 0$, then
+$$u = c_{r+1}u_{r+1} + \cdots c_m u_m = -(a_1t_1 + \cdots + a_rt_r) - (b_{r+1} v_{r+1} + \cdots + b_nv_n) \in W_1 \cap W_2$$
+Since $t_1, \cdots, t_r$ is a basis of $W_1 \cap W_2$, we can represent $u = \alpha_1 t_1 + \cdots + \alpha_r t_r$, and 
+$$u = \alpha_1 t_1 + \cdots + \alpha_r t_r = -(a_1t_1 + \cdots + a_rt_r) - (b_{r+1} v_{r+1} + \cdots + b_nv_n)$$
+Or $(\alpha_1+a_1) t_1 + \cdots + (\alpha_r+a_r) t_r +  b_{r+1} v_{r+1} + \cdots + b_nv_n = 0$. Since $t_1, \cdots, t_r, v_{r+1}, \cdots, v_n$ is a basis of $W_1$, we must get $b_{r+1} = \cdots = b_{n} = 0$. Similarly, we shall have $c_{r+1} = \cdots = c_m = 0$. That is, we have 
+$$a_1t_1 + \cdots + a_rt_r  = 0$$
+and again since $t_1, \cdots, t_r$ is linearly independent, we have $a_1 = \cdots = a_r = 0$. We just proved $\{t_1, \cdots, t_r, v_{r+1}, \cdots, v_n, u_{r+1}, \cdots, u_m\}$ is a linearly independent set. My proof to this part is a little tedious; perhaps the instructor will have a shorter proof. \\
+(c) Consider $V = \R^3$, $W_1 = \{ \mbox{$x$-$y$ plane}\} = span\l(\trv100, \trv010\r)$, $W_2 = \{ \mbox{$y$-$z$ plane}\} = span\l(\trv010,\trv001\r)$. In this case, $W_1 \cap W_2 = \{ \mbox{$y$-axis}\} = span\l(\trv010\r) \neq \{0\}$ and indeed $W_1 + W_2 = span\l(\trv100,\trv010,\trv001\r) = \R^3$.
+
+
+
+
+\subsubsection*{Problem 5}
+(a) False. $\fv{-1}121 = \l[\begin{array}{cc}
+1&0\\
+0&1\\
+1&1\\
+-1&1
+\end{array}\r]\tv {x_1}{x_2}$ is equivalent to solving $\l[\begin{array}{cc|c}
+1&0&-1\\
+0&1&1\\
+0&1&3\\
+0&1&0
+\end{array}\r]$ (by elementary matrix operations), which is not solvable. \\
+(b) True.\\
+(c) False. $dim(\R^2) = 2$; there can't be a linearly independent subset of $\R^2$ of more than 2 vectors. \\
+(d) False. Consider 1-dimensional vector space $V = span(v)$; every vector is a multiple of the other. \\
+(e) False. It is an \href{https://en.wikipedia.org/wiki/Affine_space}{``affine space"} of $\R^4$, but definitely not a subspace of $\R^4$. For instance, it doesn't contain zero vector $\l[\begin{array}{c}0\\0\\0\\0\end{array}\r]$. \\
+(f) True. \\
+(g) False. The inequality should be reversed. Linear independent subset should always contain less (or equal number of) vectors than spanning set. \\
+(h) True. \\
+(i) False. Consider $S = \l\{\tv10, \tv01, \tv11\r\}$, since 
+$$1\cdot \tv10 + 1 \cdot \tv01 + (-1)\cdot\tv11 = \tv00,$$
+it's linearly dependent. However, the subset $\l\{\tv10, \tv01\r\}\subseteq S$ is easily the basis of $\R^2$ and linearly independent. 
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
