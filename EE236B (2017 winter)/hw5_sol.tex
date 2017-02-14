@@ -11,7 +11,7 @@
 
 \usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{EE236B homework 5}
 
-\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd,enumerate}
 	%{mathtools,wasysym,yhmath}
 
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -171,26 +171,68 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\subsubsection*{Additional Exercise 3.21 (a),(b) [Boyd \& Vandenberghe, 2017]}
-{\it Ans:} The observation from Problem 4.26 [Boyd \& Vandenberghe, 2004] is for $x \in \R^n, y, z\in\R$,
+\subsubsection*{Additional Exercise 3.21 [Boyd \& Vandenberghe, 2017]}
+{\it Norm approximation via SOCP, for $\ell_p$-norms with rational $p$.} \begin{enumerate}[(a)]
+\item Use the observation at the beginning of exercise 4.26 in {\it Convex Optimization} to express the constraint
+$$y\leq \sqrt{z_1z_2}, y, z_1,z_2\geq 0,$$
+with variables $y, z_1,z_2$ as a second-order cone constraint. Then extend your result to the constraint 
+$$y\leq (z_1z_2\cdots z_n)^{1/n}, y\geq 0, z\succeq0,$$
+where $n$ is a positive integer, and the variables are $y\in\R$ and $z\in\R^n$. First assume that $n$ is a power of two, and then generalize your formulation to arbitrary positive integers. 
+\item Express the constraint
+$$f(x)\leq t$$
+as a second-order cone constraint, for the following two convex functions $f$:
+$$f(x) = \casebrak{x^\alpha, x\geq 0}{0, x<0},$$
+where $\alpha$ is a rational and greater than or equal to one, and 
+$$f(x) = x^\alpha, \dom f = \R_{++},$$
+where $\alpha$ is rational and negative.
+\item Formulate the norm approximation problem
+$$\mbox{minimize} \|Ax-b\|_p$$
+as a second-order cone program, where $p$ is a rational number greater than or equal to one. The variable in the optimization problem is $x\in\R^n$. The matrix $A\in\R^{m\times n}$ and the vector $b\in\R^m$ are given. For an $m$-vector $y$, the norm $\|y\|_p$ is defined as 
+$$\|y\|_p = \l(\SUM{k=1}m |y_k|^p\r)^{1/p}$$
+where $p\geq 1$.
+\end{enumerate}
+{\it Ans:} Here only presents solutions to part (a) and (b). \\
+(a) The observation from Problem 4.26 [Boyd \& Vandenberghe, 2004] is for $x \in \R^n, y, z\in\R$,
 $$x^Tx\leq yz, y\geq 0, z \geq 0 \Leftrightarrow \l\|\l[{2x \atop y-z}\r]\r\|_2 \leq y+z, y\geq 0, z\geq 0$$
 This is true since 
 \begin{align*}
 \l\|\l[{2x \atop y-z}\r]\r\|_2^2 - (y+z)^2 & = 4\|x\|_2^2 + y^2 - 2yz + z^2 - (y^2+2yz+z^2)\\
-&= 4(x^Tx - yz)
+&= 4x^Tx - 4yz
 \end{align*}
-Back to Additional Exercise 3.21, we know now the following two constraints are equivalent. 
-$$y\leq \sqrt{z_1z_2}, y,z_1,z_2\geq 0 \Leftrightarrow \l\|\l[{2y \atop z_1-z_2}\r]\r\|_2 \leq z_1+z_2, y,z_1,z_2\geq 0$$
-Claim: ``For $n=2^k, k\in\N$, the constraint $y\leq (z_1z_2\cdots z_n)^{1/n}, z_1, z_2,\cdots,z_n \geq 0$ can expressed as SOC constraint. " The base case $k=1$ is done as above. Now assuming the statement is true for $n = 2^k$, in order to express the following in SOC constraint,
+% we know now the following two constraints are equivalent. 
+%$$y\leq \sqrt{z_1z_2}, y,z_1,z_2\geq 0 \Leftrightarrow \l\|\l[{2y \atop z_1-z_2}\r]\r\|_2 \leq z_1+z_2, y,z_1,z_2\geq 0$$
+Back to Additional Exercise 3.21, first we claim: ``For $n=2^k, k\in\N$, the constraint 
+$$y\leq (z_1z_2\cdots z_n)^{1/n}, z_1, z_2,\cdots,z_n \geq 0$$
+ can expressed as SOC constraints. " The base case $k=1$ is done as described above. Now assuming the statement is true for $n = 2^k$, in order to express the following in SOC constraint,
 $$y\leq (z_1z_2\cdots z_ns_1s_2\cdots s_n)^{1/2n}, z_1, z_2,\cdots,z_n,s_1, s_2, \cdots, s_n \geq 0$$
-consider $t_i = \sqrt{z_is_i}, i = 1,2,\cdots, n$; this can be done by setting constraints
+introduce $n$ new variables: $t_i = \sqrt{z_is_i}, i = 1,2,\cdots, n$; this can be done by setting constraints
 $$t_i \geq 0, t_i^2 = \/12(z_i+s_i)^2-\/12(z_i^2+s_i^2)$$
 Then the geometric mean condition is now 
-$$y \leq (t_1
+$$y \leq (t_1^2t_2^2 \cdots t_n^2)^{1/2n} = (t_1t_2 \cdots t_n)^{1/n}$$
+From inductive hypothesis, this can be expressed as SOC constraints. (To be more specific, in order to find the equivalent SOC constraints for the original inequality of the geometric mean of $2^k$ variables, we can write a recursive program to introduce new variables and conditions. We omit the tedious notations here.) We've proved our claim. For cases when $n$ is not a power of two, 
+
+
 
 
 \newpage\subsubsection*{Additional Problem 1}{\it Ans:}
 \newpage\subsubsection*{Additional Problem 2}{\it Ans:}
 \newpage\subsubsection*{Additional Problem 3}{\it Ans:}
-\newpage\subsubsection*{Additional Exercise 3.11 [Boyd \& Vandenberghe, 2017]}{\it Ans:}
+\newpage\subsubsection*{Additional Exercise 3.11 [Boyd \& Vandenberghe, 2017]}
+Formulate the following optimization problems as semidefinite programs. The variable is $x\in\R^n$; $F(x)$ is defined as 
+$$F(x) = F_0 + x_1 F_1 + x_2F_2 + \cdots + x_nF_n$$
+with $F_i \in \vS^m$. The domain of $f$ in each subproblem is $\dom f = \{x \in\R^n \mid F(x) \succ 0\}$. 
+\begin{enumerate}[(a)]
+\item Minimize $f(x) = c^T F(x)^{-1}c$ where $c \in \R^m$. 
+\item Minimize $f(x) = \max_{i=1, \cdots, K} c_i^T F(x)^{-1}c_i$ where $c_i \in \R^m, i = 1, \cdots, K$. 
+\item Minimize $f(x) = \sup\limits_{\|c\|_2\leq1} c^T F(x)^{-1}c$.
+\item Minimize $f(x) = \vE (c^T F(x)^{-1}c)$ where $c$ is a random vector with mean $\vE c = \bar c$ and covariance $\vE(c-\bar c)(c-\bar c)^T = S$. 
+\end{enumerate}
+{\it Ans:}
+
+
+
+
+
+
+
 \end{document}

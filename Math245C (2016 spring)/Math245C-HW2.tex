@@ -1,0 +1,197 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+\usepackage[top=1.2in, bottom=1.2in, left=.7in, right=.7in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math245C - Homework 2}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}\newcommand{\blue}[1]{\textcolor{blue}{#1}}\newcommand{\red}[1]{\textcolor{red}{#1}}\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	%\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.8,0.9,0.85\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+%\usepackage{graphicx}
+%\graphicspath{ {/Users/KoraJr/Documents/MATLAB} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=blue,filecolor=blue,linkcolor=blue,urlcolor=blue}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi}
+
+\newcommand{\la}[1]{\ifnum #1=1 \leftarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+\newcommand{\bbu}{\blacktriangleright}
+\newcommand{\wbu}{\vartriangleright}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+\newcommand{\prob}[1]{\bf {#1}}
+
+\newcommand{\bgfl}{\begin{flalign*}}
+\newcommand{\bga}{\begin{align*}}
+\def\beq{\begin{equation}} \def\eeq{\end{equation}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\newcommand{\dps}{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\newcommand{\bc}{\because}
+\newcommand{\tf}{\therefore}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+\newcommand{\SUP}[1]{\sup\limits_{#1}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Special Math Characters
+\newcommand{\R}{\mathbb R}%Real number
+\newcommand{\N}{\mathbb N}%Nature number
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}%measurable sets
+\renewcommand{\P}{\mathcal{P}}%power set
+
+%%% --REAL ANALYSIS Symbols
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+\newcommand{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\UPINT}{\bar\int}
+\newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\supp}{\text{supp}}
+
+\newcommand{\leb}{\lambda^\ast} %%% --Lebesgue
+\renewcommand{\H}[1]{{\cal H}^{#1}} %%% --Hausdorff
+\newcommand{\B}{\mathcal{B}} %%% --Borel set
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\I}{\mathcal{I}} %%% --index set
+\newcommand{\Supp}[1]{\text{Supp}\left({#1}\right)}
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsection*{Problem 1 (Exercise 1.10.23. [Tao, 2011])}
+I want to do proof by contradiction. First observe that due to the point separating assumption, the original statement of the problem is 
+$$\exists x_0 \in X, \forall f\in \mathcal A, f(x_0) = 0$$
+Hence the negation of it is 
+$$\forall x\in X, \exists f\in \mathcal A, f(x) \neq 0$$
+Assuming the above statement, by multiplying the constant $1/f(x)$, we can easily get
+$$\forall x\in X, \exists f\in \mathcal A, f(x) = 1$$
+Now I want to demonstrate how consequently the identity function $1$ would fall in $\mathcal A$. It suffice to show that we can approximate $1$ using functions in $\mathcal A$ since $\mathcal A$ is given to be closed (under uniform norm topology). First I want to find for different $x, y \in X$, a function $g_{xy} \in \mathcal A$ such that $g_{xy}(x) = g_{xy}(y) = 1$. Take $f_x, f_y\in \mathcal A$ with $f_x(x) = f_y(y) = 1$, solve the linear system for $\alpha, \beta$
+$$\casebrak{\alpha + \beta f_y(x) = 1}{\alpha f_x(y) + \beta = 1}$$
+This linear system is always solvable (the solution is not necessarily unique) except for the case 
+$$\/1{f_x(y)} = f_y(x) \neq 1$$
+But this can be easily perturbed by a function $f_0 \in \mathcal A$ chosen such that $f_0(x) \neq f_0(y)$. Let $g_{xy} = \alpha f_x + \beta f_y \in \mathcal A$.
+
+Now fix $\epsilon > 0$. For each $x\in X$, following the same technique as in the proof of Stone-Weierstrass Theorem, we can easily cover $X$ with 
+$$\{N_y: N_y \text{ is the open nbd of } y \text{ such that } g_{xy} \geq 1-\epsilon \text{ on } N_y \}_{y\in X}$$
+Take a finite subcover from these open nbds and take the maximum of those $g_{xy}$'s (note that without the assumption of containing identity, we can still approximate $|f|$ since this doesn't require the identity function), we get a function $g_x \in \mathcal A$ such that $g_x(x) = 1$ and $g_x \geq 1-\epsilon$ on $X$. Now take finite subcover from 
+$$\{M_x: M_x \text{ is the open nbd of } x \text{such that } g_x \leq 1+\epsilon \text{ on } M_x\}_{x\in X}$$
+and take the minimum of these $g_x$'s, we get a function $g \in \mathcal A$ such that $|g-1| \leq \epsilon$ on $X$.  \qed
+
+
+\newpage\subsection*{Problem 2 (Exercise 1.10.26. [Tao, 2011])}
+Let $X = \CUP{n\in\N}{} K_n$ where $K_n$ are the compact subsets. By taking finite union of compact subsets (which will remain to be compact since there's only finite elements), we can WLOG assume 
+$$K_1 \subseteq K_2 \subseteq K_3 \subseteq \cdots$$
+Fix some function $f\in C(X \ra1 \R)$. We notice that from Stone-Weierstrass theorem on compact sets, the subalgebra 
+$$\mathcal A_n := \{f\mid K_n: f\in \mathcal A\}$$
+satisfies the requirements of \onum1 containing identity, \onum2 separating points and hence can provide approximation to $f\mid K_n$ with uniform norm on $K_n$. Now define a sequence of function approximating $f$ in the following construction: for each $n\in\N$, take $f_n \in \mathcal A$ such that $f_n \mid K_n$ is the element in $\mathcal A_n$ with 
+$$\|(f_n - f) \mid K_n\|_u < \/1n$$
+\claim{Given any compact subset $K \subseteq X$, $f_n \mid K\ra1 f\mid K$ uniformly}\\
+It suffice to show that $K \subseteq K_n$ for some $n\in\N$ since for $m>n$, 
+$$\|(f_m -f)\mid K_n\|_u \leq \|(f_m -f)\mid K_m\|_u < \/1m \ra1 0 \text{ as } m\ra1 \infty$$
+However this is not the case... See {\bf\href{http://math.stackexchange.com/questions/1189563/compact-subset-of-locally-compact-sigma-compact}{here}}. Now for each $n\in\N$, each $x\in K$ would be in some $K_{m_x}$ (WLOG $m_x \geq n$) and be covered by an open nbd $N_x$ where $|f_{m_x} - f_{m_x}(x)| < 1/n$ on $N_x$, by taking a finite subcover $N_{x_1}, \cdots, N_{x_k}$ from these open nbds, each associated with a number $m_i \in \N$ ($i = 1, \cdots, k$), we get a finite number $m_n = \max\{m_1, \cdots, m_k\} \geq n$ such that 
+\bga
+\forall y\in X, |f_{m_n}(y) - f(y)| 
+\leq &|f_{m_n}(y) - f_{m_n}(x_i)| + |f_{m_n}(x_i) - f(x_i)| \\
+< & \frac1n + \frac1{m_n} \leq \frac2n
+\end{align*}
+We see by passing through subsequence $f_{m_n} \ra1 f$ uniformly on $K$ as $n\ra1\infty$. \qed
+\newpage\subsection*{Problem 3 (Exercise 1.10.27. [Tao, 2011])}
+This is true because 
+$$\mathcal A := \l\{\l((x, y)\mapsto \SUM{j=1}k f_j(x)g_j(y)\r): k\in\N, f_j \in C(X\ra1\R), g_j\in C(Y \ra1 \R)\r\}$$
+is \onum1 a subalgebra of $C(X\x Y \ra1 \R)$ that \onum2 contains identity and \onum3 separates points and we can apply Stone-Weierstrass Theorem on the compact space $X\x Y$ (it's compact since both $X$ and $Y$ are). \\
+\claim{\onum1 $\mathcal A$ is an algebra} For $\alpha, \beta \in\mathbb F$, $F = \l((x, y)\mapsto \SUM{j=1}k f_j(x)g_j(y)\r), G = \l((x, y) \mapsto \SUM{j=1}h \tilde f_j(x)\tilde g_j(y)\r) \in \mathcal A$, 
+\bga
+\alpha F + \beta G
+=& \SUM{j=1}k \alpha f_j(x)g_j(y) + \SUM{j=1}h \beta \tilde f_j(x)\tilde g_j(y) \in \mathcal A\\
+& \text{since } \alpha f_j, \beta \tilde f_j\in C(X \ra1 \R) \text{ and } k+h \in \N\\
+FG
+= & \SUM{j=1}k\SUM{i=1}h f_j(x)\tilde f_i(x) g_j(y)\tilde g_k(y) \in \mathcal A \\
+& \text{since } f_j\tilde f_j \in C(X \ra1 \R), g_j \tilde g_j\in C(Y\ra1\R) \text{ and } kh \in \N
+\end{align*}
+\claim{\onum2 $1_{X\x Y} \in \mathcal A$} This is true since $1_X \in C(X \ra1\R)$ and $1_Y \in C(Y\ra1\R)$ and $1_{X\x Y}(x, y) = 1_X(x) 1_Y(y)$. \\
+\claim{\onum3 $\mathcal A$ separates points} Suppose $(x, y) \neq (x', y') \in X \x Y$, then they must differ on $x$ or $y$ coordinate. WLOG assume $x \neq x'$, since $C(X \ra1\R)$ certainly separates points, take $f\in C(X \ra1 \R)$ such that $f(x) \neq f(x')$, then $\bar f(x, y) := f(x) 1_Y(y) \in \mathcal A$ and it separates $(x, y)$ and $(x', y')$. \qed
+
+\newpage\subsection*{Problem 4 (Exercise 1.10.29. [Tao, 2011])}
+\red{  }
+\newpage\subsection*{Problem 5 (Exercise 1.10.30. [Tao, 2011])}
+First since $\{f_n(x_0)\}_{n\in\N}$ is bounded, relying on Hein-Borel theorem for real numbers, by passing to subsequence we can WLOG assume $f_n(x_0) \ra1 \alpha$ for some $\alpha \in \R$. We can further pass through subsequence and assume $\forall n\in\N, |f_n(x_0) - \alpha| \leq 1/n$. 
+
+Second, since bounded variation functions can be decompose into the difference of two monotonically increasing and bounded function and deduction involves only two elements, by further passing subsequence, it suffices to show that for monotonically increasing and bounded functions $\{f_n\}_{n\in\N}$ with uniform bound on the total variation. Denote the uniform bound by $M$. Now since $\forall n\in \N, f_n \geq \alpha -1 - M$, by shifting we can further assume all $f_n$ are nonnegative and $0 \leq f_n \leq \alpha + 1 + 2M$. 
+
+Third, since the total variation $T(f_n) = f_n(+\infty) - f_n(-\infty)\leq 2M$, we can in fact pass it to subsequence such that $T(f_n) \ra1 M' $ as $n\ra1\infty$. Also we can assume $\forall n\in\N, |T(f_n) - M'| \leq 1/n$ by passing further subsequence. We can fairly assume $M' \neq 0$ since otherwise $f_n$ just converges to zero function. 
+
+Fourth, by fundamental theorem of calculus for bounded variation functions, we can relate each $f_n$ with a non-negative measure $\mu_n$ such that $\mu_n(\R) = T(f_n)$ and 
+$$\mu_n(E) = \int_E f_n d\lambda \text{ for any Borel set }E\subseteq \R$$
+where $\lambda$ denotes the Lebesgue measure on $\R$. Then $\{ \mu_n / T(f_n) \}_{n\in\N}$ forms a sequence of Borel probability measure and by Exercise 1.10.29.  [Tao, 2011](without the tight condition), $\mu_n/T(f_n)$ converges vaguely to a non-negative Borel measure $\mu$, that is, 
+$$\forall f\in C_0(X\ra1\R), \/1{T(f_n)}\int f d\mu_n \ra1 \int f d\mu$$
+Since $T(f_n)$ converges to a nonzero number $M'$, we see that 
+$$\forall f\in C_0(X\ra1\R), \int f d\mu_n = \int f f_n d\lambda\ra1 \int (M'f f_0) d\lambda$$
+where $f_0$ is the the Radon-Nikodym derivative of $\mu$. Now by taking suitable approximation to each characteristic function of measurable set, we conclude that $f_n \ra1 M' f_0$ a.e. as desired. \qed 
+
+
+\end{document}
