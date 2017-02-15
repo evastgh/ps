@@ -183,4 +183,4 @@ h = plot(x_vec, y_vec, '-b', 'LineWidth', 1.1);
 axis equal;
 xlabel('x');
 ylabel('0.5*x^2 + 1');
-saveas(h, 'Math151B_Demo','jpg');
+saveas(h, 'demo','jpg');
