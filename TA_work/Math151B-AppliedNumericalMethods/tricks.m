@@ -1,4 +1,5 @@
 clear all;
+
 fprintf('Here comes the matrix instanciation runtime. \n');
 %% dense instanciation with pre-allocated memory using ZEROS
 tic;
@@ -135,7 +136,51 @@ tic; x3 = A3*x; toc;
 tic; x4 = A4*x; toc;
 tic; x5 = A5*x; toc;
 fprintf('norm(x1) = %f\n',norm(x1));
-fprintf('norm(x2) = %f\n',norm(x1));
-fprintf('norm(x3) = %f\n',norm(x1));
-fprintf('norm(x4) = %f\n',norm(x1));
-fprintf('norm(x5) = %f\n',norm(x1));
+fprintf('norm(x2) = %f\n',norm(x2));
+fprintf('norm(x3) = %f\n',norm(x3));
+fprintf('norm(x4) = %f\n',norm(x4));
+fprintf('norm(x5) = %f\n',norm(x5));
+
+%% different for loop parameters instanciation
+for i=1:5
+    fprintf('%f\n', 0.1*i);
+end
+for x=0.1:0.1:0.5
+    fprintf('%f\n', x);
+end
+for x=linspace(0.1,0.5,5)
+    fprintf('%f\n', x);
+end
+
+%% matrix inverse
+clear all;
+A = rand(1000) + eye(1000);
+b = ones(1000,1);
+
+tic; x1 = inv(A)*b; toc;
+tic; x2 = A \ b; toc;
+fprintf('Norm of residual for inv(A)*b = %f\n', norm(A*x1-b));
+fprintf('Norm of residual for A\b      = %f', norm(A*x2-b));
+
+%% function handle (slow)
+clear all;
+f = @(x) 0.5*x^2 + 1;
+x_vec = linspace(0,1,100);
+y_vec = zeros(1,100);
+for i=1:100
+    y_vec(i) = f(x_vec(i));
+end
+plot(x_vec, y_vec, '-r', 'LineWidth', 1.1);
+
+%% function handle (fast)
+clear all;
+g = @(x) 0.5*x.^2 + 1;
+x_vec = linspace(0,1,100);
+y_vec = g(x_vec);
+y_vec = y_vec - 0.5;
+hold on;
+h = plot(x_vec, y_vec, '-b', 'LineWidth', 1.1);
+axis equal;
+xlabel('x');
+ylabel('0.5*x^2 + 1');
+saveas(h, 'Math151B_Demo','jpg');
