@@ -3,7 +3,7 @@
 \usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
 %\usepackage{fullpage}
 
-\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Document Title}
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math270B Homework 1}
 
 \usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
 	%{mathtools,wasysym,yhmath}
@@ -155,7 +155,112 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \subsubsection*{Problem 1}
-Fix $x, y\in\R$. Assuming $x \odiv y = \fl(\fl(x)\div \fl(y))$, denote $z = \fl(x)\div \fl(y)$. We know 
+Fix $x, y\in\R$. Consider $\tilde y = \fl(y) \in \R$, we proceed to find $\tilde x \in \R$ for backward stability, {\it i.e.},
+$$\fl(\fl(x)\div \fl(y)) = \tilde x \div \tilde y = \tilde x \div \fl(y)$$
+Let $\tilde x = \fl(\fl(x)\div\fl(y))\fl(y)$; it remains to show that $\/{|x-\tilde x|}{|x|} \leq \epsilon$ for some $\epsilon > 0$. Assuming $\fl(y) \neq 0$, 
+\begin{align*}
+\epsilon_{machine} &\geq 
+\frac{|\fl(\fl(x)\div \fl(y)) - \fl(x)\div\fl(y)|}{|\fl(x)\div\fl(y)|} \\
+&= \frac{|\fl(\fl(x)\div \fl(y))\fl(y) - \fl(x)|}{|\fl(x)|} \\
+&= \frac{|\tilde x - \fl(x)|}{|\fl(x)|}
+\end{align*}
+Now since $\displaystyle\/{|x-\fl(x)|}{|x|}\leq \epsilon_{machine}$,
+\begin{align*}
+\frac{|x-\tilde x|}{|x|} &\leq \/{|x-\fl(x)|}{|x|} + \/{|\fl(x) - \tilde x|}{|x|} \\
+&\leq \epsilon_{machine} + \epsilon_{machine}\/{|\fl(x)|}{|x|} \\
+&\leq \epsilon_{machine} + \epsilon_{machine}\/{|x| + \epsilon_{machine}|x|}{|x|} \\
+&\leq \epsilon_{machine}\l(2 + \epsilon_{machine}\r)
+\end{align*} \qed
+
+\newpage\subsubsection*{Problem 2}
+All single-precision floating point numbers has the form
+$$x = (-1)^s 2^E(1+f)$$
+where $s = 0, 1$ determines the sign of $x$, $E$ ranges from $-127$ to $128$, and $f = \SUM{j=1}{23} f_j 2^{-j}$, or $f = 0.f_1f_2f_3\cdots f_{23}$ in binary representation. ($f_j$'s are $0$ or $1$.) Surely we see if $s=0$, $E=128$, and all $f_j$'s are all $1$, then the largest possible single-precision floating point number
+\begin{align*}
+x_{max} &= (-1)^0 2^{128} \l(1 + \SUM{j=1}{23} 2^{-j}\r)\\
+&= \SUM{j=0}{23} 2^{128-j}  = \SUM{k=105}{128} 2^k
+\end{align*}
+is a sum of positive integers therefore itself is an integer; however, this does not capture the ``holes" of the floating point number system. Observe for $E \geq 23$, 
+\begin{align*}
+x &= (-1)^0 2^{E} \l(1 + \SUM{j=1}{23} f_j 2^{-j}\r)\\
+&= 2^E + \SUM{j=1}{23} f_j2^{E-j}
+\end{align*}
+is not much but sum of integers. Consider 
+\begin{align*}
+z &= (-1)^0 2^{24}\l(1 + \SUM{j=1}{24} 2^{-j}\r) \\
+&= \SUM{k=0}{24}2^k \\
+&= \underbrace{111 \; \cdots \; 1} \\
+& \;\;\;\;\mbox{(25-digits)} \\
+\end{align*}
+This number can't be represented in single-precision floating point number system since it has more nontrivial digits than 23.  \qed 
+
+
+
+\newpage\subsubsection*{Problem 3, 4}
+Solutions to both problem 3 and 4 are attached in the codes below. 
+\begin{verbatim}
+function hw1
+%% build sample matrix A
+n = 10;
+A = zeros(n);
+A(1,1) = 2;
+A(1,2) = -1;
+for i=2:n-1
+    A(i,i-1) = -1;
+    A(i,i) = 2;
+    A(i,i+1) = -1;
+end
+A(n,n-1) = -1;
+A(n,n) = 2;
+
+%% QR
+[Q, R] = myhouseholderQR(A);
+resQR = A - Q*R;
+format shortEng;
+fprintf('Residual of the Householder QR = \n');
+disp(norm(resQR(:)));
+
+%% LU
+[L,U] = myLU(A);
+resLU = A - L*U;
+format shortEng;
+fprintf('Residual of LU = \n');
+disp(norm(resLU(:)));
+end
+
+function [Q, R] = myhouseholderQR(A)
+% [Q, R] = householderQR(A)
+% Computes the QR-decomposition of input matrix A
+[m,n] = size(A);
+Q = eye(m);
+for j=1:n-1
+    x = A(j:m, j);
+    v = [zeros(j-1, 1); x + norm(x) * eye(m-j+1,1)];
+    Pv = eye(m) - (2*v)*v'/(v'*v);
+    A = Pv * A;
+    Q = Pv * Q;
+end
+Q = Q';
+R = A;
+end
+
+function [L, U] = myLU(A)
+[m,n] = size(A);
+assert(m==n, 'Input is not a square matrix.\n');
+clear m;
+
+L = eye(n);
+U = A;
+for j=1:n-1
+    for i=j+1:n
+        factor = U(i,j) / U(j,j);
+        U(i,:) = U(i,:) - factor * U(j,:);
+        L(i,:) = L(i,:) - factor * L(j,:);
+    end
+end
+L = inv(L);
+end
+\end{verbatim}
 
 
 
