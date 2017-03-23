@@ -3,7 +3,7 @@
 \usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
 %\usepackage{fullpage}
 
-\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Guild to Math151B discussions}
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Guide to Math151B discussions}
 
 \usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
 	%{mathtools,wasysym,yhmath}
@@ -178,6 +178,7 @@
 	\begin{enumerate}
 	\item Midpoint Method (\& it's local truncation error)
 	\item Consistency formula (\& higher order formula)
+	\item $y(t_{n+1}) = y(t_n) + \INT{t_n}{t_{n+1}} f(s, y(s))ds$; quadrature rules help approximate the integral
 	\item Butcher tableau
 	\item Stability = continuity + Lipschitz condition
 	\end{enumerate}
@@ -185,7 +186,6 @@
 	\begin{enumerate}
 	\item Proper formulation of multiple Taylor expansions
 	\item Consistency formula (\& higher order formula)
-	\item $y(t_{n+1}) = y(t_n) + \INT{t_n}{t_{n+1}} f(s, y(s))ds$; quadrature rules help approximate the integral
 	\item Newton backward-difference formula 
 	\begin{center}\includegraphics[scale=0.5]{NewtonBackwardDiffFormula.png}\end{center}
 	\item Stability = root condition (+ continuity + Lipschitz condition)
