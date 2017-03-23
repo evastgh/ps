@@ -1,0 +1,252 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{EE236B 2015 Final}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx} \graphicspath{{}}
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[4]{\left \{ \begin{array}{ll} {#1},&{#2}\\{#3},&{#4} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+\newcommand\ie{{\it i.e. }}
+\newcommand\wrt{{w.r.t. }}
+\newcommand\dom{\mathbf{dom\:}}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\dt}{\Delta t}
+\def\vA{\mathbf{A}}
+\def\vB{\mathbf{B}}\def\cB{\mathcal{B}}
+\def\vC{\mathbf{C}}
+\def\vD{\mathbf{D}}
+\def\vE{\mathbf{E}}
+\def\vF{\mathbf{F}}\def\tvF{\tilde{\mathbf{F}}}
+\def\vG{\mathbf{G}}
+\def\vH{\mathbf{H}}
+\def\vI{\mathbf{I}}\def\cI{\mathcal{I}}
+\def\vJ{\mathbf{J}}
+\def\vK{\mathbf{K}}
+\def\vL{\mathbf{L}}\def\cL{\mathcal{L}}
+\def\vM{\mathbf{M}}
+\def\vN{\mathbf{N}}\def\cN{\mathcal{N}}
+\def\vO{\mathbf{O}}
+\def\vP{\mathbf{P}}
+\def\vQ{\mathbf{Q}}
+\def\vR{\mathbf{R}}
+\def\vS{\mathbf{S}}
+\def\vT{\mathbf{T}}
+\def\vU{\mathbf{U}}
+\def\vV{\mathbf{V}}
+\def\vW{\mathbf{W}}
+\def\vX{\mathbf{X}}
+\def\vY{\mathbf{Y}}
+\def\vZ{\mathbf{Z}}
+
+\def\va{\mathbf{a}}
+\def\vb{\mathbf{b}}
+\def\vc{\mathbf{c}}
+\def\vd{\mathbf{d}}
+\def\ve{\mathbf{e}}
+\def\vf{\mathbf{f}}
+\def\vg{\mathbf{g}}
+\def\vh{\mathbf{h}}
+\def\vi{\mathbf{i}}
+\def\vj{\mathbf{j}}
+\def\vk{\mathbf{k}}
+\def\vl{\mathbf{l}}
+\def\vm{\mathbf{m}}
+\def\vn{\mathbf{n}}
+\def\vo{\mathbf{o}}
+\def\vp{\mathbf{p}}
+\def\vq{\mathbf{q}}
+\def\vr{\mathbf{r}}
+\def\vs{\mathbf{s}}
+\def\vt{\mathbf{t}}
+\def\vu{\mathbf{u}}
+\def\vv{\mathbf{v}}\def\tvv{\tilde{\mathbf{v}}}
+\def\vw{\mathbf{w}}
+\def\vx{\mathbf{x}}\def\tvx{\tilde{\mathbf{x}}}
+\def\vy{\mathbf{y}}
+\def\vz{\mathbf{z}}
+
+%%% --Numerical analysis related
+%\newcommand{\nxt}{^{n+1}}
+%\newcommand{\pvs}{^{n-1}}
+%\newcommand{\hfnxt}{^{n+\frac12}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsubsection*{Problem 1}
+First calculate the Hessian of the function $f$,
+\begin{align*}
+f(x) &= \PROD{i=1}nx_i^{\alpha_i}\\
+\pd f{x_i} &= \PROD{j=1}n x_j^{\alpha_j}\l(\alpha_i\cdot\/1{x_i}\r) = \/{\alpha_i}{x_i}f(x)\\
+\frac{\partial^2 f}{\partial x_i\partial x_j} &= \casebrak{\displaystyle \frac{\alpha_i(\alpha_i-1)}{x_i^2}f(x)}{i=j}{\displaystyle \/{\alpha_i\alpha_j}{x_ix_j}f(x)}{i\neq j}
+\end{align*}
+Now given any vector $y\in\R^n$, 
+\begin{align*}
+y^T\nabla^2f(x)y &= \SUM{i,j=1}n y_i\frac{\partial^2 f}{\partial x_i\partial x_j} y_j\\
+&= f(x) \l(\SUM{i=1}n \/{\alpha_i(\alpha_i-1)y_i^2}{x_i^2} + \SUM{i\neq j}{} \/{\alpha_i\alpha_jy_iy_j}{x_ix_j}\r) \\
+&= f(x) z^TBz
+\end{align*}
+where $z\in\R^n, B\in\R^{n\times n}$ are vector and matrix such that $z_i = y_i/x_i$ and 
+$$B_{ij} = \casebrak{\alpha_i(\alpha_i-1)}{i=j}{\alpha_i\alpha_j}{i\neq j}$$
+Note that $B$ is diagonally dominant since $\SUM{j=1}n\alpha_j\leq 1$, 
+$$|B_{ii}| - \SUM{j\neq i}{} |B_{ij}| = \alpha_i\l(1-\alpha_i - \SUM{j\neq i}{} \alpha_j\r) = \alpha_i\l(1-\SUM{j=1}n\alpha_j\r) \geq 0$$
+Now that $B$ have negative diagonal entries $\alpha_i(\alpha_i-1)$, it's a negative semi-definite matrix, $z^TBz \leq 0$. Therefore $y^T\nabla^2 f(x) y = f(x)z^TBz \leq 0$ and we proved the Hessian of $f$ is negative semi-definite and $f$ is concave. \qed
+\subsubsection*{Problem 2}
+Suppose $\theta \in [0,1]$, $\mu = 1-\theta$; use the convexity of $g$,
+\begin{align*}
+g(\theta x_1 + \mu x_2, y) &\leq \theta g(x_1, y) + \mu g(x_2, y), \forall y\\
+g(\theta x_1 + \mu x_2, y) - t &\leq \theta (g(x_1, y)-t) + \mu (g(x_2, y)-t), \forall y, t\\
+\max\{g(\theta x_1 + \mu x_2, y)-t, 0\} &\leq \theta \max\{g(x_1, y)-t,0\} + \mu \max\{g(x_2, y)-t,0\}, \forall y, t\\
+\mathbb E\max\{g(\theta x_1 + \mu x_2, y)-t, 0\} &\leq \mathbb E\l(\theta \max\{g(x_1, y)-t,0\} + \mu \max\{g(x_2, y)-t,0\}\r) \\
+&= \theta \mathbb E\max\{g(x_1, y)-t,0\} + \mu \mathbb E\max\{g(x_2, y)-t,0\}, \forall t\\
+t + \/1{1-\beta}\mathbb E\max\{g(\theta x_1 + \mu x_2, y)-t, 0\} &\leq \theta \l(t + \/1{1-\beta}\mathbb E\max\{g(x_1, y)-t,0\}\r)\\
+& + \mu \l(t + \/1{1-\beta}\mathbb E\max\{g(x_2, y)-t,0\}\r), \forall t\\
+\end{align*}
+
+\subsubsection*{Problem 3}
+1. The Lagrangian and the Lagrange daul are 
+\begin{align*}
+L(x, y, \nu) &= \|y\|_2 + \gamma \|x\|_1 + \nu^T(Ax-b-y)\\
+g(\nu) &= \min_{x, y} \|y\|_2 + \gamma \|x\|_1 + \nu^T(Ax-b-y)\\
+&= -\nu^Tb + \min_x \nu^TAx + \gamma \|x\|_1 + \min_y \|y\|_2 - \nu^Ty \\
+&= -\nu^Tb - \gamma \max_x \l(\l(-\/1\gamma A^T\nu\r)^Tx - \|x\|_1\r) - \max_y \l(\nu^Ty - \|y\|_2\r)\\
+&= -\nu^Tb - \chi_S(\nu)
+\end{align*}
+where $S = \l\{\l\|-\/1\gamma A^T\nu\r\|_1^\ast \leq 1\r\}\cup \{\|\nu\|_2^\ast \leq 1\} = \{\|A^T\nu\|_\infty \leq \gamma\}\cup \{\|\nu\|_2 \leq 1\}$ and the convex indicator function $\chi_S(\nu)$ will send the value $g(\nu)$ to $-\infty$ if $\nu \notin S$. \\
+2. Since $f_0(x) = \|Ax-b\|_2 + \gamma \|x\|_1$ is minimized with $x^\ast$ and $Ax^\ast - b \neq 0$, we have the subgradient 
+$$\partial f_0(x) = \/{A^T(Ax^\ast-b)}{\|Ax^\ast-b\|_2} - \gamma sgn(x^\ast)  = A^Tr-\gamma sgn(x^\ast)\ni 0$$
+Here $sgn(x^\ast_i) = \casebrak{x^\ast_i/|x^\ast_i|}{x^\ast_i \neq0}{[-1,1]}{x^\ast_i=0}$ is the set valued function. We see now $|(A^Tr)_i| \in |\gamma sgn(x_i^\ast)| \subseteq [0,\gamma]$ regardlessly and $\|A^Tr\|_\infty \leq \gamma$. If we dot product the above equation with $x^\ast$, we see that 
+$$r^TAx^\ast - \gamma sgn(x^\ast)^T x^\ast = r^TAx^\ast - \gamma \|x\|_1 \ni 0$$
+Since $sgn(x^\ast)^Tx^\ast = \{\|x\|_1\}$ becomes a single ton set, we have $r^TAx^\ast - \gamma \|x\|_1 = 0$. \\
+3. From above we see 
+$$a_i^Tr + \gamma sgn(x_i^\ast) = 0 \mbox{ if } x_i^\ast \neq 0$$
+WLOG suppose $\|a_1\|_2 < \gamma$, then by Cauchy's inequality $a_i^Tr \leq \|a_i\|_2\|r\|_2 < \gamma$ and this can't make sense of the above equality hence $x_1^\ast = 0$. \qed
+
+\subsubsection*{Problem 4}
+We need a formula for 
+$$\sup_{C_ia_i\preceq d_i} \pm(a_i^Tx - b)$$
+when $x \in \R^n$ is fixed. This is in fact the optimal value of the following LP
+\begin{align*}
+\mbox{minimize\;\;\;} & \mp (a_i^Tx-b_i)\\
+\mbox{subject to\;\;} & C_ia_i\preceq d_i
+\end{align*}
+with variable $a_i$. Since there're only affine constraints, the Slater's condition is satisfied whenever the problem is feasible. The Lagrangian and the Lagrange dual of the above problem with negative sign are 
+\begin{align*}
+L(a_i,\lambda) &= -a_i^Tx + b_i + \lambda^T(C_ia_i-d_i)\\
+g(\lambda) &= \casebrak{b_i-\lambda^Td_i}{-x+C_i^T\lambda = 0}{\infty}{\mbox{otherwise}}
+\end{align*}
+Hence the optimum is $q^\ast = b_i-x^TC_i^+d_i = p^\ast$ if the problem is feasible, that is, when $P_i \neq \emptyset$, which is assumed. Similarly 
+$$\sup_{C_ia_i\preceq d_i} -a_i^Tx + b_i = -b_i + x^TC_i^+d_i$$
+The problem can now be formulated
+\begin{align*}
+\mbox{minimize\;\;\;} & t^Tt\\
+\mbox{subject to\;\;} & -b_i + x^TC_i^+d_i \leq t_i \mbox{ for } i = 1,\cdots, m\\
+& b_i - x^TC_i^+d_i \leq t_i \mbox{ for }  i = 1,\cdots, m
+\end{align*}
+\qed
+
+
+
+
+
+\end{document}
+
+
+
