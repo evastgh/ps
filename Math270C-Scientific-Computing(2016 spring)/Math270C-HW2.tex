@@ -1,0 +1,400 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+\usepackage[top=1.2in, bottom=1.2in, left=0.7in, right=0.7in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math270C - Homework 2}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}\newcommand{\blue}[1]{\textcolor{blue}{#1}}\newcommand{\red}[1]{\textcolor{red}{#1}}\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	%\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.8,0.9,0.85\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx}
+\graphicspath{ {/Users/KoraJr/Documents/MATLAB} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi}
+
+\newcommand{\la}[1]{\ifnum #1=1 \leftarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+\newcommand{\bbu}{\blacktriangleright}
+\newcommand{\wbu}{\vartriangleright}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+\newcommand{\prob}[1]{\bf {#1}}
+
+\newcommand{\bgfl}{\begin{flalign*}}
+\newcommand{\bga}{\begin{align*}}
+\def\beq{\begin{equation}} \def\eeq{\end{equation}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\newcommand{\dps}{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\newcommand{\bc}{\because}
+\newcommand{\tf}{\therefore}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+\newcommand{\SUP}[1]{\sup\limits_{#1}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Special Math Characters
+\newcommand{\R}{\mathbb R}%Real number
+\newcommand{\N}{\mathbb N}%Nature number
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}%measurable sets
+\renewcommand{\P}{\mathcal{P}}%power set
+
+%%% --REAL ANALYSIS Symbols
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+\newcommand{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\UPINT}{\bar\int}
+\newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\supp}{\text{supp}}
+
+\newcommand{\leb}{\lambda^\ast} %%% --Lebesgue
+\renewcommand{\H}[1]{{\cal H}^{#1}} %%% --Hausdorff
+\newcommand{\B}{\mathcal{B}} %%% --Borel set
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\I}{\mathcal{I}} %%% --index set
+\newcommand{\Supp}[1]{\text{Supp}\left({#1}\right)}
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+\def\vx{\mathbf x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsection*{[T1]} 
+\claim{if} Assume $\rho(A) = |\lambda_{max}| < 1$. Since $\|N\|_F$ is a fixed number, we could find $\mu \geq 0$ large enough such that 
+$$\rho(A) + \frac{\|N\|_F}{1+\mu} < 1$$
+with this we shall get 
+$$\|A^k\|_2 \leq (1+\mu)^{n-1} \l(\rho(A) + \frac{\|N\|_F}{1+\mu} \r)^k \ra1 0 \text{ as } k \ra1 \infty$$
+\claim{and only if} Suppose $\rho(A) \geq 1$ for contradiction; take $v$ be the corresponding eigenvector to the eigenvalue $\lambda_{max}$, then
+$$\|A^k v \|_2 = |\lambda_{max}|^k\|v\|_2 \geq \|v\|_2 > 0$$
+this shall contradict the condition $\|A^k\|_2 \ra1 0$ as $k\ra1\infty$. 
+
+
+\subsection*{[T2]} (a) Suppose $A = M-N$ is singular; take $x\in N(A)$, then
+$$Ax = Mx - Nx = 0$$
+and $Mx = Nx$. Assuming $M$ is non-singular, apply the inverse on both side we see
+$$x = M^{-1}Mx = M^{-1}Nx$$
+namely $x$ is an eigenvector of $M^{-1}N$ with eigenvalue $1$, contradicts the condition $\rho(M^{-1}N) < 1$. \\
+\\
+(b) No. Consider the absurd example: $A = I - I = O$ is the zero matrix, written as the difference of two identity matrices, $b = 0$ is the zero vector. In this case with any given initial guess $x^0$, the iteration gives
+$$x^{k+1} = I^{-1}\l(Ix^{k} + 0\r) = x^{k} = \cdots = x^0$$
+Nothing diverges. 
+
+\subsection*{[T3]}
+Suppose for contradiction that $\rho(M^{-1}N) \geq 1$; take take $v$ be the corresponding eigenvector to the eigenvalue $\lambda_{max}$ (which is the largest eigenvalue in magnitude). Set $b = 0$ and $x^0 = v$, then the iteration gives
+\bga
+x^1 & = M^{-1}N x^0 = \lambda_{max} v\\
+& \vdots \\
+x^{k+1} & = M^{-1}Nx^k = \lambda_{max}^{k+1}v
+\end{align*}
+And unless $\lambda_{max} = 1$, this will be a never converging iteration given $|\lambda_{max}| \geq 1$. In the case of $\lambda_{max} = 1$, just consider $b = Mv$, then with the same initial guess $x^0 = v$, we have 
+\bga
+x^1 & = M^{-1}N x^0 + M^{-1}Mv = 2v \\
+& \vdots\\
+x^{k+1} & = M^{-1}N x^k + v = (k+2)v
+\end{align*}
+and this shall diverge and contradicts the assumption. 
+
+\subsection*{[T4]} The iteration can be formulated as 
+$$x^{k+1} = I^{-1}(I - \alpha A)x^k + \alpha b$$
+and the iterative matrix is $I - \alpha A$. According to [T3] (with $b$ replaced by $\alpha b$ which is still a constant vector), if $\rho(M^{-1}N) \geq 1$ then there exist scenarios such that the iteration diverges. Now suppose $A$ has both positive and negative eigenvalues, denoted by $\lambda^+, \lambda^-$, then
+$$1 - \alpha \lambda^+, 1-\alpha \lambda^- \in \sigma(I - \alpha A)$$
+for any given $\alpha \neq 0$, one of which is greater than $1$; therefore, $\rho(M^{-1}N) > 1$. 
+\newpage\subsection*{[C1/2]}
+The results from running my program (also attached) are 
+\begin{verbatim}
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+Gauss-Jacobi Iterations  = 743
+Residual norm (L2)       = 0.000994929
+Residual norm (Inf)      = 0.00198206
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+SOR Iterations           = 380
+Residual norm (L2)       = 0.000995524
+Residual norm (Inf)      = 0.00256255
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 24
+Y-Wavenumber  : 24
+Omega         : 1
+Gauss-Jacobi Iterations  = 6
+Residual norm (L2)       = 0.000803458
+Residual norm (Inf)      = 0.00952229
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 24
+Y-Wavenumber  : 24
+Omega         : 1
+SOR Iterations           = 8
+Residual norm (L2)       = 0.000666814
+Residual norm (Inf)      = 0.00286167
+\end{verbatim}
+\subsection*{[C3]} 
+Some other results from running my program are
+\\
+\begin{center}\red{\large $\bbu$ increasing mesh size $\blacktriangleleft$}\end{center}
+\begin{verbatim}
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 100
+Y-Panel Count : 100
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+Gauss-Jacobi Iterations  = 2980
+Residual norm (L2)       = 0.000998181
+Residual norm (Inf)      = 0.00199636
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 100
+Y-Panel Count : 100
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+SOR Iterations           = 1499
+Residual norm (L2)       = 0.00099629
+Residual norm (Inf)      = 0.00234244
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 200
+Y-Panel Count : 200
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+Gauss-Jacobi Iterations  = 11926
+Residual norm (L2)       = 0.000999976
+Residual norm (Inf)      = 0.00199995
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 200
+Y-Panel Count : 200
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+SOR Iterations           = 5972
+Residual norm (L2)       = 0.000999479
+Residual norm (Inf)      = 0.00218814
+\end{verbatim}
+
+\newpage\begin{center}\red{\large $\bbu$ varying relaxation parameter $\blacktriangleleft$}\end{center}
+\begin{verbatim}
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 0.25
+Gauss-Jacobi Iterations  = 2982
+Residual norm (L2)       = 0.000998567
+Residual norm (Inf)      = 0.00198929
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 0.25
+SOR Iterations           = 2613
+Residual norm (L2)       = 0.000999976
+Residual norm (Inf)      = 0.00210963
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 0.5
+Gauss-Jacobi Iterations  = 1489
+Residual norm (L2)       = 0.000998673
+Residual norm (Inf)      = 0.0019895
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 0.5
+SOR Iterations           = 1122
+Residual norm (L2)       = 0.000998006
+Residual norm (Inf)      = 0.00224027
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 0.75
+Gauss-Jacobi Iterations  = 992
+Residual norm (L2)       = 0.000994834
+Residual norm (Inf)      = 0.00198185
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 0.75
+SOR Iterations           = 626
+Residual norm (L2)       = 0.000998346
+Residual norm (Inf)      = 0.00239897
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+Gauss-Jacobi Iterations  = 743
+Residual norm (L2)       = 0.000994929
+Residual norm (Inf)      = 0.00198206
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1
+SOR Iterations           = 380
+Residual norm (L2)       = 0.000995524
+Residual norm (Inf)      = 0.00256255
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1.25
+Gauss-Jacobi Iterations  = 1816
+Residual norm (L2)       = nan
+Residual norm (Inf)      = inf
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1.25
+SOR Iterations           = 235
+Residual norm (L2)       = 0.00099727
+Residual norm (Inf)      = 0.00267221
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1.5
+Gauss-Jacobi Iterations  = 1055
+Residual norm (L2)       = nan
+Residual norm (Inf)      = inf
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1.5
+SOR Iterations           = 144
+Residual norm (L2)       = 0.000973898
+Residual norm (Inf)      = 0.00237577
+
+XXXX  Gauss-Jacobi 2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1.75
+Gauss-Jacobi Iterations  = 796
+Residual norm (L2)       = nan
+Residual norm (Inf)      = inf
+
+XXXX  SOR  2D Operator Test Output XXXX 
+X-Panel Count : 50
+Y-Panel Count : 50
+X-Wavenumber  : 1
+Y-Wavenumber  : 1
+Omega         : 1.75
+SOR Iterations           = 80
+Residual norm (L2)       = 0.000958905
+Residual norm (Inf)      = 0.002221
+\end{verbatim}
+We can conclude that increasing mesh size slows down the convergence drastically. On the other hand, Gauss-Jacobi seems to work the best at $\omega = 1$ while SOR can work better with over-relaxation with $\omega = 1.75$. 
+\end{document}

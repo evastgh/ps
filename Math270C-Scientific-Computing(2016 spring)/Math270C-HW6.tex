@@ -1,0 +1,199 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+\usepackage[top=1.2in, bottom=1.2in, left=0.7in, right=0.7in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math270C - Homework 6}
+
+\usepackage{pgfplots}\pgfplotsset{compat=1.12,colormap={mygreen}{rgb255(0cm)=(255,255,255);rgb255(1cm)=(255,255,255)}
+    }
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+%{mathtools,wasysym,yhmath}
+
+\usepackage{xcolor}
+\definecolor{ForestGreen}{rgb}{0.0,0.61,0.33}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}\newcommand{\red}[1]{\textcolor{red}{#1}}\newcommand{\gray}[1]{\textcolor{gray}{#1}}\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	%\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.8,0.9,0.85\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx}
+\graphicspath{ {/Users/KoraJr/Programming_Codes/C_family/Math270C/Assign3/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi}
+
+\newcommand{\la}[1]{\ifnum #1=1 \leftarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+\newcommand{\bbu}{\blacktriangleright}
+\newcommand{\wbu}{\vartriangleright}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+\newcommand{\prob}[1]{\bf {#1}}
+
+\newcommand{\bgfl}{\begin{flalign*}}
+\newcommand{\bga}{\begin{align*}}
+\def\beq{\begin{equation}} \def\eeq{\end{equation}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\newcommand{\dps}{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\newcommand{\bc}{\because}
+\newcommand{\tf}{\therefore}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+\newcommand{\SUP}[1]{\sup\limits_{#1}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Special Math Characters
+\newcommand{\R}{\mathbb R}%Real number
+\newcommand{\N}{\mathbb N}%Nature number
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}%measurable sets
+\renewcommand{\P}{\mathcal{P}}%power set
+
+%%% --REAL ANALYSIS Symbols
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+\newcommand{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\UPINT}{\bar\int}
+\newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\supp}{\text{supp}}
+
+\newcommand{\leb}{\lambda^\ast} %%% --Lebesgue
+\renewcommand{\H}[1]{{\cal H}^{#1}} %%% --Hausdorff
+\newcommand{\B}{\mathcal{B}} %%% --Borel set
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\I}{\mathcal{I}} %%% --index set
+\newcommand{\Supp}[1]{\text{Supp}\left({#1}\right)}
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+\def\vx{\mathbf x}
+\def\lip{\left\langle}
+\def\rip{\right\rangle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsection*{[T1]} 
+\claim{$\lip r_{k-1}, p_k\rip = \lip b, p_k\rip$} \\
+Since $\forall j < k, \lip p_k, p_j \rip_A = 0$, $p_k$ is $A$-orthogonal to the entire subspace $\mbox{span}\{p_0, p_1, \cdots, p_{k-1}\}$. Now from the fact that $r_{k-1} = b-Ax_{k-1}$ where $x_{k-1} \in \mbox{span}\{p_0, p_1, \cdots, p_{k-1}\}$, 
+$$\lip r_{k-1}, p_k \rip= \lip b, p_k \rip - \lip x_k, p_k\rip_A = \lip b, p_k\rip$$
+This shall prove the first equality about $\alpha_k$. The second follows from the fact $\lip r_k, p_k\rip = \|r\|^2$ which follows from the fact that $\lip r_k, p_k\rip = 0$.  \\
+\\
+\claim{$- {{< \vec r_{k-1}, \, A \vec p_{k-1}>} \over {< \vec p_{k-1}, \, A \vec p_{k -1} > }} \, = \, {{< \vec r_{k-1}, \, \vec r_{k-1}>} \over {< \vec r_{k-2}, \, \vec r_{k-2} > }}$}\\
+Since $r_{k-1} = r_{k-2} - \alpha_{k-1}Ap_{k-1}$, the numerator 
+$$\lip r_{k-1}, Ap_{k-1}\rip = \lip r_{k-1}, \/{r_{k-2}-r_{k-1}}{\alpha_{k-1}}\rip = \/1{\alpha_{k-1}} (\lip r_{k-1}, r_{k-2}\rip -\|r_{k-1}\|^2)$$
+The last term equals to $\/{-1}{\alpha_{k-1}}\|r_{k-1}\|^2$ since $\{r_k\}$ had been proven to be an orthogonal set. Combined with the formula from part (a), $\alpha_{k-1} = \/{\|r_{k-2}\|^2}{\lip p_{k-1}, Ap_{k-1}\rip}$, the whole expression becomes
+\bga
+-\frac{\lip r_{k-1}, Ap_{k-1}\rip}{\lip p_{k-1}, Ap_{k-1}\rip} 
+& = \frac{\|r_{k-1}\|^2}{\alpha_{k-1} \lip p_{k-1}, Ap_{k-1}\rip} \\
+& = \frac{\|r_{k-1}\|^2}{\|r_{k-2}\|^2} 
+\end{align*}
+
+
+\subsection*{[C1/2]}
+Taking (temporarily) the conclusion from Assignment 4, $\omega = 0.8$ and 2 relaxation operations were applied at each level, we produce the following table that shows the time (in second) required to preform a Pre-Conditioned Conjugate Gradient (PCCG) with maximal Multi-Grid level (also the index of the finest grid) ranging from 5 to 7 and corresponding minimal Multi-Grid level ranging from 0 to 4, 5 or 6, respectively. The time required by un-pre-conditioned Conjugate Gradient was also attached for comparison. Note that since the tolerance was set to be the same as \texttt{1e-06}, the precision of the following test results was the same. 
+\begin{center}
+\begin{tabular}{c|cccccccc}
+ & CG & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+ \hline
+5 & 0.0335198 & \fgreen{0.0174213} & 0.0188152 & 0.0222806 & 0.0323056 & 0.0495342 &  & \\
+6 & 0.277031 & \fgreen{0.0719253} & 0.0808236 & 0.0972585 & 0.136014 & 0.227178 & 0.371307 & \\
+7 & 2.26964 & \fgreen{0.301327} & 0.343037 & 0.409965 & 0.563305 & 0.92027 & 1.69528 & 2.93866\\
+\end{tabular}
+\end{center}
+Observe that despite that we have to perform more computation within one V-cycle with minimal level 0 at each three maximal level, the time required to perform PCCG is still smaller than those with a larger minimal level. Also notice that all these numbers are significantly smaller than that for un-pre-conditioned CG. 
+This has explained that the method gains an efficiency boost when the pre-conditioner is applied at the finest level. Here's a similarly labeled table with the content replaced by iteration count:
+\begin{center}
+\begin{tabular}{c|cccccccc}
+ & CG & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+ \hline
+5 & 102 & 5 & 6 & 8 & 13 & 24 &  & \\
+6 & 202 & 5 & 6 & 8 & 12 & 23 & 46 & \\
+7 & 396 & 5 & 6 & 8 & 12 & 22 & 44 & 90\\
+\end{tabular}
+\end{center}
+However, it's worth noting that the computational resources acquired for one iteration at max-min multi-grid level (0, 5) is different from that of one iteration without pre-conditioner or other min multi-grid level. 
+
+\subsection*{[C3/4]}
+Here's some precious test results from running the test. (takes 8 minutes with $N=1$ and when $N=5$......) The table shows the optimal parameter sets and the time using them. 
+\begin{center}
+The following is test result with $N=1$, slight error could be expected. \\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+max level & min level & $\omega$ & relaxation & time \\
+\hline
+5 & 0 & 0.7 & 2 & 0.01781 \\
+6 & 0 & 1 & 2 & 0.075065 \\
+7 & 0 & 1 & 2 & 0.315877 \\
+\hline
+\end{tabular}\\
+The following is the test results (from running overnight) with $N=5$\\
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+max level & min level & $\omega$ & relaxation & time \\
+\hline
+5 & 1 & 1 & 2 & 0.0181482\\
+6 & 0 & 0.8 & 2 & 0.0817066\\
+7 & 0 & 0.9 & 2 & 0.336129\\
+\hline
+\end{tabular}
+\end{center}
+I also collected the data when running with $N=5$. It'll be attached as \texttt{MultiParameterTest\_data.csv} since the \LaTeX package \texttt{tabular} doesn't support cross pages table.
+From the above result we can conservatively conclude that agreeing with the conclusion from Assignment 4, $\omega = 0.8$, 2 relaxation operations and min Multi-Grid level 0 will be the optimal parameter on average. 
+\end{document}

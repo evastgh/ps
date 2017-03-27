@@ -1,0 +1,231 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+\usepackage[top=1.2in, bottom=1.2in, left=0.7in, right=0.7in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math270C - Homework 5}
+
+\usepackage{pgfplots}\pgfplotsset{compat=1.12,colormap={mygreen}{rgb255(0cm)=(255,255,255);rgb255(1cm)=(255,255,255)}
+    }
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+%{mathtools,wasysym,yhmath}
+
+\usepackage{xcolor}
+\definecolor{ForestGreen}{rgb}{0.0,0.61,0.33}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}\newcommand{\red}[1]{\textcolor{red}{#1}}\newcommand{\gray}[1]{\textcolor{gray}{#1}}\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	%\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.8,0.9,0.85\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx}
+\graphicspath{ {/Users/KoraJr/Programming_Codes/C_family/Math270C/Assign3/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi}
+
+\newcommand{\la}[1]{\ifnum #1=1 \leftarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+\newcommand{\bbu}{\blacktriangleright}
+\newcommand{\wbu}{\vartriangleright}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+\newcommand{\prob}[1]{\bf {#1}}
+
+\newcommand{\bgfl}{\begin{flalign*}}
+\newcommand{\bga}{\begin{align*}}
+\def\beq{\begin{equation}} \def\eeq{\end{equation}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\newcommand{\dps}{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\newcommand{\bc}{\because}
+\newcommand{\tf}{\therefore}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+\newcommand{\SUP}[1]{\sup\limits_{#1}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Special Math Characters
+\newcommand{\R}{\mathbb R}%Real number
+\newcommand{\N}{\mathbb N}%Nature number
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}%measurable sets
+\renewcommand{\P}{\mathcal{P}}%power set
+
+%%% --REAL ANALYSIS Symbols
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+\newcommand{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\UPINT}{\bar\int}
+\newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\supp}{\text{supp}}
+
+\newcommand{\leb}{\lambda^\ast} %%% --Lebesgue
+\renewcommand{\H}[1]{{\cal H}^{#1}} %%% --Hausdorff
+\newcommand{\B}{\mathcal{B}} %%% --Borel set
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\I}{\mathcal{I}} %%% --index set
+\newcommand{\Supp}[1]{\text{Supp}\left({#1}\right)}
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+\def\vx{\mathbf x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsection*{[T1]} 
+We have $r^\ast  = b-Ax^\ast$ and $0 = b-Ax$; therefore, $A^{-1}r^\ast = x-x^\ast$ and 
+$$\|x-x^\ast\| \leq \|A^{-1}\|\|r^\ast\|$$
+Also since $Ax = b$, $\|b\|\leq \|A\|\|x\|$, combined with above, 
+$$\frac{\|x-x^\ast\|}{\|A\|\|x\|} \leq \frac{\|A^{-1}\|\|r^\ast\|}{\|b\|}$$
+Dividing both sides with $\|A\|$ will lead to the desired equation. 
+
+
+\subsection*{[T2]}
+From Homework 1 we know the pentadiagonal matrix (I indeed have heard of people using this term for matrices with 5 diagonals with arbitrary position; however, it says on Wikipedia that this term is specified for matrices with 5 diagonals all lumped around diagonal and hence excluding our 5-point finite difference operator. Anyways the prior definition is adopted here.) has spectrum 
+$$\sigma(A) = \l\{4M^2\sin^2(k_1\pi /2M)+4M^2\sin^2(k_2\pi/2M): k_1, k_2 = 1, \cdots, M-1\r\}$$
+Since $A$ is symmetric, $\rho(A) = \|A\|_2$, and similarly for $A^{-1}$; therefore, 
+$$\kappa_2(A) = \|A\|_2\|A^{-1}\|_2 = \sin^2((M-1)\pi/2M)\sin^{-2}(\pi/2M)$$
+
+
+\subsection*{[T3]}
+Results from MATLAB: 
+\begin{verbatim}
+>> f = @(M) sin((M-1)*pi/2/M)^2/sin(pi/2/M)^2;
+>> format long
+>> f(50)
+
+ans =
+
+     1.012545235564383e+03
+
+>> f(100)
+
+ans =
+
+     4.052180695476830e+03
+
+>> f(200)
+
+ans =
+
+     1.621072272021975e+04
+\end{verbatim}
+
+\subsection*{[T4]} From Golub Van-Load, we have 
+$$\/{\|x(\epsilon)-x\|}{\|x\|} \leq \kappa(A)\l(|\epsilon|\/{\|F\|}{\|A\|} + |\epsilon|\/{\|f\|}{\|b\|}\r) + \O(\epsilon^2)$$
+where $x(\epsilon)$ solves the perturbed problem $(A+\epsilon F)x(\epsilon) = b+\epsilon f$. Here $\epsilon \approx 10^{-7}$ or $10^{-15}$ for float or double arithmetics, respectively. \fgreen{With the assumption $\/{\|F\|}{\|A\|}, \/{\|f\|}{\|b\|} =\O(1)$}, the condition numbers that can lead to an $\O(1)$ error estimation (in particular, $RHS = \O(1)$ in the above inequality) should have magnitude 
+$$\kappa(A) = \O(1/\epsilon) \approx 10^7 \mbox{ or } 10^{15}$$
+for float or double arithmetics, respectively. 
+
+
+
+\subsection*{[C2]}
+\begin{verbatim}
+########   CG Iteration   ########
+Stopping tolerance   : 1e-06
+Maximum iterations   : 1000
+Grid size            : 50 x 50
+Condition Number     : 1012.55
+Iterations           : 80
+CG residual          : 9.70711e-07
+Relative Error Bound : 0.000982889
+Error                : 3.36934e-07
+Relative Error Bound is valid. 
+
+########   CG Iteration   ########
+Stopping tolerance   : 1e-06
+Maximum iterations   : 1000
+Grid size            : 100 x 100
+Condition Number     : 4052.18
+Iterations           : 158
+CG residual          : 9.74124e-07
+Relative Error Bound : 0.00394732
+Error                : 6.29186e-07
+Relative Error Bound is valid. 
+
+########   CG Iteration   ########
+Stopping tolerance   : 1e-06
+Maximum iterations   : 1000
+Grid size            : 200 x 200
+Condition Number     : 16210.7
+Iterations           : 311
+CG residual          : 9.57453e-07
+Relative Error Bound : 0.015521
+Error                : 1.16646e-06
+Relative Error Bound is valid. 
+
+########   CG Iteration   ########
+Stopping tolerance   : 1e-06
+Maximum iterations   : 1000
+Grid size            : 500 x 500
+Condition Number     : 101321
+Iterations           : 754
+CG residual          : 9.80769e-07
+Relative Error Bound : 0.099372
+Error                : 3.30885e-06
+Relative Error Bound is valid. 
+\end{verbatim}
+\subsection*{[C3]} Note that one more experiment with grid size $500\x 500$ was done and result attached. The error bound was based on condition number, which was given using worst case analysis; therefore it's normal that practically calculated error is much smaller than what's been given as the error bound. In practice, the error bound will always hold. (except when the grid size has exploded too much to cause memory overload and other unpredictable catastrophic incidents) 
+
+
+
+
+
+
+\end{document}

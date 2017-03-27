@@ -1,0 +1,239 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+\usepackage[top=1.2in, bottom=1.2in, left=0.7in, right=0.7in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math270C - Homework 7}
+
+\usepackage{pgfplots}\pgfplotsset{compat=1.12,colormap={mygreen}{rgb255(0cm)=(255,255,255);rgb255(1cm)=(255,255,255)}
+    }
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+%{mathtools,wasysym,yhmath}
+
+\usepackage{xcolor}
+\definecolor{ForestGreen}{rgb}{0.0,0.61,0.33}
+\definecolor{NavyBlue}{rgb}{0.0, 0.43, 0.72}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}\newcommand{\red}[1]{\textcolor{red}{#1}}\newcommand{\gray}[1]{\textcolor{gray}{#1}}\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	%\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.8,0.9,0.85\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx}
+\graphicspath{ {/Users/KoraJr/Programming_Codes/C_family/Math270C/Assign3/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi}
+
+\newcommand{\la}[1]{\ifnum #1=1 \leftarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+\newcommand{\bbu}{\blacktriangleright}
+\newcommand{\wbu}{\vartriangleright}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+\newcommand{\prob}[1]{\bf {#1}}
+
+\newcommand{\bgfl}{\begin{flalign*}}
+\newcommand{\bga}{\begin{align*}}
+\def\beq{\begin{equation}} \def\eeq{\end{equation}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\newcommand{\dps}{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\newcommand{\bc}{\because}
+\newcommand{\tf}{\therefore}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+\newcommand{\SUP}[1]{\sup\limits_{#1}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Special Math Characters
+\newcommand{\R}{\mathbb R}%Real number
+\newcommand{\N}{\mathbb N}%Nature number
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}%measurable sets
+\renewcommand{\P}{\mathcal{P}}%power set
+
+%%% --REAL ANALYSIS Symbols
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+\newcommand{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\UPINT}{\bar\int}
+\newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\supp}{\text{supp}}
+
+\newcommand{\leb}{\lambda^\ast} %%% --Lebesgue
+\renewcommand{\H}[1]{{\cal H}^{#1}} %%% --Hausdorff
+\newcommand{\B}{\mathcal{B}} %%% --Borel set
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\I}{\mathcal{I}} %%% --index set
+\newcommand{\Supp}[1]{\text{Supp}\left({#1}\right)}
+
+\def\Xint#1{\mathchoice
+{\XXint\displaystyle\textstyle{#1}}%
+{\XXint\textstyle\scriptstyle{#1}}%
+{\XXint\scriptstyle\scriptscriptstyle{#1}}%
+{\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+\!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$ }
+\vcenter{\hbox{$#2#3$ }}\kern-.6\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+\def\vx{\mathbf x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsection*{[T1]} 
+This can be seen in the expression of $\|x - \tilde x\|_A$ and use the fact that $\{p_j\}$ is an $A$-orthogonal set.
+\bga
+\|x - \tilde x\|_A^2
+& = \langle x - \tilde x, x -  \tilde x \rangle_A \\
+& = \l\langle \SUM{j=1}k (\alpha_j-\gamma_j) p_j + \SUM{j=k+1}n \alpha_j p_j, \SUM{j=1}k (\alpha_j-\gamma_j)p_j + \SUM{j=k+1}n \alpha_j p_j\r\rangle_A \\
+& = \SUM{j=1}k |\alpha_j - \gamma_j|^2 \langle p_j, p_j \rangle_A + \SUM{j=k+1}n |\alpha_j|^2 \langle p_j, p_j\rangle_A
+\end{align*}
+Since $A$ is s.p.d., $\langle p_j, p_j \rangle_A \geq 0$; therefore, the above expression is minimized at $|\alpha_j  - \gamma_j|^2 = 0 \forall j=1, \cdots, k$. 
+
+
+\subsection*{[T2]}
+(a) \claim{Basic case}" Relying on that $p_1 = r_0$, $\mbox{span}\{p_1\} = \mbox{span}\{r_0\}$. \\
+\\
+\claim{Inductive step} Since from the algorithm, $p_k = r_{k-1} + \beta_k p_{k-1}$, $p_k \in \mbox{span}\{r_{k-1}, p_{k-1}\}$. With inductive hypothesis $\mbox{span}\{p_1, \cdots, p_{k-1}\} = \mbox{span}\{r_0, \cdots, r_{k-2}\}$, 
+\bga
+\mbox{span}\{p_1, \cdots, p_k\} 
+& = \mbox{span}\{p_1, \cdots, p_{k-1}\} + \mbox{span}\{p_{k}\}  \\
+& \subseteq \mbox{span}\{p_1, \cdots, p_{k-1}\} + \mbox{span}\{p_{k-1}, r_{k-1}\}  \\
+& \subseteq \mbox{span}\{p_1, \cdots, p_{k-1}\} + \mbox{span}\{r_{k-1}\}  \\
+& \subseteq \mbox{span}\{r_0, \cdots, r_{k-2}\} + \mbox{span}\{r_{k-1}\}\\
+&  = \mbox{span}\{r_0, \cdots, r_{k-1}\}
+\end{align*}
+For the other direction, since $r_{k-1} = p_{k}-\beta_k p_{k-1}$, $r_{k-1} \in \mbox{span}\{p_{k-1}, p_k\}$. With the same arguments relying on inductive hypothesis, we see the above inclusions are in fact equalities. 
+
+\subsection*{[T3]}
+Since $A^s b \in \mathcal K(b, A, s) = \mbox{span}\{b, Ab, A^2b, \cdots, A^{s-1}b\}$, we have 
+$$\{Ab, A^2b, A^3b, \cdots, A^{s}b\} \subseteq \mbox{span}\{b, Ab, A^2b, \cdots, A^{s-1}b\} = \mathcal K(b, A, s)$$
+and this gives 
+$$A(\mathcal K(b, A, s)) = \mbox{span}\{Ab, A^2b, A^3b, \cdots, A^{s}b\} \subseteq \mathcal K(b, A, s)$$
+To be more specific, since $A^s b \in \mathcal K(b, A, s)$, we have
+$$0 = \alpha_0 b + \alpha_1 Ab + \alpha_2 A^2b + \cdots + \alpha_{s-1}A^{s-1}b + A^s b$$
+Suppose $\alpha_j$ is the first nonzero coefficient (it must exist since $A$ is nonsingular hence $A^s b \neq 0$); divide both side with the $\alpha_j$ and apply $(A^{-1})^j$, we get 
+$$0 = b + \/{\alpha_{j+1}}{\alpha_j}Ab + \/{\alpha_{j+2}}{\alpha_j} A^2b + \cdots + \/{\alpha_{s-1}}{\alpha_j}A^{s-1-j}b + \/1{\alpha_j}A^{s-j}b$$
+That is, we can express $b$ as a linear combination of $\{Ab, A^2, \cdots, A^{s-j}b\} \subseteq \{Ab, A^2, \cdots, A^{s}b\}$. This linear combination is exactly the solution $x$ we're looking for $Ax =b$. 
+
+\subsection*{[C1]}
+\begin{verbatim}
+########   GMRES Iteration   ########
+x in [0.000 , 1.000 ] 
+y in [0.000 , 1.000 ] 
+Number of x panels   : 64       
+Number of y panels   : 64       
+Stopping tolerance   : 1.0e-06    
+Maximum iterations   : 20000   
+Subspace size        : 2       
+Iteration            : 5      
+GMRES residual       : 7.70805e-07 
+Relative Error in Solution   : 7.35141e-07 
+########   GMRES Iteration   ########
+x in [0.000 , 1.000 ] 
+y in [0.000 , 1.000 ] 
+Number of x panels   : 64       
+Number of y panels   : 64       
+Stopping tolerance   : 1.0e-06    
+Maximum iterations   : 20000   
+Subspace size        : 5       
+Iteration            : 5      
+GMRES residual       : 1.16569e-07 
+Relative Error in Solution   : 1.04642e-07 
+########   GMRES Iteration   ########
+x in [0.000 , 1.000 ] 
+y in [0.000 , 1.000 ] 
+Number of x panels   : 64       
+Number of y panels   : 64       
+Stopping tolerance   : 1.0e-06    
+Maximum iterations   : 20000   
+Subspace size        : 10      
+Iteration            : 5      
+GMRES residual       : 1.00197e-07 
+Relative Error in Solution   : 9.01584e-08 
+########   GMRES Iteration   ########
+x in [0.000 , 1.000 ] 
+y in [0.000 , 1.000 ] 
+Number of x panels   : 64       
+Number of y panels   : 64       
+Stopping tolerance   : 1.0e-06    
+Maximum iterations   : 20000   
+Subspace size        : 15      
+Iteration            : 5      
+GMRES residual       : 1.00197e-07 
+Relative Error in Solution   : 9.01584e-08 
+########   GMRES Iteration   ########
+x in [0.000 , 1.000 ] 
+y in [0.000 , 1.000 ] 
+Number of x panels   : 64       
+Number of y panels   : 64       
+Stopping tolerance   : 1.0e-06    
+Maximum iterations   : 20000   
+Subspace size        : 20      
+Iteration            : 4      
+GMRES residual       : 6.83438e-07 
+Relative Error in Solution   : 6.22981e-07 
+\end{verbatim}
+
+\subsection*{[C2]}
+The following are the test results from applying GMRES to the same set of problems as in last assignment. Results from CG and PCCG are also attached for comparison. 
+\begin{center}
+\begin{tabular}{c|ccccccc}
+ & 2 & 5 & 10 & 15 & 20 & CG & PCCG\\
+ \hline
+5 & 0.216562 & 0.18617 & \fgreen{0.155816} & 0.204042 & 0.273325 & 0.0335198 & \textcolor{blue}{0.0174213}\\
+6 & 1.22647 & \fgreen{0.777841} & 0.782749 & 1.02481 & 26.4271 & 0.277031 & \textcolor{blue}{0.0719253}\\
+7 & 0.21655 & 0.231311 & \blue{0.184445} & 0.188036 & 0.190239 & 2.26964 & 0.301327
+\end{tabular}
+\end{center}
+At each grid size level the best result from GMRES was marked in green. (ii) We can see that larger restart parameter doesn't lead to faster convergence. (i/iii) PCCG are 10 times faster than GMRES with best restart parameter at smaller grid sizes and one half slower than GMRES at the largest grid size. (fastest results among different methods are marked in blue at each grid size level)
+\end{document}
