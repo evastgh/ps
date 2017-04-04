@@ -13,3 +13,4 @@
 *.gz
 *.fdb_latexmk
 *private*
+tags
