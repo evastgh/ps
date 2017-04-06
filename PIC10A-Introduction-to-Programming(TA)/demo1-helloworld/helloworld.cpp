@@ -10,7 +10,7 @@ int main() {
 
  	// cout <<    // this line will cause compiler error 
 	// cout <<	; // this line will cause compiler error
-	cout << "Hello world!";; // this line doesn't cuase compiler error
+	cout << "Hello world!";; // this line doesn't cause compiler error
 	// count << "Hello world!"; // "cout" stands for "Console OUTput". Misspelling the command causes compiler error
 
 	cout << ""; // empty string, no compiler error
