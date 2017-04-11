@@ -13,7 +13,7 @@ int randomFrom1To10 = rand() % 10 + 1;
 bool notCorrectYet = true; // start it being true
 /* The user will be asked to guess until they are correct */
 while( notCorrectYet ) { // while the user has not yet guessed correctly
-	cout <<"Guess the number from 1 to 10: ";
+cout <<"Guess the number from 1 to 10: ";
 	int guess; // value the user will guess
 	cin >>guess; // take the user’s guess
 	if ( guess == randomFrom1To10 ) { // if the guess is correct
