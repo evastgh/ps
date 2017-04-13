@@ -21,9 +21,8 @@ and do Book Exercise R1.18. (calculate pi).
 
 ## In class challenge
 There's a limit on how big an typed int variable can be.
-Suppose this value is LIMIT_OF_INT
-We know the behavior of the limit is that it will be larger than or equal itself plus 1.
-(Since the computer can't represent LIMIT_OF_INT + 1, it will return something else)
+
+Suppose this value is LIMIT_OF_INT. We know the behavior of the limit is that it will be larger than or equal itself plus 1. (Since the computer can't represent LIMIT_OF_INT + 1, it will return something else)
 
 Write a program that finds out this exact number.
 
