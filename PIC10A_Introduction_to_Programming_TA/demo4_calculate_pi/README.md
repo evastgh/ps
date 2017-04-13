@@ -40,4 +40,4 @@ while (notCorrrectYet){
 WARNING: this program could take up to 30 seconds to run. You'll see why when you see the result.
 
 ## Side Note
-For those who learned about ++i or i++ else where, you should read [this](http://www.cplusplus.com/forum/general/160856/).
+For those who learned about ++i or i++ else where, you should read [this](http://www.cplusplus.com/forum/general/160856/) and consider always using ++i. 
