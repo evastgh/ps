@@ -14,6 +14,6 @@ Write a chat bot that will converse some gibberish with the user and after excha
 "You have so far sent me (some number) characters. It has been nice to chat with you!"
 
 ## Side Note
-Don't forget to append ```cpp system("pause") ``` at the end of your program! Visual Studio closes the console when the main functions return; you don't want your printed result be wiped out due to that. For alternatives for ```cpp system("pause") ```, see [this](http://www.cplusplus.com/forum/windows/55426/).
+Don't forget to append ```system("pause")``` at the end of your program! Visual Studio closes the console when the main functions return; you don't want your printed result be wiped out due to that. For alternatives for ```system("pause")```, see [this](http://www.cplusplus.com/forum/windows/55426/).
 
 [This](http://www.cplusplus.com/forum/beginner/13507/) explains why you can't add two string literals together; you might not be able to fully understand since you haven't learn the concept of pointers yet. 
