@@ -13,7 +13,7 @@ Write a chat bot that will converse some gibberish with the user and after excha
 (user reply something)<br />
 "You have so far sent me (some number) characters. It has been nice to chat with you!"
 
-If you wish to go perfectionist and make your program actually take in **everything in the sentence** until the user hits enter (including spaces and special characters etc.), read [this](http://www.cplusplus.com/reference/string/string/getline/).
+I hope you'll notice ```cin``` doesn't do a good job for our purpose. In order to make your program actually take in **everything in the sentence** until the user hits enter (including spaces and special characters etc.), read [this](http://www.cplusplus.com/reference/string/string/getline/).
 
 To have more fun, try to abuse your program by inputting emojis, characters from other languages, etc. 
 
