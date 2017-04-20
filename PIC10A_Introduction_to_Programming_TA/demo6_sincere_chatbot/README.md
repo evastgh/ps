@@ -2,7 +2,7 @@
 
 Write a chat bot that will converse some gibberish with the user and after exchanging 3 sentences, output the **total amount of characters** inputed by the user. 
 
-Notice the difference between cin and [getline](http://www.cplusplus.com/reference/string/string/getline/).
+Notice the difference between [cin](http://www.cplusplus.com/reference/iostream/cin/) and [getline](http://www.cplusplus.com/reference/string/string/getline/).
 
 ## In class challenge
 
