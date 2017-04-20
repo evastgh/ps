@@ -13,6 +13,8 @@ Write a chat bot that will converse some gibberish with the user and after excha
 (user reply something)<br />
 "You have so far sent me (some number) characters. It has been nice to chat with you!"
 
+If you wish to go perfectionist and make your program actually take in **everything in the sentence** until the user hits enter (including spaces and special characters etc.), read [this](http://www.cplusplus.com/reference/string/string/getline/).
+
 ## Side Note
 Don't forget to append ```system("pause")``` at the end of your program! Visual Studio closes the console when the main function returns; you don't want your printed result be wiped out due to that. For alternatives for ```system("pause")```, see [this](http://www.cplusplus.com/forum/windows/55426/).
 
