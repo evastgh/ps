@@ -7,19 +7,22 @@ int main(){
     double MXN_to_USD = 0.054;
 
     double twd, cad, mxn;
-    // double twd(0), cad, mxn; // this will initialize variable twd with value 0
-    // int twd, cad, mxn; // try to use int to store the numbers? what happens if you input floating point?
+    // double twd(1), cad = 3, mxn; // this will initialize variable twd with value 1 and cad with value 3
+    // cout << twd << cad << mxn << endl;
+    
+    // int twd, cad, mxn = 666; // try to use int to store the numbers? what happens if you input floating point?
     cout << "How much Taiwanese dollars do you wish to exchange? ";
     cin >> twd;
     // cin << twd; // wrong direction of the stream -> compiler error
     cout << "How much Canadian dollars do you wish to exchange? ";
-    // try the following lines! What do you see? 
-    // cout << "How much Cana" + "dian dollars do you wish to exchange? ";
-    // cout << "How much Cana" "dian dollars do you wish to exchange? ";
-    // cout << "How much Cana"     "dian dollars do you wish to exchange? ";
+    // cout << "How much Cana" + "dian dollars do you wish to exchange? "; // compiler error
+    cout << "How much Cana" "dian dollars do you wish to exchange? ";
+    cout << "How much Cana"     "dian dollars do you wish to exchange? ";
     cin >> cad;
     cout << "How much Mexican pesos do you wish to exchange? ";
     cin >> mxn;
+
+    cout << "You have " << twd << " Taiwanese dollars, " << cad << " Canadian dollars, and " << mxn << " Mexican pesos. " << endl;
 
     // or you can let the user input all of them at the same time!
     // cout << "Please input the amount of TWD, CAD, MXN you wish to exchange (separated by space): ";
