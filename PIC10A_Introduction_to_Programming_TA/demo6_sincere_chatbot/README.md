@@ -28,3 +28,21 @@ Here's some sample ASCII art for cars:
              ."` _     :  _  `.  .:::;.    .::'
          jgs '--(_)------(_)--' `      '::'
 ```
+```
+  ______
+ /|_||_\`.__
+(   _    _ _\
+=`-(_)--(_)-'  hjw
+```
+```
+   o_______________}o{
+   |              |   \
+   |    911       |____\_____
+   | _____        |    |_o__ |
+   [/ ___ \       |   / ___ \|
+  []_/.-.\_\______|__/_/.-.\_[]
+     |(O)|             |(O)|
+      '-'   ScS         '-'
+```
+
+Please use your imagination and combine at least two of these vehicles together and print a traffic jam on your screen. Make sure you align the bottom of the cars -- you don't normally see a car floating on the highway!
