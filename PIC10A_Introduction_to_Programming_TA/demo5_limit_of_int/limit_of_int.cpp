@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+// #include <cmath>
 
 using namespace std;
 int main(){
@@ -14,16 +14,22 @@ int main(){
     // cout << "The limit of type INT is " << LIMIT_OF_INT << endl;
 
     // cout << 2147483647 + 1 << endl;
-    // cout << ++LIMIT_OF_INT << endl;
-    // cout << LIMIT_OF_INT - 1 << endl;
+    // cout << 2147483647 << endl;
+    // cout << 2147483647 - 1 << endl;
     
-    // double LIMIT_OF_DOUBLE = 1e-4;
-    // bool stop = false;
-    // while (!stop) {
-	// cout << "LIMIT_OF_DOUBLE = " << LIMIT_OF_DOUBLE << endl;
-	// cout << "LIMIT_OF_DOUBLE + 1 = " << LIMIT_OF_DOUBLE + 1 << endl;
-	// LIMIT_OF_DOUBLE /= 3.;
-	// cin >> stop;
-    // }
+    // int i = 0;
+    // i++; // equivalent to i = i + 1;
+    // cout << i << endl;
+    // cout << i++ << endl;
+    // cout << ++i << endl;
+    
+    double LIMIT_OF_DOUBLE = 1e-4;
+    bool dontStopYet = true;
+    while (dontStopYet) {
+	cout << "LIMIT_OF_DOUBLE = " << LIMIT_OF_DOUBLE << endl;
+	cout << "LIMIT_OF_DOUBLE + 1 = " << LIMIT_OF_DOUBLE + 1 << endl;
+	LIMIT_OF_DOUBLE /= 10.;
+	cin >> dontStopYet;
+    }
     // cout << 1 + 0.100001 << endl;
 }
