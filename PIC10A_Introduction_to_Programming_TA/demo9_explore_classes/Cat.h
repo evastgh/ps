@@ -4,17 +4,33 @@
 class Cat {
 	public:
 		std::string breed;
+		int age;
+
 		/** Default constructor */
 		Cat();
+
+		/** another constructor 
+		  @param breen_in assigns the breed of the cat
+		  */
+		// Cat(std::string breed_in);
+		// Cat(std::string breed_in) const;
+		// Cat(std::string& breed_in);
 
 		/** function that returns cat meow
 		  @return the string "meow"
 		  */
-		std::string talk() const;
+		// std::string talk() const;
+		std::string talk(int number);
 
+		int getAge();
+		std::string getBreed();
+
+	// private:
 		/** function that sets the breed
 		 * @param breed_in
 		 */
 		void setBreed(std::string breed_in);
+		// void setBreed(std::string& breed_in);
+		// void setBreed(std::string breed_in) const;
 };
 #endif
