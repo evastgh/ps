@@ -18,3 +18,8 @@ tags
 a.out
 *.o
 Math270C_Scientific_Computing_2016spring/source/doc
+*.swp
+*.pbxproj
+*.plist
+*.xcscheme
+*.xcworkspacedata
