@@ -33,6 +33,7 @@
 * ```for (; 1==1; ;) {}``` forms an infinite loop.
 * ```vector``` is in the namespace ```std```.
 * The type of the variables to be stored in a vector must be the same.
+* You can have a vector of vectors.
 
 
 #### Short questions
@@ -64,4 +65,6 @@
 * ```break```, ```continue```, and ```return``` is very different. Explain how. 
 * Should you use paranthesis ```()``` or braket ```[]``` to access the value in a vector?
 * What's the difference between the ```size``` and ```capacity``` of a vector?
+* What does ```srand(time(nullptr)); ```? What are some header files needed for this line?
+* Explain how you can implement a random integer (```int```) uniformly distributed between 1 and 5. What about a random real number (```double```)? **[Hint]** default upper bound for ```rand()``` is ```RAND_MAX```.
 
