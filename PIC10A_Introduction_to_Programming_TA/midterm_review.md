@@ -6,6 +6,8 @@
 * Practice midterm [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/05-09/05-09.html) [[Stephanie's]](https://github.com/evastgh/problems_and_solutions/blob/master/PIC10A_Introduction_to_Programming_TA/midterm_review.md)
 * Past discussion content [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/main.html) [[Stephanie's]](https://github.com/evastgh/problems_and_solutions/tree/master/PIC10A_Introduction_to_Programming_TA)
 
+#### Disclaimers: 
+The following practice problems emphasized on mostly conceptual problems and will not prepare you completely for the midterm. You should also study Geoff's problems in order to practice code snippets related problems!
 
 
 ## Practice Problems
