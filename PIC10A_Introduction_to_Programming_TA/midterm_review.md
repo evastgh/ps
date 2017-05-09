@@ -3,7 +3,7 @@
 #### Study material: 
 
 * Course notes [[Data Types & Classes]](https://ccle.ucla.edu/pluginfile.php/1812773/mod_resource/content/0/Topic_DataTypesAndClasses.pdf) [[Control Flow & Vectors]](https://ccle.ucla.edu/pluginfile.php/1812445/mod_resource/content/0/Topic_ControlFlowAndVectors.pdf)
-* Practice midterm [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/05-09/05-09.html) [[Stephanie's]](this)
+* Practice midterm [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/05-09/05-09.html) [[Stephanie's]](https://github.com/evastgh/problems_and_solutions/blob/master/PIC10A_Introduction_to_Programming_TA/midterm_review.md)
 * Past discussion content [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/main.html) [[Stephanie's]](https://github.com/evastgh/problems_and_solutions/tree/master/PIC10A_Introduction_to_Programming_TA)
 
 
