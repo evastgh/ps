@@ -21,6 +21,9 @@
 * Variable names can't start with number, e.g. ```int 3n = 0; ``` would be an invalid declaration.
 * ```2 < 3 < 2``` evaluates to ```0``` (false).
 * ```cin``` ignores spaces, tabs, and linebreaks.
+* ```string``` is in namespace ```std```.
+* Let  ```string s1 = "Hello"```; then ```s1[1]``` gives the first character in ```"Hello"```, which is ```'H'```.
+* ```string``` is a class.
 
 
 #### Short questions
@@ -31,4 +34,12 @@
 * Explain what it means when a variable is "uninitialized".
 * Explain why ```3/2``` doesn't evaluate to ```1.5```.
 * What's the output of ```++n```? What about ```n++```?
-
+* Given two ```string``` variables ```s1``` and ```s2```, what is ```s1 + s2```?
+* What type should we use to store the size of a container (string, vector, etc.)?
+* We have ```string s1 = "Midterm is stressful..."```; what is ```s1.substr(2,5)```?
+* What's the difference between ```=``` and ```==```?
+* Explains the difference between ```cin``` and ```getline```?
+* Give an example when we need ```cin.ignore()```.
+* What's the name of the header file that you need to adjust the precision of your number outputs? List one more function that it provides. 
+* Describe what you should see on the console: ```cout << fixed << setprecision(3) << 314.15926535```
+* Explain what is a constructor of a class.
