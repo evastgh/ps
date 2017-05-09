@@ -24,6 +24,15 @@
 * ```string``` is in namespace ```std```.
 * Let  ```string s1 = "Hello"```; then ```s1[1]``` gives the first character in ```"Hello"```, which is ```'H'```.
 * ```string``` is a class.
+* You can declare a variable to ```const``` to protect it from unwanted changes. You should initialize the value upon declaration.
+* An (lvalue) reference gives us another name for avariable.
+* You can't change a variable through its reference. 
+* A reference can only be created from an lvalue and not an rvalue.
+* ```if (n = 1) { A }``` ```A``` will be executed if the variable ```n``` has value ```1```.
+* In the paranthesis after ```for```, we should put in  initialization statement, condition to check for, and statement to perform, separated by comma ```,```.
+* ```for (; 1==1; ;) {}``` forms an infinite loop.
+* ```vector``` is in the namespace ```std```.
+* The type of the variables to be stored in a vector must be the same.
 
 
 #### Short questions
@@ -43,3 +52,16 @@
 * What's the name of the header file that you need to adjust the precision of your number outputs? List one more function that it provides. 
 * Describe what you should see on the console: ```cout << fixed << setprecision(3) << 314.15926535```
 * Explain what is a constructor of a class.
+* What is the special character we used to access a class member?
+* Suppose you were given a header file ```hello.h``` and you need it for your program; what should you add in your ```main.cpp```?
+* Why shouldn't you use ```using namespace std;``` in your header file?
+* How to compute 3^2.5? Do you need to include any header file for this?
+* What's the (nuanceful) difference between ```int```, ```const int```, ```int&```, and ```const int&```?
+* If ```n``` is an ```int``` variable, explain what does ```static_case<long long>(n)``` give?
+* ```!(!(1<=2) || !(0!=0))``` = ?
+* Explain what does ```do { A } while ( B );``` does.
+* Explain what is "masking"
+* ```break```, ```continue```, and ```return``` is very different. Explain how. 
+* Should you use paranthesis ```()``` or braket ```[]``` to access the value in a vector?
+* What's the difference between the ```size``` and ```capacity``` of a vector?
+
