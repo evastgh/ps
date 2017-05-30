@@ -22,8 +22,8 @@ class PersonPublicAge {
 	}
 };
 
-class PersonPrivateAge {
-	private:
+class PersonPrivateAge { 
+	private: // A redundant line! Everything is by default private in classes!
 	int age;
 
 	public:
@@ -31,9 +31,7 @@ class PersonPrivateAge {
 	 Accessor: returns the class member age
 	 @return the value stored in class member age
 	 */
-	int getAge(){
-		return age;
-	}
+	int getAge(); // this can go to your .h file
 	/**
 	 Mutator: change class member age according to the input
 	 @param age_in the number to be assigned to the class member age
@@ -53,15 +51,17 @@ class PersonPrivateAge {
 
 int main(){
 	PersonPublicAge stef(25);
-	PersonPrivateAge mike(30);
+	stef.setAge(2500);
 	cout << "Stef is " << stef.age << " years old. " << endl;
-	cout << "Mike is " <<  mike.age << " years old. " << endl; // this line won't work!
+
+	PersonPrivateAge mike(30);
+	// cout << "Mike is " <<  mike.age << " years old. " << endl; // this line won't work!
 	cout << "Mike is " <<  mike.getAge() << " years old. " << endl;
 
 	if ( 24097 % 27 == 1 ) {
 		for (size_t idx = 7; (idx%2) != -1; idx--){
 			if (idx++ == 3) {
-				cout << stef.age++ << endl;
+				// cout << mike.age++ << endl;
 			}
 			else {
 				break;
@@ -72,3 +72,7 @@ int main(){
 	// the best way is just -- never let code outside of the class change the age variable!
 }
 
+
+int PersonPrivateAge::getAge(){ // this goes to .cpp file
+	return age;
+}
