@@ -4,7 +4,7 @@
 
 * Course notes [[Functions]](https://ccle.ucla.edu/pluginfile.php/1842526/mod_resource/content/0/Topic_Functions.pdf) [[Classes]](https://ccle.ucla.edu/pluginfile.php/1845817/mod_resource/content/0/Topic_Classes.pdf) [[Streams]](https://ccle.ucla.edu/pluginfile.php/1857376/mod_resource/content/0/Topic_Streams.pdf) [[Standard Library & Generic Algorithms]](
 https://ccle.ucla.edu/pluginfile.php/1857727/mod_resource/content/0/Topic_StandardLibraryAndGenericAlgorithms.pdf)
-* Practice midterm [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/06-08/06-08.html) [[Stephanie's]]()
+* Practice final [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/06-08/06-08.html) [[Stephanie's]](https://github.com/evastgh/problems_and_solutions/blob/master/PIC10A_Introduction_to_Programming_TA/final_review.md)
 * Past discussion content [[Geoffrey's]](http://www.math.ucla.edu/~gsiyer/PIC10AS2017/main.html) [[Stephanie's]](https://github.com/evastgh/problems_and_solutions/tree/master/PIC10A_Introduction_to_Programming_TA)
 
 #### Disclaimers: 
