@@ -1,0 +1,366 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{Math 251 A Homework 1}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+%\usepackage{graphicx} \graphicspath{ {/path/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+
+%\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+% \newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+% \newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\newcommand{\supp}{\mbox{supp}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\osc}{\mbox{osc}\limits}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\dt}{\Delta t}
+\def\vA{\mathbf{A}}
+\def\vB{\mathbf{B}}\def\cB{\mathcal{B}}
+\def\vC{\mathbf{C}}
+\def\vD{\mathbf{D}}
+\def\vE{\mathbf{E}}
+\def\vF{\mathbf{F}}\def\tvF{\tilde{\mathbf{F}}}
+\def\vG{\mathbf{G}}
+\def\vH{\mathbf{H}}
+\def\vI{\mathbf{I}}\def\cI{\mathcal{I}}
+\def\vJ{\mathbf{J}}
+\def\vK{\mathbf{K}}
+\def\vL{\mathbf{L}}\def\cL{\mathcal{L}}
+\def\vM{\mathbf{M}}
+\def\vN{\mathbf{N}}\def\cN{\mathcal{N}}
+\def\vO{\mathbf{O}}
+\def\vP{\mathbf{P}}
+\def\vQ{\mathbf{Q}}
+\def\vR{\mathbf{R}}
+\def\vS{\mathbf{S}}
+\def\vT{\mathbf{T}}
+\def\vU{\mathbf{U}}
+\def\vV{\mathbf{V}}
+\def\vW{\mathbf{W}}
+\def\vX{\mathbf{X}}
+\def\vY{\mathbf{Y}}
+\def\vZ{\mathbf{Z}}
+
+\def\va{\mathbf{a}}
+\def\vb{\mathbf{b}}
+\def\vc{\mathbf{c}}
+\def\vd{\mathbf{d}}
+\def\ve{\mathbf{e}}
+\def\vf{\mathbf{f}}
+\def\vg{\mathbf{g}}
+\def\vh{\mathbf{h}}
+\def\vi{\mathbf{i}}
+\def\vj{\mathbf{j}}
+\def\vk{\mathbf{k}}
+\def\vl{\mathbf{l}}
+\def\vm{\mathbf{m}}
+\def\vn{\mathbf{n}}
+\def\vo{\mathbf{o}}
+\def\vp{\mathbf{p}}
+\def\vq{\mathbf{q}}
+\def\vr{\mathbf{r}}
+\def\vs{\mathbf{s}}
+\def\vt{\mathbf{t}}
+\def\vu{\mathbf{u}}
+\def\vv{\mathbf{v}}\def\tvv{\tilde{\mathbf{v}}}
+\def\vw{\mathbf{w}}
+\def\vx{\mathbf{x}}\def\tvx{\tilde{\mathbf{x}}}
+\def\vy{\mathbf{y}}
+\def\vz{\mathbf{z}}
+
+%%% --Numerical analysis related
+%\newcommand{\nxt}{^{n+1}}
+%\newcommand{\pvs}{^{n-1}}
+%\newcommand{\hfnxt}{^{n+\frac12}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\noindent {\bf Disclaimer:}  This homework was finished through an intense discussion and long hours of working together with Howard Heaton and Maria Ntekoume. 
+
+\subsection*{Exercise 1}
+(1) Suppose for contradiction, 
+$$\exists K \subset\subset \Omega, \forall N \in \N \cup \{0\}, \exists \varphi \in \mathcal D_K, |T \varphi| > C\|\varphi\|_N$$
+Consider specifically when $C = N$, take $\{\varphi_N\}_{N = 0}^\infty \subseteq \mathcal D_K$ with 
+$$|T\varphi_N| > N \|\varphi_N\|_N$$
+By scaling (using linearity of $T$), we can WLOG assume that $|T\varphi_N| = 1$, and 
+$$\|\varphi_N\|_N < \/1N$$
+Observe that for any multi-index $\alpha$, $\{\varphi_N\}_{N > |\alpha|}$ converges to $0_{\mathcal D_K}$ w.r.t. $\|\cdot\|_{|\alpha|}$ norm; therefore, adding the fact that $\supp\varphi_N \subseteq K$, we conclude $\{\varphi_N\}$ converges to $0_{\mathcal D_K}$ in $\mathcal D(\Omega)$ w.r.t. the topology inscribed in the problem set. Now by continuity of $T$, we should have 
+$$T(\varphi_N) \ra1 T(0_{\mathcal D_K}) = 0$$
+(last equality comes from linearity of $T$.) This contradicts our assumption that $|T\varphi_N| = 1$ for all $N$. \qed \\
+
+\noindent(2) $T\varphi = \int \partial^2_{x_1x_1} \varphi dx$ should be a distribution of order 2. Fix any $K \subset\subset \Omega$, 
+$$|T\varphi| \leq \int_\Omega |\partial^2_{x_1x_1}\varphi|dx \leq |\Omega|\|\varphi\|_2$$
+To show that ``\underline{$T$ has order exactly $2$}", suppose there exists $N < 2$ with $C > 0$ such that $\forall \varphi\in\mathcal D, |T\varphi| \leq C\|\varphi\|_N$. Take a function $\varphi$ such that $T\varphi = 1$, pick $x_0 \in int(\supp(\varphi))$, let $\varphi_\epsilon(x) = \epsilon^2\varphi(x_0 + \/{x-x_0}\epsilon)$ for $\epsilon \in (0, 1)$. This function $\varphi_\epsilon$ has a smaller support than $\varphi$. Note that 
+$$\int_\Omega \partial_{x_1x_1}^2 \varphi_\epsilon dx = \int_\Omega \/{\epsilon^2}{\epsilon^2}\partial_{x_1x_1}^2 \varphi dx = 1$$
+However, 
+$$\|\varphi_\epsilon\|_{L^\infty} = \epsilon^2 \|\varphi\|_{L^\infty} \qquad \|\partial_{x_i}\varphi_\epsilon\|_{L^\infty} = \epsilon\|\partial_{x_i}\varphi\|_{L^\infty}\mbox{ for any } i = 1, \cdots, d$$
+By letting $\epsilon \ra1 0$ we get a sequence that will eventually contradict the following condition for $T$ to be of order $N < 2$
+$$1 = |T\varphi_\epsilon| \leq C\|\varphi_\epsilon\|_N \leq \epsilon \|\varphi\|_N$$
+
+$S\varphi = \SUM{k=1}\infty D^k\varphi(\/1k)$ for $\varphi \in \mathcal((0, 2))$ should be a distribution of order $\infty$. Consider $K_m = [\/1m, 1] \subset\subset (0, 2)$, for $\varphi \in \mathcal D_{K_m}$, 
+$$S\varphi = \SUM{k=1}{m-1} D^k\varphi(\/1k)$$
+Roughly speaking since this involves the $(m-1)$-th derivative of $\varphi$, the distribution $S$ needs to have order at least $m-1$. With construction like previously, once we fixed the domain we can always find $\varphi_\epsilon$ such that its $(m-1)$-th derivative remains of order 1, its $\|\cdot \|_{m-2}$ norm tends to zero, then we can argue that $S$ on the compact set $K$ needs to have order at least $m-1$. \\
+
+For distribution of order $0$, since it is a bounded linear functional on $C^\infty_c$ which is a linear subspace of $C_c$, we apply Hahn-Banach Theorem to extend $T$ to all continuous function with compact support. Applying Riesz representation theorem for bounded linear functional gives us a signed Radon measure. Note that Radon measure gives finite measure for compact sets. \qed \\
+
+\noindent(3) First, let us show that ``\underline{$T$ is of order $0$}". Fix $K \subset\subset \Omega$, take $\eta \in \mathcal D$ a positive test function that is constantly $1$ on $K$ (Urysohn's Lemma). For any $\varphi \in \mathcal K$, $\supp \varphi \subseteq K$, 
+$$\forall x\in\Omega, \varphi(x) \leq \|\varphi\|_0 \eta(x)$$
+Since $T$ is a positive distribution, $T(\|\varphi\|_0\eta - \varphi) \geq 0$; this leads to 
+$$\|\varphi\|_0 T(\eta) \geq T(\varphi)$$
+Similarly since $-\varphi \leq \|\varphi\|_0\eta$, $T(\|\varphi\|_0\eta + \varphi) \geq 0$, and 
+$$\|\varphi\|_0 T(\eta) \geq -T(\varphi)$$
+We conclude that $|T(\varphi)| \leq T(\eta) \|\varphi\|_0$ and this $T(\eta) \geq 0$ is the constant associated with this compact set $K$. Use problem (2), $T$ extended to the whole $C_c(\Omega)$ is equivalent to a signed Radon measure $\mu_T$. We assumed $T$ is a positive distribution, that is, $\forall \varphi \in \mathcal D$
+$$\varphi \geq 0 \ra2 \int_\Omega \varphi d\mu_T = T\varphi \geq 0 $$
+Now approximate general $C_c(\Omega)$ functions with $C^\infty_c(\Omega)$ functions and utilize continuity of the extended linear functional, we have $\forall f \in C_c(\Omega)$, 
+$$\varphi \geq 0 \ra2 \int_\Omega \varphi d\mu_T = T\varphi \geq 0 $$
+This shows that $\mu_T$ satisfies the definition of being a positive measure. \qed \\
+
+\noindent(4)(5) I'd like to invoke a theorem I found in \cite{lax}. It states every distribution of compact support can be written as 
+$$T = \SUM{|\alpha|\leq N}{} D^\alpha g_\alpha$$
+that is
+$$T \varphi = \SUM{|\alpha|\leq N}{} (-1)^{|\alpha|}\int_\Omega D^\alpha \varphi g_\alpha  dx$$
+where $N$ is a finite number (which becomes $T$'s order) and $g_\alpha dx$ are measures on $\R^d$. With this result, we can easily see that for a fixed compact set $K\subset\subset \Omega$, 
+$$|T\varphi| \leq \SUM{|\alpha|<N}{} \mu_{g_\alpha}(K) \|D^\alpha \varphi\|_{L^\infty} \leq (\mbox{some constant depending on $K$ and $g_\alpha$}) \|\varphi\|_N$$
+(Here $\mu_{g_\alpha}$ denotes the measure $\mu_{g_\alpha}(E) = \int_E g_\alpha dx$.) This sums up problem (4). \\
+
+For problem (5), we see that these $\mu_{g_\alpha}$'s must be measures on the finite support of $T$. In other words, we have 
+$$T\varphi = \SUM{x_i \in \supp(T)}{} \SUM{|\alpha|\leq N}{} g_\alpha(x_i) D^\alpha \varphi$$ 
+In other words, a linear combination of some derivatives of $\varphi$ at these finite points. \qed \\
+
+\noindent(6) Consider a sequence of radially symmetric mollifiers $\{\eta_k\}_{k \in \N}$. Let $f_k$ be the function defined by
+$$f_k(x) = T(\sigma_x(\eta_{k})) \mbox{ where } \sigma_x(\eta_k)(y) = \eta_k(x -y)$$
+Some would denote $f  = \eta_{k} \ast T$. To show that $f_k$ is a $C^\infty$ function, utilize the smoothness of $\eta_k$ and pass the derivative through linearity of $T$:
+$$\partial_{x_j} D^\alpha f_k(x) = \lim_{h \ra1 0} \/{T\sigma_{x+h} D^\alpha \eta_k - T\sigma_x D^\alpha \eta_k}h \mbox{ for } j = 1, \cdots, d$$
+The limit exist because $\eta_k$ is smooth and the convergence of shifting by $h$ is uniform. Take induction on the multi-index $\alpha$; we conclude that $f_k$ is smooth. 
+
+\fgreen{...This is Lemma 9 on p.551 on \cite{lax} I just don't have enough time to type them...}
+
+\newpage
+\subsection*{Exercise 2}
+(1) This solution was done with help from \cite{lt}. By {\it flattening}, we consider the harmonic function on an {\it annulus} $A_{r_1, r_2} := B_{r_2}(0) \setminus B_{r_1}(0)$:
+\begin{equation}\label{exp}
+v(x) = \/{\log(r_2/|x|)}{\log(r_2/r_1)} \min_{\partial B_{r_1}(0)} u + \/{\log(|x|/r_1)}{\log(r_2/r_1)}\min_{\partial B_{r_2}(0)} u
+\end{equation}
+Since this expression $v$ is a linear combination of the fundamental solutions (logarithm of 2-norm) on the domain excluding their singularities, it is a harmonic function on $A_{r_1, r_2}$. Now that
+$$ v(\partial B_{r_1}(0)) = \l\{\min_{\partial B_{r_1}(0)} u\r\} \qquad v(\partial B_{r_2}(0) = \l\{\min_{\partial B_{r_2}(0)} u \r\}$$
+we have 
+$$v\mid_{\partial A_{r_1, r_2}} \leq u\mid_{\partial A_{r_1, r_2}}$$
+by minimum principle of superharmonic functions, $v(x) \leq u(x)$ over all $x \in A_{r_1, r_2}$. Now since $u$ is bounded from below by $m = 0$, we see that in the above expression (\ref{exp}), 
+$$\min_{\partial B_{r_2}(0)} u \ra1 m \mbox{ as } r_2 \ra1 \infty$$
+and expression (\ref{exp}) becomes a constant $\min_{B_{r_1}(0)}u$. Hence for all $x \in \B_{r_2}(0)^c$, 
+$$u(x) \geq \min_{\partial B_{r_1} } u$$
+Taking $r_1 \ra1 0$, we get
+$$u(x) \geq \liminf_{r_1 \ra1 0} \min_{\partial B_{r_1}(0)} u = u(0)$$
+Not that the last equality only relies on the continuity of $u$. Again, this is true for all $x \neq 0$, so we found that $u$ attains global minimum at the origin. By strong minimum principle for superharmonic functions, \fgreen{(the harmonic function with the same boundary data on, say, a ball, will be necessarily smaller than $u$, but $u$ attains minimum in the interior, which makes this harmonic function squeezed to attain minimum too and hence a constant; now the boundary data must also be constant. This is true for balls of all balls of different radii. Idea taken from \cite{mp}.)} we conclude that $u$ must be a constant. \qed \\
+In the cases when $d \geq 3$, we can easily take a nonzero nonnegative function $f \geq 0$ and consider the following Poisson equation
+$$-\Delta u = f$$
+Take the fundamental solution $\Phi(x) = \/1{d(d-2)\omega_d |x|^{d-2}}$, notice how it is positive (on where it's defined) when $d \geq 3$. The convolution $u = \Phi \ast f$ solves the above Poisson equation and is therefore superharmonic ($-\Delta u = f \geq 0$). Now that $u$ is a result from convoluting a positive function with a nonzero nonnegative function, it must be nonzero nonnegative. \\
+
+\noindent(2) Apply Green's formula once the derivative is taken inside the integral:
+\begin{align*}
+	\frac d {dr}\int_{\partial B_1(0)} u(rx)u(\/rx) dx &= \int_{\partial B_1(0)} u(rx) \nabla u(\tfrac xr) \cdot \l(-\/1{r^2} x\r) + u(\tfrac xr) \nabla u(rx) \cdot x d\mathcal H^{d-1} \\
+																																		   &= \int_{\partial B_1(0)} -\/{u(rx)}{r^2}\nabla u(\tfrac xr)\cdot n + u(\tfrac xr) \nabla u(rx)\cdot n d\mathcal H^{d-1} \\
+																																		   &= \iint_{\partial B_1(0)} -\/{u(rx)}{r^2}\/{\Delta u(\tfrac xr)}{r} - \/1r \nabla u(rx) \cdot \nabla u(\tfrac xr) dx \\
+										& +  \iint_{\partial B_1(0)}
+u(\tfrac xr) r \Delta u(rx) + \/1r \nabla u(\tfrac xr) \cdot \nabla u(rx) dx \\
+&= 0
+\end{align*}
+(Note that the first and third term vanishes because $u$ is harmonic, and the second and fourth term cancel each other.) Now suppose $u$ vanishes on $B_\rho(0)$ for some $\rho > 0$. Pick $a \in (0, \rho)$, we can show ``\underline{for any $c > a$, $\|u\|_{L^2(B_c(0))} = 0$}": \\
+Consider the shifted harmonic function $v(x) = u(cx)$, 
+\begin{align*}
+	0 &= \int_{\partial B_1(0)} u(ax) u(\tfrac{c^2}a x) d\mathcal H^{d-1} & \mbox{($u$ vanishes on $B_a(0)$)} \\
+	  &= \int_{\partial B_1(0)} v(\tfrac ac x) v(\tfrac ca x) d\mathcal H^{d-1} \\
+																																																						&= \int_{\partial B_1(0)} v(rx)v(\tfrac xr) d\mathcal H^{d-1} & \mbox{(denote $r = \/ac$)} \\
+																																										&= \int_{\partial B_1(0)} v(x)^2 d\mathcal H^{d-1} & \mbox{(this expression is constant in $r$)} \\
+		 &= \int_{\partial B_1(0)} u(cx)^2 d\mathcal H^{d-1}
+\end{align*}
+We now conclude that $u$ is zero for the entire domain since its zero on spheres of all radii. \qed
+
+\newpage
+\subsection*{Exercise 3}
+(1) Consider the following identity: for any $x, y \in \R^d$ satisfying $|x| = r < \rho = |y|$, 
+\begin{equation}\label{eq1}
+	\/{\rho - r}{(\rho + r)^{d-1}} \leq \/{\rho^2 - r^2}{|x - y|^d} \leq \/{\rho + r}{(\rho - r)^{d-1}}
+\end{equation}
+Since $u \geq 0$ is a harmonic function, we can invoke Poisson formula
+\begin{align*}
+	u(x) & = \int_{\partial B_\rho(0)} \/{\rho^2 - |x|^2}{\omega_d \rho |x - \xi|^d} u(\xi) d\mathcal H^{d-1} & \mbox{(Poisson formula)} \\
+			   & = \int_{\partial B_{1}(0)} \/{1 - |x|^2}{\omega_d |x - \xi|^d} u(\xi) d\mathcal H^{d-1} & (\rho = 1) \\
+			   & \leq \int_{\partial B_{1}(0)} \/{1 + 1/2}{\omega_d (1/2)^{d-1}}u(\xi)d\mathcal H^{d-1} & \mbox{(from (\ref{eq1}), $|x|$ ranges from $0$ to $\/12$)} \\
+			   & = \/{\/32 \omega_d \cdot 1^{d-1} }{\omega_d (1/2)^{d-1}}u(0)  & \mbox{(Mean Value Property)} \\
+			   & = 3\cdot 2^{d-2} u(0)
+\end{align*}
+Let $C(d) = 3\cdot 2^{d-2} \leq 2^d$; since $x$ was taken arbitrarily in $B_{1/2}(0)$, we have \\${\sup_{B_{1/2}(0)}u \leq C(d) u(0)}$ as desired. \qed \\
+On a side note, use the other part of inequality (\ref{eq1}), with similar approach we get
+$$\/{2^{d-2}}{3^{d-1}}u(0) \leq \inf_{B_{1/2}(0)} u$$ 
+
+\noindent(2) Take $v = u-m \geq 0$ and $w = M - u \geq 0$ be the shifted nonnegative harmonic functions where 
+$$ m = \inf_{B_1(0)} u \qquad M = \sup_{B_1(0)} u$$
+(Assuming the above values are both finite!) Invoke the inequality in class, we have 
+\begin{align}
+	\sup_{B_{\/12}(0)} u - m &\leq C(d) \l(\inf_{B_{\/12}(0)} u - m\r) \label{dang1}\\
+	M - \inf_{B_{\/12}(0)} u &\leq C(d) \l(M - \sup_{B_{\/12}(0)} u \r) \label{dang}
+\end{align}
+Let us also denote 
+$$K = \sup_{B_{\/12}(0)} u \qquad k = \inf_{B_{\/12}(0)} u$$ 
+then summing inequalities (\ref{dang1}) and (\ref{dang}) shows
+\begin{align*}
+	K - m &\leq C(d)(k - m) \\
+	M - k &\leq C(d)(M - K) \\
+	K - k + M - k &\leq C(d)(M - m) - C(d)(K - k) \\
+	K - k &\leq \/{C(d) - 1}{C(d) + 1} (M - m)
+\end{align*}
+Here this constant $\mathcal C = \/{C(d) - 1}{C(d) + 1} \leq \/{C(d)}{C(d) + 1}$ as described in the problem set. \\
+\def\C{\mathcal C}
+
+\noindent(3) To prove local $C^{0, \alpha}$-boundedness, first fix a $K \subset\subset \Omega$; let $r = dist(K, \partial \Omega)$, take the finite (sub)covering $\{B_r(x_i)\}_{i = 1}^N$ for $K$. We split the proof into 2 cases: \\
+Case \onum1: For $x, y \in B_r(x_i)$ for some $i = 1, \cdots, N$. Find a $k\in \N$ such that 
+$$\/r{2^{k+1}} \leq |x-y| \leq \/r{2^k}$$
+Use the oscillation decay estimate from part (2), we have 
+$$\/{|u(x) - u(y)|}{|x-y|^\alpha} \leq \/{\osc_{B_{\/r{2^k}}(x_i)}u}{(r/2^{k+1})^\alpha} \leq \/{\C^k \osc_{B_r(x_i)} u}{r^\alpha \C^{k+1}} \leq \/{2}{r^\alpha \C}\sup_{B_1(0)} |u|$$
+Case \onum2: For any $x, y \in B_1(0)$, connect them with $x = x_0, x_1, \cdots, x_K = y$ such that $\/r2 < |x_i - x_{i-1}| < r$ and each pair $x_i, x_{i-1}$ are both in $B_r(x_j)$ for some $j$. Note that we need convexity of the domain to draw a straight line between $x, y$ so we can make the following estimate on the size $K$ of this sequence
+$$\/{Kr}2 < |x-y| < Kr$$
+Now the H\"older condition can be provided:
+\begin{align*}
+	|u(x) - u(y)| &\leq \SUM{i=2}K |u(x_i) - u(x_{i-1})| \\
+												   &\leq \/{2}{r^\alpha \C}\sup_{B_1(0)} |u|\l(\SUM{i=2}K |x_i - x_{i-1}|^\alpha\r) & \mbox{(from case \onum1)}\\
+												   &< \/{2}{r^\alpha \C}\sup_{B_1(0)} |u| \cdot Kr^\alpha & \mbox{($|x_i - x_{i-1}|<r$)}\\
+												&< \/{4|x-y|}{\C r}\sup_{B_1(0)} |u| & \mbox{($K < \/{2|x-y|}r$)}\\
+	&< \/{4 \cdot 2^{1-\alpha} |x-y|^\alpha}{\C r}\sup_{B_1(0)} |u| &\mbox{($|x-y| < 2$)}
+\end{align*}
+We conclude that 
+$$M(d) = \/{4 \cdot 2^{1-\alpha} |x-y|^\alpha}{\C r}$$
+which only depends on $\alpha, K$, and $d$. \qed \\
+
+\noindent(4) Integral formula of harmonic functions $D^\alpha u$ gives
+$$\partial_{x_i} D^\alpha u(x) = \/1{\omega_d}\int_{\partial B_1(x)} (D^\alpha u) \nu_i d\mathcal H^{d-1}$$
+
+
+
+
+
+\newpage
+Denote 
+$$M(r) = \max_{\partial B_r(0)} u = \max_{B_r(0)}u \qquad m(r) = \min_{\partial B_r(0)} u = \min_{B_r(0)}u$$
+Apply Harnack's inequality on $u - m(4r)$, we have the following inequality
+\begin{align*}
+	m(r) - m(4r) &\geq \/1{2^d} (M(r) - m(4r)) \\
+	m(r) &\geq \/1{2^d} M(r) + \l(1-\/1{2^d}\r) m(4r) \\
+	M(r) &\leq 2^d m(r) + (2^d - 1) m(4r)
+\end{align*}
+\red{Even if we assume} $u$ has polynomial growth, find a polynomial $p$ so $m(4r) \leq p(4)m(r)$ for large $r$, I still don't see how the approximation should work. The only inequality we have is $u(x) \geq f(|x|)$, so $m(r) \geq f(r)$. The following is Harnack's inequality applied to $M(4r) - u$. As far as I can see, nothing gives any bound like $M(r) \leq C_1 f(r) + C_2$. 
+\begin{align*}
+	M(4r) - M(r) &\geq \/1{2^d} (M(4r) - m(r)) \\
+	M(r) &\leq \/1{2^d} m(r) + \l(1-\/1{2^d}\r) M(4r) \\
+	M(r) &\leq \/1{2^d}f(r) + \l(1-\/1{2^d}\r) M(4r)
+\end{align*}
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{HW1.bib}
+\end{document}
+By definition of support of a distribution, $K = \supp(T)$ is the set that $\forall \varphi \in \mathcal D$, $K \cap \supp \varphi = \emptyset \ra2 T(\varphi) = 0$. Take the constant $C > 0 $ and $N \in \N\cup\{0\}$ such that $\forall \varphi \in \mathcal D_K, |T\varphi| \leq C\|\varphi\|_N$. Now for arbitrary function $\varphi \in \mathcal D$, we can (using the bump function given by Uryson's Lemma) decompose it 
+$$\varphi = \varphi_K + \varphi_{K^c}$$
+where $\varphi_K \equiv \varphi$ on $K$, and $\supp(\varphi_{K^c}) \subseteq K^c$. Then
+$$T\varphi = T\varphi_K + T\varphi_{K^c} = T\varphi_K$$
+since $T$ vanishes on functions with support outside of $K$. 
+
+
