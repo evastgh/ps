@@ -3,17 +3,18 @@
 #include <utility>
 #include <vector>
 #include <set>
+#include <algorithm>
 
 using namespace std;
 template <class TContainer>
 vector<pair<int, int> > convertSorted(const TContainer& set)
 {
-    vector<pair<int, int>> return_value;
+    vector<pair<int, int> > return_value;
     auto iter = set.cbegin();
     pair<int, int> current_range(*iter, *iter + 1);
     cout << "[" << *iter << ", ";
 
-    for (++iter; iter != set.end(); ++iter) {
+    for (++iter; iter != set.cend(); ++iter) {
         assert(*iter >= current_range.second); //, "convertSorted only works with sorted data. ");
         if (*iter == current_range.second) {
             current_range.second = *iter + 1;
@@ -36,13 +37,14 @@ int main () {
     size_t size;
     cin >> size;
 
-    set<int> some_set;
+    vector<int> some_set;
     cout << "Please input the integers, separated by space. " << endl;
     for (size_t i = 0; i < size; ++i) {
         int entry;
         cin >> entry;
-        some_set.insert(entry);
+        some_set.push_back(entry);
     }
+    sort(some_set.begin(), some_set.end());
 
     cout << "To verify, the input is ";
     for (auto it = some_set.cbegin(); it != some_set.cend(); ++it)
