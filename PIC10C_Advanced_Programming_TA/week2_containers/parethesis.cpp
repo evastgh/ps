@@ -20,6 +20,7 @@ bool checkParenthesis(const string& input)
                 return false;
         }
     }
+    return true;
 }
 
 int main (int argc, char** argv) {
@@ -32,5 +33,4 @@ int main (int argc, char** argv) {
         cout << "The paretheses match!" << endl;
     else
         cout << "Naaaahhhhh" << endl;
-
 }
