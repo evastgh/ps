@@ -13,8 +13,16 @@ bool checkParenthesis(const string& input)
         if (*iter == '(') {
             record.push(*iter);
         }
+        else if (*iter == '[')
+            record.push(*iter);
         else if (*iter == ')') {
             if (record.top() == '(')
+                record.pop();
+            else
+                return false;
+        }
+        else if (*iter == ']') {
+            if (record.top() == '[')
                 record.pop();
             else
                 return false;
@@ -23,7 +31,7 @@ bool checkParenthesis(const string& input)
     return true;
 }
 
-int main (int argc, char** argv) {
+int main () {
     cout << "Please input the string: ";
     string msg;
     getline(cin, msg);
