@@ -34,7 +34,7 @@ vector<pair<int, int> > convertSorted(const TContainer& set)
 }
 ```
 
-## Demo: Stack
+## Demo: Stack?
 ```cpp
 bool checkParenthesis(const string& input)
 {
@@ -52,3 +52,6 @@ bool checkParenthesis(const string& input)
     }
 }
 ```
+
+## Side Notes
+* Like my vim - MarkDown settings? [Here](https://github.com/suan/vim-instant-markdown) you go!

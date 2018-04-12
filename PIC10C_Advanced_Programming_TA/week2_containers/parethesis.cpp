@@ -23,5 +23,14 @@ bool checkParenthesis(const string& input)
 }
 
 int main (int argc, char** argv) {
-    
+    cout << "Please input the string: ";
+    string msg;
+    getline(cin, msg);
+
+    cout << "To verify, the input is " << msg << endl;
+    if (checkParenthesis(msg))
+        cout << "The paretheses match!" << endl;
+    else
+        cout << "Naaaahhhhh" << endl;
+
 }
