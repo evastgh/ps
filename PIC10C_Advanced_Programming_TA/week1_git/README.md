@@ -1,5 +1,9 @@
 # Week 1 - Version Control (git)
 
+## Visual Studio / Xcode GitHub Extension
+* [GitHub Extension for Visual Studio](https://visualstudio.github.com) and its [tutorial](https://www.youtube.com/watch?v=a_kh1JJCNMQ)
+* [Xcode with GitHub tutorial](https://www.youtube.com/watch?v=2v6LQzgwM0A)
+
 ## New to terminal and ssh?
 ### Windows
 * [PIC Lab tutorial on PuTTY](https://www.pic.ucla.edu/frequently-asked-questions/setting-up-your-pic-linuxemail-account/)
