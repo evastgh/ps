@@ -35,6 +35,7 @@ vector<pair<int, int> > convertSorted(const TContainer& set)
 ```
 
 ## Demo: Stack?
+[Leet Code 20 - Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
 ```cpp
 bool checkParenthesis(const string& input)
 {
@@ -49,6 +50,30 @@ bool checkParenthesis(const string& input)
             else
                 return false;
         }
+    }
+}
+```
+
+## Demo: List?
+[Leet Code 21 - Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/)
+```cpp
+template <class T>
+void mergeSortedLists(list<T>& l1, const list<T>& l2)
+{
+    // merge l2 into l1 with accending order
+    // ASSUMPTION: l1 and l2 are both in accending order
+    auto it1 = l1.begin();
+    auto it2 = l2.cbegin();
+    for (; it2 != l2.cend(); ++it2) {
+        cout << "it1=" << *it1 << "\tit2=" << *it2 << endl;
+        while (*it1 < *it2 && it1 != l1.end()) {
+            ++it1;
+            cout << "stepping. it1=" << *it1 << endl;
+        }
+        cout << "inserting. ";
+        cout << "it1=" << *it1 << "\tit2=" << *it2 << endl;
+        l1.insert(it1, *it2);
+        printList(l1);
     }
 }
 ```
