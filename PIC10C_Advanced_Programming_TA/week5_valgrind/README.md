@@ -7,6 +7,9 @@
 * [Git Basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics) (Note: **I was wrong in my previous discussion!!** Git takes snapshots of your filesystem instead of just storing the deltas!!!)
 * [succinct intro to class accessors and inheritance](http://en.cppreference.com/w/cpp/header/stdexcept) (read the second response)
 * **LONG:** [partial template specialization](http://en.cppreference.com/w/cpp/language/partial_specialization)
+* **SHORT:** [set v.s. unordered_set](https://stackoverflow.com/questions/1349734/why-would-anyone-use-set-instead-of-unordered-set)
+* [STL containers cheat sheet](https://github.com/gibsjose/cpp-cheat-sheet/blob/master/Data%20Structures%20and%20Algorithms.md)
+* [Intro to Functors](https://www.geeksforgeeks.org/functors-in-cpp/) (Note: you should know the pros and cons of a function pointer versus functors)
 
 
 ## Interesting Nuances
@@ -15,5 +18,5 @@
 * [unfreed memory after program execution](https://stackoverflow.com/questions/654754/what-really-happens-when-you-dont-free-after-malloc)
 * [exception categories](http://en.cppreference.com/w/cpp/header/stdexcept)
 * **LONG:** [runtime data structure](http://www.tenouk.com/ModuleW.html) (can jump to Table w.5)
-* take a look at testCopy.cpp in this folder. Try commenting out the copy constructor. What do you see?
-
+* take a look at testCopy.cpp in this folder. Try commenting out the copy constructor. What do you see? [Trivially Copyable Classes](http://en.cppreference.com/w/cpp/language/copy_constructor)
+* [void type](https://stackoverflow.com/questions/3487689/is-void-a-data-type-in-c)
