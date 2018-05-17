@@ -31,3 +31,18 @@ class Algo {
 int main () {
     Algo a = Algo();
 }
+
+
+## Pointer class member
+
+```cpp
+class Gigantic {
+    Gigantic(const Data& data) { //... }
+};
+
+class Program {
+    Gigantic gigantic;
+
+    Program() : gigantic(data) {}
+};
+```
