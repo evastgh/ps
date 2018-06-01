@@ -1,28 +1,41 @@
+// First, install tbb by 
+//  > brew install tbb
+// Compile this file with flags
+//  > g++ tbb.cpp -I tbb/include -ltbb -ldl -std=c++14
 #include "tbb/tbb.h"
-#include "tbb/blocked_range.h"
 #include <vector>
 #include <iostream>
+#include <thread>
+#include <mutex>
 
 using namespace std;
-// using Accessor = tbb::enumerable_thread_specific<vector<int>>;
 
 int main() {
-    // Accessor vec;
-    tbb::parallel_for(tbb::blocked_range<size_t>(0, 100), 
-        [](tbb::blocked_range<size_t>& subrange) {
-            // Accessor::reference sub_vec = vec.local();
-            cout << "This thread size is " << subrange.size() << endl;
-            // for (auto it = subrange.begin(); it != subrange.end(); ++it)
-            //     cout << it << endl;
-                // sub_vec.emplace_back(*it)
-            });
+    using Accessor = tbb::enumerable_thread_specific<vector<size_t>>;
+    Accessor vec;
+    mutex m;
 
+    // vector<size_t> dummy; // slow!
+    auto printing = [&m, vec/*, &dummy*/](tbb::blocked_range<size_t>& subrange) -> void {
+            // {
+            //     lock_guard<mutex> guard(m);
+            //     cout << "This thread size is " << subrange.size() << endl;
+            //     // for (auto it = subrange.begin(); it != subrange.end(); ++it)
+            //     //     dummy.emplace_back(it);
+            // }
 
-    // vector<int> final_vec;
-    // for (Accessor::const_iterator it = vec.begin(); it != vec.end(); ++it) 
-    //     final_vec.insert(final_vec.end(), it->begin(), it->end());
+            Accessor::reference sub_vec = vec.local();
+            for (auto it = subrange.begin(); it != subrange.end(); ++it)
+                sub_vec.emplace_back(it);
+            };
+    tbb::parallel_for(tbb::blocked_range<size_t>(0, 9000000, 25), printing);
+    // copy(dummy.begin(), dummy.end(), ostream_iterator<int>(cout, " "));
+    
+    vector<size_t> final_vec;
+    for (Accessor::const_iterator it = vec.begin(); it != vec.end(); ++it) 
+        final_vec.insert(final_vec.end(), it->begin(), it->end());
 
-    // copy(final_vec.begin(), final_vec.end(), ostream_iterator<int>(cout, " "));
+    copy(final_vec.begin(), final_vec.end(), ostream_iterator<int>(cout, " "));
     return 0;
 }
 
