@@ -89,9 +89,10 @@ The final cost is = 32
 ## Problem 5
 The lines needed filling are
 ```cpp
-#include <>
-#include <>
-char YN = cin.get();
+#include <cstdlib> // for rand
+
+char YN;
+cin >> YN; // note that YN = cin.get() is wrong!
 if (YN == 'Y') {
     d1 = rand() % 6 + 1;
     d2 = rand() % 6 + 1;
