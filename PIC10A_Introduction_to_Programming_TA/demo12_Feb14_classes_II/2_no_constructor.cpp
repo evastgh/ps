@@ -10,13 +10,13 @@ class Person {
 	 Accessor: returns the class member age
 	 @return the value stored in class member age
 	 */
-	int get_age(){
-		return age;
-	}
+	int getAge(){ return age; }
+	void setAge(int age_in) { age = age_in; }
 };
 
 int main(){
 	Person mike;
+	// mike.setAge(3000); // without this line, mike.getAge() will return an uninitialized value
 	cout << "Mike is " <<  mike.getAge() << " years old. " << endl;
 }
 

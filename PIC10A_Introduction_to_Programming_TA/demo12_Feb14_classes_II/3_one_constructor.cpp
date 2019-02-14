@@ -9,9 +9,7 @@ class Person {
 	 Accessor: returns the class member age
 	 @return the value stored in class member age
 	 */
-	int getAge(){
-		return age;
-	}
+	int getAge(){ return age; }
 	/** 
 	 Constructor: creates a Person with an specified age
 	 @param age_in the specified age
@@ -23,8 +21,8 @@ class Person {
 
 using namespace std;
 int main(){
-	Person mike;
-	cout << mike.get_age();
+	Person mike(250); // this will set mike.age to 250
+	cout << "Mike is " << mike.getAge() << " years old. " << endl;
 }
 
 // When AT LEAST ONE CONSTRUCTOR is defined, the compiler will not synthesize anything for you. 
