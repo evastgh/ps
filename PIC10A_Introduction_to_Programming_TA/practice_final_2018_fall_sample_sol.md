@@ -60,8 +60,141 @@ for (unsigned int i = s.size() - 1; i >= 0; i--)
 2 4 8
 ```
 
+### Problem 4
+1. 
+```
+srand(time(nullptr));
+double sum = 0.0;
+for (int i = 0; i < 1000; ++i) {
+    double r = static_cast<double>(rand());
+    r /= static_cast<double>(RAND_MAX);
+    sum += r;
+}
+double average = sum / static_cast<double>(1000);
+cout << average;
+```
+2.
+```
+double polynom(double x, const vector<double>& a) {
+    double power = 1, return_value = 0.0;
+    for (unsigned int i = 0; i < a.size(); ++i) {
+        return_value += a[i] * power;
+        power *= x;
+    }
+    return return_value;
+}
+```
 
+Here's another version that might be easier to understand:
+```
+double polynom(double x, const vector<double>& a) {
+    unsigned int n = a.size();
+    double return_value = 0;
+    for (unsigned int i = 0; i <= n; ++i) {
+        double power = 1.0;
+        for (unsigned int k = 1; k <= i; ++k)
+            power *= x;
+        return_value += power * a[i];
+    }
+    return return_value;
+}
+```
 
+### Problem 5
+1. 
+```
+vector<int> concat(const vector<int>& a, const vector<int>& b) {
+    vector<int> return_value = a;
+    for (auto it  = b.begin(); it != b.end(); ++it)
+        return_value.push_back(*it);
+    return return_value;
+}
+```
 
+Here's anther version that doesn't involed iterator:
+```
+vector<int> concat(const vector<int>& a, const vector<int>& b) {
+    vector<int> return_value = a;
+    for (unsigned int i = 0; i < b.size(); ++i)
+        return_value.push_back(b[i]);
+    return return_value;
+}
+```
 
+2. You might find the [description of string::find](http://www.cplusplus.com/reference/string/string/find/) helpful.
+```
+vector<string> parse(const string& s) {
+    vector<string> return_value;
+    size_t start_pos = 0;
+    while (true) {
+        size_t pos = s.find(' ', start_pos);
+        if (pos == -1)
+            break;
+        return_value.push_back(s.substr(start_pos, pos - start_pos));
+        start_pos = pos + 1;
+    }
+    return return_value;
+}
+```
 
+### Problem 6
+1. 
+```
+class Item {
+    string description;
+    int price;
+  public:
+    Item(const string& d, int p) : description(d), price(p) {}
+    Item(const string& d) : description(d), price(0) {}
+    void print() const { cout << "Description: " << description << ".\n Price: " << price << endl; }
+    void set_price(int p) { price = p; }
+    int get_price() const { return price; }
+    string get_description() const { return description; }
+};
+```
+2. 
+```
+class date {
+    int month, date, year;
+  public:
+    date(int m, int d, int y) : month(m), date(d), year(y) {}
+    date(const string& s) {
+        month = stoi(s.substr(0, 2));
+        date = stoi(s.substr(3, 2));
+        year = stoi(s.substr(6, 4));
+    }
+    void print() const { cout << month << ' ' << date << ' ' << year; }
+    int operator-(const date& another) {
+        return (year - another.year)*365 + (month - another.month)*30 + (date - another.date);
+    }
+    bool operator< (const date& another) {
+        if (year < another.year)
+            return true;
+        else if (year == another.year) {
+            if (month < another.month)
+                return true;
+            else if (month == anther.month) {
+                if (date < another.date)
+                    return true;
+            }
+        }
+        return false;
+    }
+};
+```
+
+### Problem 7
+1. You might find the [description of list::erase](http://www.cplusplus.com/reference/list/list/erase/) helpful.
+```
+void remove_even(list<int>& lst) {
+    auto it = lst.begin();
+    while (it != lst.end()) {
+        if ((*it)%2) { // odd
+            ++it;
+        }
+        else { // even
+            it = lst.erase(it);
+        }
+    }
+}
+```
