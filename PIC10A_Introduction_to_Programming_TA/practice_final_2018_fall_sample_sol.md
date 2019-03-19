@@ -105,7 +105,7 @@ double polynom(double x, const vector<double>& a) {
 ```
 vector<int> concat(const vector<int>& a, const vector<int>& b) {
     vector<int> return_value = a;
-    for (auto it  = b.begin(); it != b.end(); ++it)
+    for (vector<int>::iterator it  = b.begin(); it != b.end(); ++it)
         return_value.push_back(*it);
     return return_value;
 }
@@ -189,7 +189,7 @@ class date {
 1. You might find the [description of list::erase](http://www.cplusplus.com/reference/list/list/erase/) helpful.
 ```
 void remove_even(list<int>& lst) {
-    auto it = lst.begin();
+    list<int>::iterator it = lst.begin();
     while (it != lst.end()) {
         if ((*it)%2) { // odd
             ++it;
