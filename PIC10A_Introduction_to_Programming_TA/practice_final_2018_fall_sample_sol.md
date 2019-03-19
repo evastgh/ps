@@ -128,8 +128,10 @@ vector<string> parse(const string& s) {
     size_t start_pos = 0;
     while (true) {
         size_t pos = s.find(' ', start_pos);
-        if (pos == -1)
+        if (pos == -1) {
+        return_value.push_back(s.substr(start_pos, s.size() - start_pos));
             break;
+        }
         return_value.push_back(s.substr(start_pos, pos - start_pos));
         start_pos = pos + 1;
     }
