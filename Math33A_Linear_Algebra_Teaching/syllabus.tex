@@ -1,0 +1,292 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify Course title, instructor name, semester here %%%%%%%%
+
+\title{Math 33A: Linear Algebra and Applications}
+\author{Stephanie Wang}
+\date{Spring, 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % Palatino needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+\usepackage[mmddyyyy]{datetime}% http://ctan.org/pkg/datetime
+\usepackage{advdate}% http://ctan.org/pkg/advdate
+\newdateformat{syldate}{\twodigit{\THEMONTH}/\twodigit{\THEDAY}}
+\newsavebox{\MONDAY}\savebox{\MONDAY}{Mon}% Mon
+\newcommand{\week}[1]{%
+%  \cleardate{mydate}% Clear date
+% \newdate{mydate}{\the\day}{\the\month}{\the\year}% Store date
+  \paragraph*{\kern-2ex\quad #1, \syldate{\today} - \AdvanceDate[4]\syldate{\today}:}% Set heading  \quad #1
+%  \setbox1=\hbox{\shortdayofweekname{\getdateday{mydate}}{\getdatemonth{mydate}}{\getdateyear{mydate}}}%
+  \ifdim\wd1=\wd\MONDAY
+    \AdvanceDate[7]
+  \else
+    \AdvanceDate[7]
+  \fi%
+}
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+
+\lhead{}
+\chead{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify header here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\rhead{\footnotesize Math 33A Syllabus}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\definecolor{clemsonorange}{HTML}{EA6A20}
+\hypersetup{colorlinks,breaklinks,linkcolor=clemsonorange,urlcolor=clemsonorange,anchorcolor=clemsonorange,citecolor=black}
+
+\begin{document}
+
+\maketitle
+
+\blankline
+
+\begin{tabular*}{.93\textwidth}{@{\extracolsep{\fill}}lr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+E-mail: \texttt{evast@g.ucla.edu} & Web: \href{www4.ncsu.edu/~username}{\tt\bf www4.ncsu.edu/~username}  \\
+
+ Office Hours: M 10-11:45am  &  Class Hours: T/Th 3-4:15pm \\
+
+ Office: ... & Class Room: ... \\
+ & \\
+Lab Room: ... & Lab Hours: W 3-5pm \\
+&  \\
+\hline
+\end{tabular*}
+
+\vspace{5 mm}
+
+% First Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Course Description}
+
+Bla bla bla ...
+
+\bigskip
+
+\noindent New paragraph. Bla bla bla ...
+
+% Second Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Required Materials}
+
+\begin{itemize}
+\item Course notes available on Moodle. Books. Tech. Bla bla bla ...
+\end{itemize}
+
+% Third Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Prerequisites/Corequisites}
+Prerequisites: MA 116, ... .  Corequisites: ... .
+
+% Fourth Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Course Objectives}
+Successful students:
+\begin{enumerate}
+\item ...
+\item ...
+\item ...
+\item ...
+\item ...
+\item ...
+\end{enumerate}
+
+% Fifth Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Course Structure}
+
+\subsection*{Class Structure}
+
+Bla bla bla ...
+
+\bigskip
+
+Bla bla bla ...
+
+\subsection*{Assessments}
+
+...
+
+\subsubsection*{Lecture}
+Bla bla ...
+
+\subsubsection*{Lab}
+...
+
+\subsubsection*{Final Exam and Class Project}
+
+Bla bla \textbf{Bla bla}.
+
+\subsection*{Grading Policy}
+The typical NC State grading scale will be used. I reserve the right to curve the scale dependent on overall class scores at the end of the semester. Any curve will only ever make it easier to obtain a certain letter grade. The grade will count the assessments using the following proportions:
+\begin{itemize}
+	\item \underline{\textbf{30\%}} of your grade will be determined by 2 in class midterm exams (15\% each).
+	\item \underline{\textbf{5\%}} of your grade will be determined by ...
+	\item \underline{\textbf{5\%}} ...
+    \item \underline{\textbf{10\%}}  ...
+	\item \underline{\textbf{15\%}} ...
+	\item \underline{\textbf{15\%}} ...
+\end{itemize}
+
+% Add a figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure*}
+%\includegraphics[width=1.3\textwidth,angle=90]{Concept_map_315.pdf}
+\end{figure*}
+
+% Fifth Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section*{Course Policies}
+
+\subsection*{During Class}
+\footnotesize{I understand that the electronic recording of notes will be important for class and so computers will be allowed in class. Please refrain from using computers for anything but activities related to the class. Phones are prohibited as they are rarely useful for anything in the course. Eating and drinking are allowed in class but please refrain from it affecting the course. Try not to eat your lunch in class as the classes are typically active.}
+
+\subsection*{Attendance Policy}
+\footnotesize{For complete attendance and excused absence policies, please see http://policies.ncsu.edu/regulation/reg-02-20-03. Attendance is expected in all lecture and lab sections. Valid excuses for absence will be accepted before class. In extenuating circumstances, valid excuses with proof will be accepted after class. For every class missed the participation grade will be dropped 1 point.}
+
+\subsection*{Policies on Incomplete Grades and Late Assignments}
+\footnotesize{If an extended deadline is not authorized by the instructor or department, an unfinished incomplete grade will automatically change to an F after either (a) the end of the next regular semester in which the student is enrolled (not including summer sessions), or (b) the end of 12 months if the student is not enrolled, whichever is shorter. Incompletes that change to F will count as an attempted course on transcripts. The burden of fulfilling an incomplete grade is the responsibility of the student. The university policy on incomplete grades is located at http://policies.ncsu.edu/regulation/reg-02-50-3.}
+
+\footnotesize{Late assignments will be accepted for no penalty if a valid excuse is communicated to the instructor before the deadline. After the deadline, assignments will be accepted for a 50\% deduction to the score up to 2 days after the deadline. After this any assignments handed in will be given 0.}
+
+\subsection*{Academic Integrity and Honesty}
+\footnotesize{Students are required to comply with the university policy on academic integrity found in the Code of Student Conduct found at http://policies.ncsu.edu/policy/pol-11-35-01. Don't cheat. Don't be that guy. Yes, you. You know exactly what I'm talking about. See http://policies.ncsu.edu/policy/pol-11-35-01 for a detailed explanation of academic honesty.}
+
+\subsection*{Accommodations for Disabilities}
+\footnotesize{Reasonable accommodations will be made for students with verifiable disabilities. In order to take advantage of available accommodations, students must register with the Disability Services Office at Suite 2221, Student Health Center, Campus Box 7509, 919-515-7653. For more information on NC State's policy on working with students with disabilities, please see the Academic Accommodations for Students with Disabilities Regulation (REG02.20.01) (https://policies.ncsu.edu/regulation/reg-02-20-01/).
+Non-Discrimination Policy NC State University provides equality of opportunity in education and employment for all students and employees. Accordingly, NC State affirms its commitment to maintain a work environment for all employees and an academic environment for all students that is free from all forms of discrimination.}
+
+\footnotesize{Discrimination based on race, color, religion, creed, sex, national origin, age, disability, veteran status, or sexual orientation is a violation of state and federal law and/or NC State University policy and will not be tolerated. Harassment of any person (either in the form of quid pro quo or creation of a hostile environment) based on race, color, religion, creed, sex, national origin, age, disability, veteran status, or sexual orientation also is a violation of state and federal law and/or NC State University policy and will not be tolerated. Retaliation against any person who complains about discrimination is also prohibited. NC State's policies and regulations covering discrimination, harassment, and retaliation may be accessed at \href{http://policies.ncsu.edu/policy/pol-04-25-05} or  \href{http://www.ncsu.edu/equal_op/}. Any person who feels that he or she has been the subject of prohibited discrimination, harassment, or retaliation should contact the Office for Equal Opportunity (OEO) at 919-515-3148.}
+
+% Course Schedule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section*{Schedule and weekly learning goals}
+
+The schedule is tentative and subject to change. The learning goals below should be viewed as the key concepts you should grasp after each week, and also as a study guide before each exam, and at the end of the semester. Each exam will test on the material that was taught up until 1 week prior to the exam (i.e. vorticity will not be tested until exam 2). The applications in the second half of the semester tend to build on the concepts in the first half of the semester though, so it is still important to at least review those concepts throughout the semester.
+
+% Set first date of the semester (for some reason this is a week before what comes up, but that's easy to get around)
+\SetDate[01/01/2018]
+\week{Week 01} Topic 1
+\begin{itemize}
+\item Goal 1
+\item Goal 2
+\item Goal 3
+\end{itemize}
+
+\week{Week 02} Topic 2
+\begin{itemize}
+\item Goals ...
+\end{itemize}
+
+\week{Week 03} Topic 3
+\begin{itemize}
+\item Goals ...
+\end{itemize}
+
+\week{Week 04} ...
+\begin{itemize}
+\item 
+\end{itemize}
+
+\week{Week 05} ...
+\begin{itemize}
+\item 
+\end{itemize}
+
+\week{Week 06} ...
+\begin{itemize}
+\item 
+\end{itemize}
+
+\week{Week 07} ...
+\begin{itemize}
+\item 
+\end{itemize}
+
+\week{Week 08} ... and \textbf{Exam 1}
+\begin{itemize}
+\item 
+\end{itemize}
+
+\week{Week 09} Spring Break
+
+\week{Week 10} ...
+\begin{itemize}
+\item 
+\end{itemize}
+
+\week{Week 11} ...
+\begin{itemize}
+\item ...
+\end{itemize}
+
+\week{Week 12} ...
+\begin{itemize}
+\item ...
+\end{itemize}
+
+\week{Week 13} ...
+\begin{itemize}
+\item ...
+\end{itemize}
+
+\week{Week 14} ...
+\begin{itemize}
+\item ...
+\end{itemize}
+
+\week{Week 15} ... and  \textbf{Exam 2}
+
+\week{Week 16} ...
+
+\week{Week 17} \textbf{Final Exam}
+
+\end{document}
+
+
+© 2017 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
