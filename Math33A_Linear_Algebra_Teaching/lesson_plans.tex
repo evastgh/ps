@@ -154,30 +154,7 @@ Some systems are not (uniquely) solvable.
 
 Geometric interpretation: find points that lie on all three planes.
 
-\subsubsection*{How do I picture a plane in $\R^3$?}
-
-$ax+by+cz = 0$ defines a plane perpendicular to $(a, b, c)$ passing origin. Translate it to get $ax+by+cz = d$.
-
-\subsection*{Sec 1.2 Matrices, Vectors, and Gauss-Jordan Elimination}
-\begin{itemize}
-	\item matrix dimension; row, column, index notation
-	\item identity, zero, square, upper/lower triangular, symmetric matrices
-	\item vector, vector spaces $\R^n$ (column vectors!)
-	\item solve \eqref{sample3x3} using extended matrix
-	\item Gaussian reduction: three operations
-	\item RREF: definition and solve \eqref{sample3x3}
-	\item solve \eqref{sample3x3nunique} with parameterization
-\end{itemize}
-
-\subsection*{Sec 1.3 On the Solutions of Linear Systems; Matrix Algebra}
-
-\subsubsection*{Geometric interpretation}
-Intersection of planes, either unique or infinitely many solutions.
-
-\subsubsection*{Rank}
-Matrices from \eqref{sample3x3} and \eqref{sample3x3nunique} have rank 3 and 2. Full rank matrix has identity in RREF.
-
-\subsubsection*{``Degrees of freedom"}
+\subsubsection*{``Degrees of freedom" (from Sec 1.3)} 
 \begin{equation*}
 	\l\{
 		\begin{array}{c}
@@ -207,7 +184,41 @@ First: $x = -12, z = 5$ but no constraint on $y$.
 
 Quick check, doesn't prove  solvability.
 
+
+\subsubsection*{Geometric interpretation (from Sec 1.3)}
+
+\begin{itemize}
+	\item $ax+by+cz = 0$ defines a plane perpendicular to $(a, b, c)$ passing origin. Translate it to get $ax+by+cz = d$. 
+	\item Intersection of planes, either unique or infinitely many solutions. (Houdini demo)
+\end{itemize}
+
+\subsubsection*{Solvability (from Sec 1.3)} 
+Not solvable: contradiction after some reduction. See \eqref{sample3x3nsolvable}.\\
+Infinite solutions: parametrization. See \eqref{sample3x3nunique}.
+
+\subsection*{Sec 1.2 Matrices, Vectors, and Gauss-Jordan Elimination}
+\begin{itemize}
+	\item matrix dimension; row, column, index notation
+	\item identity, zero, square, upper/lower triangular, symmetric matrices
+	\item vector, vector spaces $\R^n$ (column vectors!)
+	\item solve \eqref{sample3x3} using extended matrix
+	\item Gaussian reduction: three operations
+	\item RREF: definition, solve \eqref{sample3x3}, show \eqref{sample3x3nunique} is not full rank
+\end{itemize}
+
+\subsection*{Sec 1.3 On the Solutions of Linear Systems; Matrix Algebra}
+
+\subsubsection*{Rank}
+Matrices from \eqref{sample3x3} and \eqref{sample3x3nunique} have rank 3 and 2. Full rank matrix has identity in RREF.
+
 \subsubsection*{Matrix Algebra}
+\begin{itemize}
+	\item from linear system to matrix-vector equation
+	\item matrix addition, matrix-vector multiplication, matrix-matrix multiplication
+	\item distribution law, commutative law etc.
+	\item linear combination
+	\item interpret matrix-vector multiplication as linear combination with columns
+\end{itemize}
 \red{Apr 6 2019}
 
 \subsection*{Sec 2.1 Linear Transformations}
