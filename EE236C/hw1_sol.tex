@@ -1,0 +1,227 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{EE236C homework 1}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx} \graphicspath{{}}
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[4]{\left \{ \begin{array}{ll} {#1},&{#2}\\{#3},&{#4} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+\newcommand\ie{{\it i.e. }}
+\newcommand\wrt{{w.r.t. }}
+\newcommand\dom{\mathbf{dom\:}}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\dt}{\Delta t}
+\def\vA{\mathbf{A}}
+\def\vB{\mathbf{B}}\def\cB{\mathcal{B}}
+\def\vC{\mathbf{C}}
+\def\vD{\mathbf{D}}
+\def\vE{\mathbf{E}}
+\def\vF{\mathbf{F}}\def\tvF{\tilde{\mathbf{F}}}
+\def\vG{\mathbf{G}}
+\def\vH{\mathbf{H}}
+\def\vI{\mathbf{I}}\def\cI{\mathcal{I}}
+\def\vJ{\mathbf{J}}
+\def\vK{\mathbf{K}}
+\def\vL{\mathbf{L}}\def\cL{\mathcal{L}}
+\def\vM{\mathbf{M}}
+\def\vN{\mathbf{N}}\def\cN{\mathcal{N}}
+\def\vO{\mathbf{O}}
+\def\vP{\mathbf{P}}
+\def\vQ{\mathbf{Q}}
+\def\vR{\mathbf{R}}
+\def\vS{\mathbf{S}}
+\def\vT{\mathbf{T}}
+\def\vU{\mathbf{U}}
+\def\vV{\mathbf{V}}
+\def\vW{\mathbf{W}}
+\def\vX{\mathbf{X}}
+\def\vY{\mathbf{Y}}
+\def\vZ{\mathbf{Z}}
+
+\def\va{\mathbf{a}}
+\def\vb{\mathbf{b}}
+\def\vc{\mathbf{c}}
+\def\vd{\mathbf{d}}
+\def\ve{\mathbf{e}}
+\def\vf{\mathbf{f}}
+\def\vg{\mathbf{g}}
+\def\vh{\mathbf{h}}
+\def\vi{\mathbf{i}}
+\def\vj{\mathbf{j}}
+\def\vk{\mathbf{k}}
+\def\vl{\mathbf{l}}
+\def\vm{\mathbf{m}}
+\def\vn{\mathbf{n}}
+\def\vo{\mathbf{o}}
+\def\vp{\mathbf{p}}
+\def\vq{\mathbf{q}}
+\def\vr{\mathbf{r}}
+\def\vs{\mathbf{s}}
+\def\vt{\mathbf{t}}
+\def\vu{\mathbf{u}}
+\def\vv{\mathbf{v}}\def\tvv{\tilde{\mathbf{v}}}
+\def\vw{\mathbf{w}}
+\def\vx{\mathbf{x}}\def\tvx{\tilde{\mathbf{x}}}
+\def\vy{\mathbf{y}}
+\def\vz{\mathbf{z}}
+
+%%% --Numerical analysis related
+%\newcommand{\nxt}{^{n+1}}
+%\newcommand{\pvs}{^{n-1}}
+%\newcommand{\hfnxt}{^{n+\frac12}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsubsection*{Problem 1. \textit{Barzilai-Borwein step sizes.}}
+Consider that $s_k = x_k - x_{k-1}$ and $y_k = \nabla f(x_k) - \nabla f(x_{k-1})$, the Lipschitz continuity of $\nabla f$ implies
+\begin{equation*}
+  \|y_k\|_\ast \leq L\|s_k\|.
+\end{equation*}
+Cauchy inequality then yields $s_k^T y_k \leq L\|s_k\|^2$ and $\|y_k\|_\ast^2 \leq s_k^T y_k$, from which we conclude
+\begin{equation*}
+  \/{\|s_k\|^2}{s_k^Ty_k} \geq \/1L, \qquad \/{s_k^Ty_k}{\|y_k\|_\ast^2} \geq \/1L
+\end{equation*}
+
+\subsubsection*{Problem 2.}
+First note that $F(x) = Ax + b$ gives $F(x) - F(y) = A(x-y)$ regardless of symmetry of the matrix $A$. Also any matrix can be decompose into symmetric and skew-symmetric parts, i.e.
+\begin{equation*}
+  A = \l(\/{A+A^T}{2}\r) + \l(\/{A-A^T}{2}\r) = \bar A + A_c.
+\end{equation*}
+(a) The condition is $(F(x)-F(y))^T(x-y) = (x-y)^TA^T(x-y) \geq 0$. (1) For symmetric $A$, this means $A$ is semi-positive definite. (2) For skew-symmetric $A$, $v^TAv = (v^TAv)^T = v^TA^Tv = -v^TAv = 0$ and the condition will always hold true. (3) Using the decomposition of symmetric and skew-symmetric parts, a general non-symmetric matrix satisfying the condition needs to have semi-positive definite symmetric part. \\
+\\
+(b) Similar to part (a), the condition $(x-y)^TA^T(x-y) > 0$ means that (1) the symmetric matrix is positive-definite, (2) skew-symmetric matrices cannot satisfy this condition, or concluding these two cases, (3) any general matrix needs to be symmetric positive definite in order to satisfy this condition. \\
+\\
+(c) Similar to above, the condition $(x-y)^T A^T (x-y) > m\|x-y\|_2^2$ means that (1) the symmetric matrix is positive-definite with eigenvalues all greater than or equal to $m$\footnote{This is true since we are working with finite dimensional linear transformations. We can always take the $n$ eigenvalues of $A$ and take the minimum. A symmetric positive definite matrix can have only positive eigenvalues thus the minimum $m$ will be a positive constant. }, (2) skew-symmetric matrices cannot satisfy this condition, or as a result (3) any general matrix needs to be symmetric positive definite with eigenvalues all greater than or equal to $m$ in order to satisfy this condition. \\
+\\
+(d) The condition is $\|F(x)-F(y)\|_2 = \|A(x-y)\|_2 \leq L\|x-y\|_2$, or, equivalently, $\|A\|_L \leq L$ where $\|A\|_L = \sup_{x\neq 0} \/{\|Ax\|}{\|x\|}$ is the operator norm. The operator norm is equal to (1) the largest eigenvalue for symmetric matrices or (3) the largest singular value for general matrices. Particularly for (2) skew-symmetric matrices, since they have only purely imaginary eigenvalues, the condition means that the absolute value of the eigenvalues must be all less than or equal to $L$. \\
+\\
+(e) The condition is $(x-y)^TA^T(x-y) \geq \/1L \|A(x-y)\|_2^2 = \/1L (x-y)^T A^T A (x-y)$. (1) For symmetric $A$, this means that $A$ is semi-positive definite and the largest eigenvalue of $A$ is less than or equal to $L$. (2) For skew-symmetric $A$, left-hand-side is always $0$ (as shown in part (a)), yet as long as $A \neq 0$, we can find a vector $v = x-y$ such that $\|Av\| >0$ and the condition simply cannot hold. (3) For general matrices, not much simplification can be done; we conclude it with the following criterion:
+\begin{equation*}
+  \/12 (A + A^T)  - \/1L A^TA\succeq 0.
+\end{equation*}
+Note that this matrix is symmetric indeed and the condition is equivalent to this matrix being semi-positive definite.
+
+% I tried using singular-value, Schur's, polar, and symmetric-skew-symmetric decomposition and still have yet to find a satisfactory simplification. Here's some scribble:
+% \begin{itemize}
+%   \item If $A = U\Sigma V^T$: singular value decomposition\\
+%     then $v^TAv = (U^T v)^T \Sigma V^T v$ and $\|Av\|_2^2 = (V^T v)^T \Sigma^2 V^T v$ \\
+%     Although $U, V$ preserves norm and this seems to imply relation between the largest entry of $\Sigma$ and $L$, the asymmetry of $U^T v$ and $V^T v$ makes it impossible to conclude anything.  \\
+%     One observation related to Cauchy inequality: \\
+%     $ (U^T v)^T (\Sigma V^T v) \leq \|U^T v\|_2 \|\Sigma V^T v\|_2 $ \\
+%     But this is not of much use since the inequality isn't of the desired direction.
+
+%   \item If $A = QUQ^\ast$: Schur's decomposition ($Q$: unitary, $U$: upper triangular) \\
+%     then $v^TAv = (Q^\ast v)^T U Q^\ast v$ and $\|Av\|_2^2 = (Q^\ast v)^T U^T U Q^\ast v$ \\
+%     However $U^TU$ destroys the upper triangular advantage of $U$.
+
+%   \item If $A = RS$: polar decomposition ($R$: unitary, $S$: positive definite) \\
+%     then $v^TAv = (R^T v)^T S v$ and $\|Av\|_2^2 = v^T S^2 v$ \\
+%     This doesn't really give anything more than singular value decomposition and the asymmetry of $R^T v$ and $v$ makes it impossible to conclude.
+
+%   \item If $A = \bar A + A_c$: symmetric-skew-symmetric decomposition ($\bar A$: symmetric, $A_c$: skew-symmetric) \\
+%     then $A^T A = \bar A^2 - A_c^2 + \bar A A_c - A_c \bar A$ \\
+%     However since $\bar A$ doesn't necessarily commute with $A_c$ (it depends on if $A$ and $A^T$ commute), this decomposition doesn't provide much insight.
+% \end{itemize}
+\end{document}
+
+
+
