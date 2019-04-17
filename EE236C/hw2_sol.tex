@@ -1,0 +1,311 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{EE236C homework 2}
+\usepackage{nicefrac}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx} \graphicspath{{}}
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[4]{\left \{ \begin{array}{ll} {#1},&{#2}\\{#3},&{#4} \end{array} \right.}
+\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+\newcommand\ie{{\it i.e. }}
+\newcommand\wrt{{w.r.t. }}
+\newcommand\dom{\mathbf{dom\:}}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\dt}{\Delta t}
+\def\vA{\mathbf{A}}
+\def\vB{\mathbf{B}}\def\cB{\mathcal{B}}
+\def\vC{\mathbf{C}}
+\def\vD{\mathbf{D}}
+\def\vE{\mathbf{E}}
+\def\vF{\mathbf{F}}\def\tvF{\tilde{\mathbf{F}}}
+\def\vG{\mathbf{G}}
+\def\vH{\mathbf{H}}
+\def\vI{\mathbf{I}}\def\cI{\mathcal{I}}
+\def\vJ{\mathbf{J}}
+\def\vK{\mathbf{K}}
+\def\vL{\mathbf{L}}\def\cL{\mathcal{L}}
+\def\vM{\mathbf{M}}
+\def\vN{\mathbf{N}}\def\cN{\mathcal{N}}
+\def\vO{\mathbf{O}}
+\def\vP{\mathbf{P}}
+\def\vQ{\mathbf{Q}}
+\def\vR{\mathbf{R}}
+\def\vS{\mathbf{S}}
+\def\vT{\mathbf{T}}
+\def\vU{\mathbf{U}}
+\def\vV{\mathbf{V}}
+\def\vW{\mathbf{W}}
+\def\vX{\mathbf{X}}
+\def\vY{\mathbf{Y}}
+\def\vZ{\mathbf{Z}}
+
+\def\va{\mathbf{a}}
+\def\vb{\mathbf{b}}
+\def\vc{\mathbf{c}}
+\def\vd{\mathbf{d}}
+\def\ve{\mathbf{e}}
+\def\vf{\mathbf{f}}
+\def\vg{\mathbf{g}}
+\def\vh{\mathbf{h}}
+\def\vi{\mathbf{i}}
+\def\vj{\mathbf{j}}
+\def\vk{\mathbf{k}}
+\def\vl{\mathbf{l}}
+\def\vm{\mathbf{m}}
+\def\vn{\mathbf{n}}
+\def\vo{\mathbf{o}}
+\def\vp{\mathbf{p}}
+\def\vq{\mathbf{q}}
+\def\vr{\mathbf{r}}
+\def\vs{\mathbf{s}}
+\def\vt{\mathbf{t}}
+\def\vu{\mathbf{u}}
+\def\vv{\mathbf{v}}\def\tvv{\tilde{\mathbf{v}}}
+\def\vw{\mathbf{w}}
+\def\vx{\mathbf{x}}\def\tvx{\tilde{\mathbf{x}}}
+\def\vy{\mathbf{y}}
+\def\vz{\mathbf{z}}
+
+\def\diag{\mbox{\textbf{diag}}}
+
+\newcommand{\kp}[1]{{k+{#1}}}
+\newcommand{\km}[1]{{k-{#1}}}
+\newcommand{\np}[1]{{n+{#1}}}
+\newcommand{\nm}[1]{{n-{#1}}}
+
+%%% --Numerical analysis related
+%\newcommand{\nxt}{^{n+1}}
+%\newcommand{\pvs}{^{n-1}}
+%\newcommand{\hfnxt}{^{n+\frac12}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsubsection*{Problem 1. \textit{Heavy-ball method}}
+(a) Since $\nabla f(x) = Ax + b$, the gradient method with momentum is then
+\begin{align*}
+  x_\kp1 & = x_k - t(Ax_k + b) + s(x_k - x_\km1) \\
+         & = ((1+s)I - tA) x_k - sx_\km1 - tb.
+\end{align*}
+Multiply out the linear recursion
+\begin{align*}
+  z_\kp1   & = \tv{x_\kp1}{x_k} \\
+  Mz_k + q % & = \ttm{(1+s)I - tA}{sI}{I}{0} \tv{x_k}{x\km1} + \tv{-tb}{0} \\
+           & = \tv{((1+s)I - tA) x_k - sx_\km1 - tb}{x_k}.
+\end{align*}
+We find the iteration is indeed equivalent to the linear recursion. 
+Now suppose this recursion reaches equilibrium at $z^\ast = Mz^\ast + q$; 
+rewrite the equilibrium condition with $z^\ast = \tv{x^\ast}{y^\ast}$,
+\begin{align*}
+  \tv{x^\ast}{y^\ast} & = \tv{((1+s)I - tA) x_\ast - sy^\ast - tb}{x^\ast}.
+\end{align*}
+The second half entails $x^\ast = y^\ast$; 
+plugging this to the first half, we get $(-tA)x^\ast - tb = 0$, and $x^\ast = -A^{-1}b$, indeed. \\
+\\
+(b) Suppose $Ax = \lambda x$ for some eigenvalue $\lambda \in \C$ and eigenvector $x \neq 0$. 
+Make a guess that eigenvectors of $M$ might be of the form $z = \tv{x}{y}$ (here $y$ depends on $x$ and potentially $\lambda$). 
+Suppose $M\tv{x}{y} = \nu\tv{x}{y}$ for some $\nu \in \C$. 
+Multiply out the expression,
+\begin{align*}
+  M\tv x y &= \tv { (1+s-t\lambda)x - sy } {x} = \tv{\nu x}{\nu y}.
+\end{align*}
+This implies $x = \nu y$ and thus $(\nu^2 - (1+s-t\lambda) \nu + s) y = 0$.
+% $((1+s-t\lambda)\nu - s - \nu^2)y = 0$. 
+Solving the algebraic equation, 
+$$ \nu = \frac{1+s-t\lambda \pm \sqrt{(1+s-t\lambda)^2 - 4s}}2.$$
+Take the discriminant $D = (1+s-t\lambda)^2 - 4s$, observe the following several equivalent conditions (note the assumption $t, s > 0$),
+\begin{gather}
+  D                \leq 0  \\
+  (1+s-t\lambda)^2 \leq 4s \\
+  - 2\sqrt s \leq 1+s-t\lambda \leq 2\sqrt s \\
+  -(1+\sqrt s)^2 \leq -t\lambda \leq -(1-\sqrt s)^2\\
+  (1-\sqrt s)^2 \leq t\lambda \leq (1+\sqrt s)^2 \label{5}
+\end{gather}
+We notice \eqref{5} is equivalent to the mentioned condition 
+\begin{equation}
+  \/{(1-\sqrt s)^2}m \leq t \leq \/{(1+\sqrt s)^2}L.  \label{1}
+\end{equation}
+Under this condition, the eigenvalue $\nu$ of $M$ is bound to be a complex number and 
+$$|\nu|^2 = \/14((1+s-t\lambda)^2 + 4s - (1+s-t\lambda)^2) = s.$$
+We conclude that when the condition is satisfied, $\rho(M) = \max_{\nu} |\nu| = \sqrt s$. \\
+\\
+(c) In minimizing the spectral radius $\rho(M) = \sqrt s$ subject to constraint \eqref{1}, the two bound $\nicefrac{(1-\sqrt s)^2}m$ and $\nicefrac{(1+\sqrt s)^2}L$ eventually coincide and further yield no feasible $t$. The critical value is
+$$\/{(1-\sqrt s)^2}m = t = \/{(1+\sqrt s)^2}L.$$
+Taking square root and we get 
+\begin{gather*}
+  \frac{1-\sqrt s}{\sqrt m}  = \/{1+\sqrt s}{\sqrt L} \\
+  \sqrt s = \/{\sqrt L - \sqrt m}{\sqrt L + \sqrt m} = \/{\sqrt \gamma - 1}{\sqrt \gamma + 1}
+\end{gather*}
+The linear convergence rate of the gradient method on page 1.31 of the lecture notes is 
+$$c = \l(\frac{\gamma - 1}{\gamma + 1}\r)^2$$
+We know that the quotient $\frac{\gamma - 1}{\gamma + 1}$ gets closer to $1$ for large condition number $\gamma \in \R$, and by scaling $\gamma$ to $\sqrt \gamma$ we obtain a smaller convergence rate with $\/{\sqrt \gamma - 1}{\sqrt \gamma + 1}$. However, these two both converge to $1$ when $\gamma \ra1 \infty$.
+
+\subsubsection*{Problem 2. }
+(a) We aim to find $g\in\R^n$ such that $\forall y \in \R^n$,
+$$ \sup_{t\in[0, 1]} y_1 + y_2t + \cdots + y_nt^\nm1 \geq \sup_{t\in[0, 1]} x_1 + x_2t + \cdots + x_nt^\nm1 + \SUM{i=1}{n} g_i(y_i - x_i).$$
+Suppose $s = \argmax_{t\in[0, 1]} x_1 + x_2t + \cdots + x_nt^\nm1$; take $g\in\R^n$ with $g_i = s^{i-1}$. Observe that indeed,
+\begin{align*}
+  f(y) & = \sup_{t\in[0, 1]} y_1 + y_2t + \cdots + y_nt^\nm1 \\
+       & \geq y_1 + y_2s + \cdots + y_ns^\nm1 \\
+       & = x_1 + x_2s + \cdots + x_ns^\nm1 + \SUM{i=1}n s^{i-1}(y_i-x_i) = f(x) + g^T (y-x).
+\end{align*}
+
+\noindent(b) Denote $S_x^k = \{ [1], [2], \cdots, [k]\}$, the index set of the largest $k$ elements of $x\in\R^n$. Take $g\in\{0, 1\}^n$ with $g_i = \chi_{S_x^k}(i)$, then
+\begin{align*}
+  f(y) &= \mbox{sum of largest $k$ elements of $y$} \\
+       &= \SUM{i\in S_y^k}{} y_i \geq \SUM{i\in S_x^k}{} y_i = \SUM{i\in S_x^k}{} x_i + \SUM{i\in S_x^k}{} (y_i - x_i) \\
+       &= \mbox{sum of $k$ largest elements of $x$} + \SUM{i=1}n g_i(y_i - x_i) \\
+       &= f(x) + g^T(y-x).
+\end{align*}
+
+\noindent(c) One known fact is that $\partial \|x\| = \{v \in V^\ast : \langle v, x \rangle = \|x\|, \|v\|_\ast \leq 1\}$; in the case of Euclidean norm $\|\cdot\|_2$, 
+\begin{equation*}
+  \partial \|x\|_2 = \l\{
+    \begin{array}{l}
+      \l\{\nicefrac x{\|x\|_2}\r\}, x \neq 0 \\
+      \l\{v \in \R^n : \|v\|_2 = 1\r\}, x = 0
+    \end{array}
+    \r.
+\end{equation*}
+We observe that for any function $f: \R^m \ra1 \R$, define $h: \R^n \ra1 \R, h(x) = f(Ax+b)$, then
+$$\partial h(x) = A^T \partial f(Ax + b).$$
+To verify this, take $g\in \partial f(Ax + b)$; we should have $\forall z\in\R^m, f(z) \geq f(Ax+b) + g^T(z-Ax-b)$. Now for $y\in \R^n$, 
+\begin{align*}
+  g(y) = f(Ay+b) & \geq f(Ax+b) + g^T(Ay+b - Ax-b) \\
+                 & = f(Ax+b) + (A^Tg)^T(y-x) = g(x) + (A^Tg)^T(y-x).
+\end{align*}
+This confirms that $A^Tg \in \partial g(x)$ indeed. Combine this observation with the additivity of subgradient, we write down the subdifferential of $f(x) = \|Ax+b\|_2 + \|x\|2$: (assuming $b\neq 0$)
+$$\partial f(x) = \l\{
+  \begin{align*}
+    &\l\{\frac{A^T(Ax+b)}{\|Ax+b\|_2} + \frac{x}{\|x\|_2}\r\}, Ax+b \neq 0, x\neq 0 \\
+    &\l\{\frac{A^Tb}{\|b\|_2} + v : v\in\R^n, \|v\|_2 = 1\r\}, x = 0\\
+    &\l\{A^Tu + \frac{x}{\|x\|_2} : u \in \R^m, \|u\|_2 = 1 \r\}, Ax+b = 0, x \neq 0
+  \end{align*}
+  \r.$$
+I'm skipping to attach the close form for the case that $b= 0$, but it should be very easy to write down from $\partial f(x) = A^T\partial \|Ax+b\|_2 + \partial \|x\|_2$. \\
+\\
+
+\noindent(d) Note that for any symmetric $W \in \vS^n$, 
+$$\lambda_{\max}(W) = \max_{\|u\|=1} u^T W u.$$
+This identity holds true after adding $\diag(x)$ for $x\in\R^n$ as well.
+Now suppose 
+$$v = \argmax_{\|u\|=1} u^T(W + \diag(x))u,$$
+take $g \in \R^n$ with $g_i = v_i^2$, then verify that, indeed,
+\begin{align*}
+\lambda_{\max}(W + \diag(y)) & = \max_{\|u\|=1} u^T (W + \diag(y)) u \geq v^T (W + \diag(y)) v \\
+                             & = v^T (W + \diag(x)) v + \SUM{i=1}n v_i^2(y_i - x_i) \\
+                             & = \lambda_{\max}(W + \diag(x)) + g^T(y-x).
+\end{align*}
+
+\noindent(e) Suppose 
+$$u = \argmax_{Ay \preceq b} z^Ty.$$
+Take $g = u \in \R^n$; verify that, indeed,
+\begin{align*}
+  f(x) &= \sup_{Ay \preceq b} x^Ty \geq x^Tu = z^Tu + u^T(z-x) \\
+       &= \sup_{Ay \preceq b} z^Ty + g^T(z-x) = f(z) + g^T(z-x).
+\end{align*}
+
+
+
+\end{document}
+
+
+
