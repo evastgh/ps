@@ -234,9 +234,18 @@ Taking square root and we get
   \frac{1-\sqrt s}{\sqrt m}  = \/{1+\sqrt s}{\sqrt L} \\
   \sqrt s = \/{\sqrt L - \sqrt m}{\sqrt L + \sqrt m} = \/{\sqrt \gamma - 1}{\sqrt \gamma + 1}
 \end{gather*}
-The linear convergence rate of the gradient method on page 1.31 of the lecture notes is 
-$$c = \l(\frac{\gamma - 1}{\gamma + 1}\r)^2$$
-We know that the quotient $\frac{\gamma - 1}{\gamma + 1}$ gets closer to $1$ for large condition number $\gamma \in \R$, and by scaling $\gamma$ to $\sqrt \gamma$ we obtain a smaller convergence rate with $\/{\sqrt \gamma - 1}{\sqrt \gamma + 1}$. However, these two both converge to $1$ when $\gamma \ra1 \infty$.
+The optimal linear convergence rate of the gradient method on page 1.31 of the lecture notes is 
+$$c^\ast = \l(\frac{\gamma - 1}{\gamma + 1}\r)^2.$$
+% We know that the quotient $\frac{\gamma - 1}{\gamma + 1}$ gets closer to $1$ for large condition number $\gamma \in \R$, and by scaling $\gamma$ to $\sqrt \gamma$ we obtain a smaller convergence rate with $\/{\sqrt \gamma - 1}{\sqrt \gamma + 1}$. However, these two both converge to $1$ when $\gamma \ra1 \infty$.
+Comparing the convergence rates,
+\begin{align*}
+  \frac{\l(\frac{\gamma - 1}{\gamma + 1}\r)^2}{\/{\sqrt \gamma - 1}{\sqrt \gamma + 1}}
+  &= \frac{(\gamma-1)^2(\sqrt\gamma+1)}{(\gamma+1)^2(\sqrt\gamma-1)} \\
+  &= \frac{(\gamma-1)(\sqrt\gamma+1)^2}{(\gamma+1)^2} \\
+  &= \frac{\gamma^2 + 2\gamma^{1.5} - 2\gamma^{0.5} - 1}{\gamma^2+2\gamma+1}.
+\end{align*}
+The difference between numerator and denominator $(\gamma^2 + 2\gamma^{2.5} - 2\gamma^{0.5} - 1) - (\gamma^2+2\gamma+1) = 2\gamma^{1.5} - 2\gamma-2\gamma^{0.5}-2$ is a polynomial of $\sqrt \gamma$ with a positive leading coefficient; it yields positive value for large enough$\gamma$. We conclude that although they have the same asymptotic behavior (both $\ra1 1$ at $\gamma\ra1\infty$), the convergence rate $c^\ast$ is ultimately larger than $\frac{\sqrt \gamma - 1}{\sqrt \gamma + 1}$ when the condition number $\gamma$ is large. \\
+\\
 
 \subsubsection*{Problem 2. }
 (a) We aim to find $g\in\R^n$ such that $\forall y \in \R^n$,
