@@ -342,18 +342,35 @@ Matrices from \eqref{sample3x3} and \eqref{sample3x3nunique} have rank 3 and 2. 
 	    3&6&9
 	\end{array}
 	\r]$$
-\red{Apr 16 2019}
     \item basis = linearly independent spanning set
     \item find basis for subspaces $im(A), ker(A)$
     \item basis and unique representation
 \end{itemize}
-\subsection{Sec 3.3 Dimension of a Subspace of $\R^n$}
+
+\subsection*{Sec 3.3 Dimension of a Subspace of $\R^n$}
 \begin{itemize}
     \item dimension = \# of vectors in a basis
     \item e.g. $\R^n = span(\{e_1, \cdots, e_n\})$
     \item dimension is unique 
     \item dimension = maximal \# of linearly independent vectors = minimal \# of spanning vectors (Theorem 3.3.4 page 136)
+\red{\\Apr 18 2019}
+    \item $v_1, \cdots, v_k$: linear independent $\ra2$ $Sv_1, \cdots, Sv_k$: linear independent where $S \in \R^{n\x n}$ is invertible
     \item example 1 page 136
+    \item row reduction messes up the columns
+    \item $rank(A) = rank(SA)$ for any $A\in \R^{m\x n}$ and $S \in GL(m, \R)$
+    \item rank-nullity theorem: from RREF, \# pivot is rank, those columns without pivot is free variable (nullity), summing to $n$
+\end{itemize}
+
+\subsection*{Midterm 1 Review}
+\begin{itemize}
+    \item orthogonal projection to a one dimensional subspace $\{\alpha n: \alpha \in \R\}$ 
+    \item Finding the inverse of a matrix by applying row reduction to the matrix $A$ and $I$ simultaneously
+    \item meaning of rank (\# nonzero rows in RREF, dimension of image)
+    \item examples of linear systems with unique solution, infinitely many solutions, no solution
+    \item link between rank, RREF, solvability of a linear system, linear independence of the columns, injectivity, surjectivity of the linear map; practice this with square matrices and rectangular matrices
+    \item meaning of a subspace
+    \item meaning of linear independence
+    \item how to find basis of the image and kernel of a given linear map $T(x) = Ax$
 \end{itemize}
 
 
