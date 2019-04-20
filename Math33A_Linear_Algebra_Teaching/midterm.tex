@@ -1,0 +1,388 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=1.5in, bottom=1.5in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{April 22, 2019}\lhead{Math 33A -- Midterm 1}
+
+\usepackage{nicefrac}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+%\usepackage{graphicx} \graphicspath{ {/path/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+
+%\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+% \newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+% \newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\noindent1. True of False. \textbf{(2 points each)}\\
+(a) There exists a 3-by-2 matrix $A \in \R^{3\x 2}$ with $\mbox{rank}(A) = 3$.\\
+\gray{false}
+\\
+\\
+\\
+(b) If a square matrix is full rank, then it's row Reduced Echelon Form (RREF) must be the identity matrix. \\
+\gray{true}
+\\
+\\
+\\
+(c) If $T(x) = Ax$ where $A \in \R^{4\x 2}$ is a 4-by-2 matrix, then $T$ must be injective (one-to-one). \\
+\gray{false}
+\\
+\\
+\\
+(d) If $T(x) = Ax$ where $A \in \R^{4\x 2}$ is a 4-by-2 matrix, then $T$ cannot be surjective (onto). \\
+\gray{true}
+\\
+\\
+\\
+(e) A linear system has a unique solution if the columns of the corresponding matrix are linearly independent. \\
+\gray{false. Consider 3-by-2 linear system}
+\\
+\\
+\\
+(f) The set $S = \{x \in \R^n \mid Ax = b \mbox{ for some } x\in \R^n\}$ is a subspace of $\R^n$ where $A \in \R^{n\x n}$ is a nonzero square matrix and $b\in\R^n$ is a nonzero vector.  \\
+\gray{false}
+\\
+\\
+\\
+% (g) If the columns of a matrix $A$ are linear independent, then $A$ must be invertible. \\
+(g) The set $S = \{(x, y, z) \mid ax+by+cz = 0\}$ is a plane parallel to the vector $n = (a, b, c)$. \\
+\gray{false}
+\\
+\\
+\\
+(h) If $T: \R^n \ra1 \R^m$ is a linear transformation where $n \neq m$, then $T$ is not invertible. \\
+\gray{true} \\
+\\
+\\
+(i) \textbf{(4 points)} Write down the definition of linear dependence. \\
+\gray{A set of vector $S = \{v_1, \cdots, v_k\}$ is linear dependent if there exist nontrivial scalars $\alpha_1, \cdots, \alpha_k \in \R$ such that 
+$$ \alpha_1 v_1 + \cdots + \alpha_k v_k = 0.$$
+}
+
+\newpage
+\noindent2. Solve the following system (or explain why it does not have any solution). \textbf{(6 points)} Characterize the geometry of the associated linear map (e.g. scaling, orthogonal projection, reflection, rotation, or shear). \textbf{(4 points)}
+\begin{equation*}
+	\l\{
+	\begin{array}{l}
+		x+2y+3z-u=0\\
+		2x+4y+6z-2u=0\\
+		3x+6y+9z-3u=0\\
+		-x-2y-3z+u=1
+	\end{array}
+	\r.
+\end{equation*}
+\textit{Hint:} Note that the system is not much but 
+$$
+	\l[
+	\begin{array}{c}
+		1\\
+		2\\
+		3\\
+		-1
+	\end{array}
+	\r]
+	% \l[1 \; 2 \; 3 \r]
+	\l[
+	\begin{array}{cccc}
+		1 & 2 & 3 & -1
+	\end{array}
+	\r]
+	\l[
+	\begin{array}{c}
+		x\\
+		y\\
+		z\\
+		u
+	\end{array}
+	\r]
+	=
+	\l[
+	\begin{array}{c}
+		0\\
+		0\\
+		0\\
+		1
+	\end{array}
+	\r]
+$$
+\gray{
+This system has no solution as $(0, 0, 0, 1) \notin L = \{\alpha(1, 2, 3, -1) : \alpha\in\R\}$, where the linear map is not much but $\mbox{proj}_L$.
+}
+
+
+
+\newpage
+\noindent3. 
+(a) \textbf{(5 points)} Compute the inverse of 
+\begin{equation*}
+	A = \l[
+	\begin{array}{ccc}
+		1 & 2 & 0 \\
+		0 & -1 & -3 \\
+		0 & 1 & 2
+	\end{array}
+	\r].
+\end{equation*}
+(b) \textbf{(5 points)} Derive the necessary and sufficient condition such that  
+\begin{equation*}
+	B = \l[
+	\begin{array}{ccc}
+		a & b & c\\
+		0 & d & e \\
+		0 & 0 & f
+	\end{array}
+	\r]
+\end{equation*}
+is invertible. Compute its inverse and verify that the inverse of upper triangular is upper triangular as well. \\
+\\
+\gray{
+	(a)
+	\begin{equation*}
+	A^{-1} = \l[
+	\begin{array}{ccc}
+		1 & -4 & -6 \\
+		0 & 2 & 3 \\
+		0 & -1 & -1
+	\end{array}
+	\r]
+	\end{equation*}
+	(b) The condition is $adg \neq 0$ and the inverse is
+	\begin{equation*}
+	B^{-1} = \l[
+	\begin{array}{ccc}
+	    \frac1a & \frac{-b}{ad} & \frac{-c}{af} \\
+	    0 & \frac1d & \frac{-e}{df} \\
+		0 & 0 & \frac1f
+	\end{array}
+	\r]
+	\end{equation*}
+}
+
+
+\newpage
+\noindent4. (a) \textbf{(3 points)} Give an example of a system of 3 linear equations with 3 variables that has infinitely many solutions. \\
+\\
+(b) \textbf{(3 points)} Give an example of a system of 3 linear equations with 3 variables that has no solution. \\
+\\
+(c) \textbf{(2 points)} Give an example of a 4-by-4 matrix that has rank 2. \\
+\\
+(d) \textbf{(2 points)} Give an example of $A, B \in \R^{2\x 2}$ such that $AB \neq BA$. \\
+\\
+\gray{
+    (a)
+\begin{equation*}
+	\l\{
+	\begin{array}{l}
+	    x+y+z = 1\\
+	    2x+2y+2z = 2\\
+	    z=1
+	\end{array}
+	\r.
+\end{equation*}
+(b)
+\begin{equation*}
+	\l\{
+	\begin{array}{l}
+	    x+y+z = 1\\
+	    2x+2y+2z = 3\\
+	    z=1
+	\end{array}
+	\r.
+\end{equation*}
+(c) 
+	\begin{equation*}
+	A = \l[
+	\begin{array}{cccc}
+	    1 & 0 & 0 & 0 \\
+	    0 & 1 & 0 & 0 \\
+	    0 & 0 & 0 & 0\\
+	    0 & 0 & 0 & 0
+	\end{array}
+	\r]
+	\end{equation*}
+(d)
+	\begin{equation*}
+	A = \l[
+	\begin{array}{cc}
+	    0 & 0 \\
+	    1 & 0
+	\end{array}
+	\r], 
+	B = \l[
+	\begin{array}{cc}
+	    1 & 0 \\
+	    1 & 0
+	\end{array}
+	\r],
+	AB = \l[
+	\begin{array}{cc}
+	    0 & 0 \\
+	    1 & 0
+	\end{array}
+	\r],
+	BA = \l[
+	\begin{array}{cc}
+	    0 & 0 \\
+	    0 & 0
+	\end{array}
+	\r]
+	\end{equation*}
+}
+
+
+
+\newpage
+\noindent5. \textbf{(10 points)} Describe the geometry of the image and kernel of the linear map $T(x) = Ax$ (as point, line, plane, or $\R^3$) where 
+$$A = \l[
+\begin{array}{ccc}
+    1 & 2 & 1 \\
+    2 & 1 & 5 \\
+    -1& -2& -1
+\end{array}
+\r].$$
+Find a basis for $im(A)$ and $ker(A)$ and verify that $\dim(im(A)) + \dim(ker(A)) = 3$. \\
+\gray{ 
+	Note that $3a_1 - a_2 - a_3 = 0$ where $a_i$'s denote the columns of $A$. $im(T) = span(\{a_1, a_2\})$ is a plane, $ker(T) = span(\{(3, -1, -1)^T\})$ is a line.
+}
+
+
+
+
+% \newpage
+% \noindent6. \textbf{Bonus problem. (10 points)} Consider a line $L = \{(x, y) \in \R^2 : 3x + 4y = 0\}$. Write down the matrix $A \in \R^{2\x 2}$ such that the reflection about $L$,
+% \begin{equation*}
+% 	\mbox{ref}_L(x) = Ax.
+% \end{equation*}
+% Verify that $\mbox{ref}_L$ is indeed an invertible linear transformation. \\
+% \gray{
+% 	Let $n = (3, 4)^T \in \R^2$. 
+% 	\begin{align*}
+% 		\mbox{ref}_L(x) & = (2\frac{nn^T}{\|n\|^2} - I)x \\
+% 				  & = \l(\/2{25}
+% 		\l[
+% 		\begin{array}{cc}
+% 			9 & 12 \\
+% 			12 & 16 
+% 		\end{array}
+% 		\r]
+% 		-
+% 		\l[
+% 		\begin{array}{cc}
+% 			1 & 0 \\
+% 			0 & 1
+% 		\end{array}
+% 		\r]\r) \\
+% 		&= 
+% 		\/2{25}
+% 		\l[
+% 		\begin{array}{cc}
+% 			-3.5 & 12 \\
+% 			12 & 3.5
+% 		\end{array}
+% 		\r]x = Ax\\ 
+% 		\det(A) & = \/4{625}(3.5^2 - 12^2) = \/4{625}(12.25 - 144) \\
+%                 & = \/{-527}{625} \neq 0
+% 	\end{align*}
+% }
+
+
+
+
+\end{document}
