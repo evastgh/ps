@@ -6,12 +6,12 @@
 % \DeclareUnicodeCharacter{2693}{\anchor}
 % \usepackage{dingbat}
 % \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
-\usepackage[top=1.5in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage[top=1.1in, bottom=.9in, left=.9in, right=.9in]{geometry}
 %\usepackage{fullpage}
 
 \usepackage{fancyhdr}\pagestyle{fancy}\rhead{April 22, 2019}\lhead{Math 33A -- Midterm 1}
 
-\usepackage{nicefrac}
+\usepackage{nicefrac, tabularx}
 
 \usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
 	%{mathtools,wasysym,yhmath}
@@ -19,7 +19,7 @@
 \usepackage[usenames,dvipsnames]{xcolor}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
-\newcommand{\gray}[1]{\textcolor{gray}{}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
 \newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
 
 \usepackage{mdframed}
@@ -110,6 +110,49 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+\noindent\textbf{Instructions:}
+\begin{itemize}
+    \item Follow directions and answer questions with requested supporting work.
+    \item Clearly indicate your answer in the allotted space or by putting a box around it.
+    \item No cellphones, laptops, books, notes, supporting materials, or external aids are allowed on this exam.
+\end{itemize}
+
+\vskip 30pt
+\begin{center}
+{\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{ rl }
+    Name: & \underline{\hskip 150pt} \\
+	  % & \\
+    UID:  & \underline{\hskip 150pt} \\
+	  % & \\
+    % Date: & \underline{\hskip 150pt}
+\end{tabular}
+}
+
+\vskip 30pt
+
+{\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|}
+    \hline
+    Problem \# & \;\;\;\;\;Score\;\;\;\;\; \\
+    \hline
+    1 & \\
+    \hline
+    2 & \\
+    \hline
+    3 & \\
+    \hline
+    4 & \\
+    \hline
+    5 & \\
+    \hline
+    Total & \\
+    \hline
+\end{tabular}
+\end{center}
+}
+
+\newpage
 \noindent1. True of False. \textbf{(2 points each)}\\
 (a) There exists a 3-by-2 matrix $A \in \R^{3\x 2}$ with $\mbox{rank}(A) = 3$.\\
 \gray{false}
@@ -203,7 +246,7 @@ $$
 	\r]
 $$
 \gray{
-This system has no solution as $(0, 0, 0, 1) \notin L = \{\alpha(1, 2, 3, -1) : \alpha\in\R\}$, where the linear map is not much but $\mbox{proj}_L$.
+This system has no solution as $(0, 0, 0, 1) \notin L = \{\alpha(1, 2, 3, -1) : \alpha\in\R\}$, where the linear map is not much but $15\mbox{proj}_L$ (note that the vector $n = (1, 2, 3, -1)$ is not a unit vector).
 }
 
 
@@ -247,9 +290,9 @@ is invertible. Compute its inverse and verify that the inverse of upper triangul
 	\begin{equation*}
 	B^{-1} = \l[
 	\begin{array}{ccc}
-	    \frac1a & \frac{-b}{ad} & \frac{-c}{af} \\
-	    0 & \frac1d & \frac{-e}{df} \\
-		0 & 0 & \frac1f
+	    \frac1a & \frac{-b}{ad} & \frac{bc-cd}{adf} \\
+	    0 & \frac1d & \frac{-c}{df} \\
+	    0 & 0 & \frac1f
 	\end{array}
 	\r]
 	\end{equation*}
