@@ -1,0 +1,319 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{Stephanie Wang}\lhead{EE236C homework 6}
+\usepackage{nicefrac}
+
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx} \graphicspath{{}}
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+% \renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[4]{\left \{ \begin{array}{ll} {#1},&{#2}\\{#3},&{#4} \end{array} \right.}
+\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+\newcommand\ie{{\it i.e. }}
+\newcommand\wrt{{w.r.t. }}
+\newcommand\dom{\mathbf{dom\:}}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\dt}{\Delta t}
+\def\vA{\mathbf{A}}
+\def\vB{\mathbf{B}}\def\cB{\mathcal{B}}
+\def\vC{\mathbf{C}}
+\def\vD{\mathbf{D}}
+\def\vE{\mathbf{E}}
+\def\vF{\mathbf{F}}\def\tvF{\tilde{\mathbf{F}}}
+\def\vG{\mathbf{G}}
+\def\vH{\mathbf{H}}
+\def\vI{\mathbf{I}}\def\cI{\mathcal{I}}
+\def\vJ{\mathbf{J}}
+\def\vK{\mathbf{K}}
+\def\vL{\mathbf{L}}\def\cL{\mathcal{L}}
+\def\vM{\mathbf{M}}
+\def\vN{\mathbf{N}}\def\cN{\mathcal{N}}
+\def\vO{\mathbf{O}}
+\def\vP{\mathbf{P}}
+\def\vQ{\mathbf{Q}}
+\def\vR{\mathbf{R}}
+\def\vS{\mathbf{S}}
+\def\vT{\mathbf{T}}
+\def\vU{\mathbf{U}}
+\def\vV{\mathbf{V}}
+\def\vW{\mathbf{W}}
+\def\vX{\mathbf{X}}
+\def\vY{\mathbf{Y}}
+\def\vZ{\mathbf{Z}}
+
+\def\va{\mathbf{a}}
+\def\vb{\mathbf{b}}
+\def\vc{\mathbf{c}}
+\def\vd{\mathbf{d}}
+\def\ve{\mathbf{e}}
+\def\vf{\mathbf{f}}
+\def\vg{\mathbf{g}}
+\def\vh{\mathbf{h}}
+\def\vi{\mathbf{i}}
+\def\vj{\mathbf{j}}
+\def\vk{\mathbf{k}}
+\def\vl{\mathbf{l}}
+\def\vm{\mathbf{m}}
+\def\vn{\mathbf{n}}
+\def\vo{\mathbf{o}}
+\def\vp{\mathbf{p}}
+\def\vq{\mathbf{q}}
+\def\vr{\mathbf{r}}
+\def\vs{\mathbf{s}}
+\def\vt{\mathbf{t}}
+\def\vu{\mathbf{u}}
+\def\vv{\mathbf{v}}\def\tvv{\tilde{\mathbf{v}}}
+\def\vw{\mathbf{w}}
+\def\vx{\mathbf{x}}\def\tvx{\tilde{\mathbf{x}}}
+\def\vy{\mathbf{y}}
+\def\vz{\mathbf{z}}
+
+\def\diag{\mbox{\textbf{diag}}}
+
+\newcommand{\kp}[1]{{k+{#1}}}
+\newcommand{\km}[1]{{k-{#1}}}
+\newcommand{\np}[1]{{n+{#1}}}
+\newcommand{\nm}[1]{{n-{#1}}}
+
+%%% --Numerical analysis related
+%\newcommand{\nxt}{^{n+1}}
+%\newcommand{\pvs}{^{n-1}}
+%\newcommand{\hfnxt}{^{n+\frac12}}
+
+\newcommand{\prox}{\mbox{prox}}
+\newcommand{\shrink}{\mbox{\,shrink}}
+\newcommand{\proj}{\mbox{proj}}
+\newcommand{\tu}{{\tilde u}}
+\newcommand{\tv}{{\tilde v}}
+\newcommand{\tx}{{\tilde x}}
+\newcommand{\tY}{{\tilde Y}}
+\newcommand{\tz}{{\tilde z}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\subsubsection*{Problem 1.}
+Apply ADMM from page 11.16 with $x_1 = u, x_2 = x, z = w, t = 1$, the algorithm is 
+\begin{align*}
+  u^+ &= \argmin_{v} g(v) + w^Tv + \/12 \|x-v\|_2^2 \\
+  x^+ &= \argmin_{y} f(y) + w^Ty + \/12\|y-u^+\|_2^2 \\
+  w^+ &= w + (x^+ - u^+).
+\end{align*}
+Complete the squares in line 1, we get 
+\begin{align*}
+  \argmin_v g(v) + w^Tv + \/12\|x-v\|_2^2 
+  & = \argmin_v g(v) + \/12\|x-v-w\|_2^2 -\gray{\|w\|_2^2} + \gray{2w^Tx} \\
+  & = \argmin_v g(v) + \/12\|x-v-w\|_2^2 = \prox_g(x+w).
+\end{align*}
+Similarly, 
+\begin{align*}
+  \argmin_y f(y) + w^Ty + \/12\|y-u^+\|_2^2 
+  & = \argmin_y f(y) +\/12\|y-u^+ + w\|_2^2 + \gray{w^Tu^+} - \gray{\/12\|w\|_2^2} \\
+  & = \argmin_y f(y) +\/12\|y-u^+ + w\|_2^2 = \prox_f(u^+-w).
+\end{align*}
+Concluding above, ADMM is indeed equivalent to Douglas-Rachford splitting.
+
+\subsubsection*{Problem 2.}
+First we establish the useful operators:
+\begin{equation}\label{proxTN}
+  \begin{split}
+    \prox_{\alpha\|\cdot\|_\ast}(X) & = \argmin_Y \|Y\|_\ast + \/1{2\alpha}\|Y-X\|_F^2 \\
+                                    & = U_X\l(\argmin_{\Sigma_Y} \tr(\Sigma_Y) + \/1{2\alpha} \|\Sigma_Y - \Sigma_X\|_F^2\r)V_X^T\\
+                                    & = U_X\shrink_\alpha(\Sigma_X)V_X^T,\mbox{ where } X = U_X \Sigma_X V_X^T.
+  \end{split}
+\end{equation}
+(a) Decompose the optimization problem with two variables $x\in \R^n, Y\in\R^{p\x q}$, 
+\begin{align*}
+  \mbox{minimize}\quad & \|Y\|_\ast + \/12 \|x-a\|_2^2 \\
+  \mbox{subject to}\quad & H(x) - Y = 0
+\end{align*}
+Introducing the dual variable $Z\in\R^{p\x q}$, the three steps involved in ADMM are 
+\begin{align*}
+  x^+ & = \argmin_\tx \/12\|\tx-a\|_2^2 + Z:H(\tx) + \/t2\|H(\tx) - Y\|_F^2 \\
+  Y^+ & = \argmin_\tY \|\tY\|_\ast + Z:(-\tY) + \/t2\|H(x^+) - \tY\|_F^2 \\
+  Z^+ & = Z + t(H(x^+) - Y^+).
+\end{align*}
+Here $Z:X = \tr(Z^TX) = \SUM{i, j}{} Z_{ij}X_{ij}$ denotes the inner product corresponding to the Frobenius norm. First observe that 
+\begin{align*}
+  Z:H(x) &= Z_{11}x_1 + \l(\SUM{i+j=3}{} Z_{ij}\r)x_2 + \cdots + \l(\SUM{i+j=n+1}{} Z_{ij}\r)x_n \\ % =: F(Z)^T x \\
+  \|H(x) - Y\|_F^2 &= (x_1 - Y_11)^2 + \SUM{i+j=3}{} (x_2 - Y_{ij})^2 + \cdots + \SUM{i+j=n+1}{} (x_n - Y_{ij})^2.
+\end{align*}
+Denote the index set $S(k) := \{ (i, j) : {i = 1, \cdots, p \atop j = 1, \cdots, q}, i+j = k+1\}$ to simplify notations. Notice that the minimization involved in the first step is separable for each $\tx_k$, ($k = 1, \cdots, n$); for fixed $k = 1, \cdots, n$, the minimizer $x_k^+$ satisfies 
+\begin{gather*}
+  x_k^+ - a_k + \SUM{S(k)}{} Z_{ij} + t\SUM{S(k)}{} (x_k^+ - Y_{ij}) = 0 \\
+  x_k^+ = \frac1{1+t\#S(k)} \l(a_k + \SUM{S(k)}{} (tY_{ij} - Z_{ij})\r).
+\end{gather*}
+This gives a succinct implementation for the first step. For the second step, the minimization is 
+\begin{align*}
+  Y^+ & = \argmin_\tY \|\tY\|_\ast + Z:(-\tY) + \/t2\|H(x^+) - \tY\|_F^2, \\
+      & = \argmin_\tY \|\tY\|_\ast + \/t2 \l\|\tY - H(x^+) - \frac1tZ\r\|_F^2 + \gray{Z:H(x^+)} - \gray{\/1{2t}\|Z\|_F^2} \\
+      & = \prox_{\frac1t\|\cdot\|_\ast}\l(H(x^+) + \/1tZ\r).
+\end{align*}
+Use the formula in \eqref{proxTN} to evaluate the result. Note that one singular value decomposition will be computed during the evaluation. \\
+\\
+(b) Consider the following decomposition:
+\begin{align*}
+  \mbox{minimize}\quad & \|Y\|_\ast + \/12 \|x-a\|_2^2 + \delta_{\|u\|_2\leq \gamma}(u)\\
+  \mbox{subject to}\quad & H(x) - Y = 0 \\
+			 & Dx - u = 0
+\end{align*}
+Introduce dual variable $Z \in \R^{p\x q}, z\in \R^{n-1}$; the three steps involved in ADMM can be written as the following five steps (thanks to the separability of the minimization):
+\begin{align*}
+  x^+ & = \argmin_\tx \/12\|\tx-a\|_2^2 + Z:H(\tx) + z^T D\tx + \/t2\l(\|H(\tx) - Y\|_F^2 + \|D\tx - u\|_2^2\r) \\
+  Y^+ & = \argmin_\tY \|\tY\|_\ast + Z:(-\tY) + \/t2\l(\|H(x^+) - \tY\|_F^2 + \gray{\|Dx^+ - u\|_2^2}\r)\\
+  u^+ & = \argmin_\tu \delta_{\|u\|_2\leq \gamma}(\tu) + z^T(-\tu) + \/t2\l(\gray{\|H(x^+) - Y^+\|_F^2} + \|Dx^+ - \tu\|_2^2\r)\\
+  Z^+ & = Z + t(H(x^+) - Y^+) \\
+  z^+ &= z + t(Dx^+ - u^+).
+\end{align*}
+The first step follows a similar derivation as in part (a), for each index $k = 1, \cdots, n$, the minimizer $x_k^+$ satisfies
+\begin{gather*}
+  x_k^+ - a_k + \SUM{S(k)}{} Z_{ij} + (D^Tz)_k + t\SUM{S(k)}{} (x_k^+ - Y_{ij}) + t(D^T(Dx-u))_k = 0 \\ 
+  x_k^+ = \/1{1+t\#S(k)}\l( a_k + \SUM{S(k)}{} (tY_{ij} - Z_{ij}) - (D^Tz)_k - t(D^T(Dx-u))_k \r)
+\end{gather*}
+One not completely unrelated observation is that the matrix $D^TD$ is the discrete Laplacian,
+$$(D^TDx)_k = \begin{cases} 
+x_1-x_2, & k = 1\\ 
+x_n - x_{n-1}, & k = n\\ 
+2 x_k - x_{k-1} - x_{k+1}, & \mbox{else}
+\end{cases}. $$
+The second step is exactly identical to that in part (a) and will cost one singular value decomposition of a $p \x q$ matrix. The third step can be computed by a simple projection,
+\begin{align*}
+  u^+ & = \argmin_\tu \delta_{\|u\|_2\leq \gamma}(\tu) + z^T(-\tu) + \/t2\|Dx^+ - \tu\|_2^2\\
+      & = \argmin_\tu \delta_{\|u\|_2\leq \gamma}(\tu) + \/t2\l\|Dx^+ - \tu + \/1t z\r\|_2^2 - \gray{z^TDx^+} -\gray{\/1{2t}\|z\|_2^2} \\
+      &= \proj_{B_\gamma(0)}\l(Dx^+ + \/1t z\r).
+\end{align*}
+Here $\proj_{B_\gamma(0)}$ denotes the Euclidean projection on the ball (w.r.t. Euclidean distance) of radius $\gamma$.\\
+\\
+(c) Replace the derivation in part (a) with 1-norm in the first step.
+\begin{align*}
+  sgn(x_k-a_k) +t\#S(k)x_k & \ni \SUM{S(k)}{} (tY_{ij} - Z_{ij}).
+\end{align*}
+There are three cases,
+\begin{align*}
+  x_k - a_k > 0 & \Leftrightarrow  t\#S(k) x_k = \SUM{S(k)}{} (tY_{ij}-Z_{ij}) - 1 \\
+  x_k - a_k < 0 & \Leftrightarrow  t\#S(k) x_k = \SUM{S(k)}{} (tY_{ij}-Z_{ij}) + 1 \\
+  x_k = a_k     & \Leftrightarrow  \SUM{S(k)}{} (tY_{ij}-Z_{ij}) - t\#S(k) x_k \in [-1, 1]
+\end{align*}
+With further analysis, we have 
+\begin{align*}
+  \SUM{S(k)}{} (tY_{ij}-Z_{ij}) - t\#S(k) a_k \in [-1, 1] & \ra2 x_k = a_k \\
+  \SUM{S(k)}{} (tY_{ij}-Z_{ij}) - t\#S(k) a_k > 1 & \ra2 x_k = \frac1{t\#S(k)} \l(\SUM{S(k)}{} (tY_{ij}-Z_{ij}) - 1 \r) \\
+  \SUM{S(k)}{} (tY_{ij}-Z_{ij}) - t\#S(k) a_k < 1 & \ra2 x_k = \frac1{t\#S(k)} \l(\SUM{S(k)}{} (tY_{ij}-Z_{ij}) + 1 \r)
+\end{align*}
+(d) Replace the derivation in part (b) with 1-norm in the first step.
+\begin{align*}
+  sgn(x_k-a_k) +t\#S(k)x_k + t(D^TDx)_k & \ni \SUM{S(k)}{} (tY_{ij} - Z_{ij}) - (D^Tz)_k + t(D^Tu)_k.
+\end{align*}
+% Hence the implementation:
+% \begin{gather*}
+%   \SUM{S(k)}{} (tY_{ij} - Z_{ij}) - (D^Tz)_k + t(D^Tu)_k-t\#S(k)a_k - t(D^TDa)_k
+%  \in [-1, 1]  \\
+%  \ra2 x_k = a_k \\
+%   \SUM{S(k)}{} (tY_{ij} - Z_{ij}) - (D^Tz)_k + t(D^Tu)_k-t\#S(k)a_k - t(D^TDa)_k > 1 \\
+%   \ra2 x_k = \frac1{t\#S(k)} \l(\SUM{S(k)}{} (tY_{ij}-Z_{ij}) - 1 \r) \\
+%   \SUM{S(k)}{} (tY_{ij} - Z_{ij}) - (D^Tz)_k + t(D^Tu)_k-t\#S(k)a_k - t(D^TDa)_k < 1 \\
+%   \ra2 x_k = \frac1{t\#S(k)} \l(\SUM{S(k)}{} (tY_{ij}-Z_{ij}) + 1 \r)
+% \end{gather*}
+I spent quite a while pondering for a closed form for this step, but haven't have much luck. 
+
+
+
+\end{document}
