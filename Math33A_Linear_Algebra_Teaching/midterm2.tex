@@ -1,0 +1,377 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=1.1in, bottom=.9in, left=.9in, right=.9in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{May 13, 2019}\lhead{Math 33A -- Midterm 2}
+
+\usepackage{nicefrac, tabularx}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+%\usepackage{graphicx} \graphicspath{ {/path/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+
+%\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+% \newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+% \newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\noindent\textbf{Instructions:}
+\begin{itemize}
+    \item Follow directions and answer questions with requested supporting work.
+    \item Clearly indicate your answer in the allotted space or by putting a box around it.
+    \item No cellphones, laptops, books, notes, supporting materials, or external aids are allowed on this exam.
+\end{itemize}
+
+\vskip 30pt
+\begin{center}
+{\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{ rl }
+    Name: & \underline{\hskip 150pt} \\
+	  % & \\
+    UID:  & \underline{\hskip 150pt} \\
+	  % & \\
+    % Date: & \underline{\hskip 150pt}
+\end{tabular}
+}
+
+\vskip 30pt
+
+{\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|}
+    \hline
+    Problem \# & \;\;\;\;\;Score\;\;\;\;\; \\
+    \hline
+    1 & \\
+    \hline
+    2 & \\
+    \hline
+    3 & \\
+    \hline
+    4 & \\
+    \hline
+    5 & \\
+    \hline
+    Total & \\
+    \hline
+\end{tabular}
+\end{center}
+}
+
+\newpage
+\noindent1. True of False. \textbf{(2 points each)}\\
+(a) If $\mathcal B = \{u_1, u_2, \cdots, u_n\}$ is a basis of $\R^n$, then for any $x\in\R^n$, we have 
+$$\Big[u_1 \; u_2 \; \cdots \; u_n\Big][x]_{\mathcal B} = x.$$
+\gray{True}
+\\
+\\
+\\
+(b) If the columns of $A \in \R^{m\x n}$ are orthonormal, then $A^TA = I$. 
+\gray{\\False. This is only true if $m\geq n$.}
+\\
+\\
+\\
+(c) $im(A)^\perp = ker(A^T)$. 
+\gray{\\True}
+\\
+\\
+\\
+(d) Suppose $n \in \R^n$; $T(x) = nn^Tx$ is the orthogonal projection onto $V = \{\alpha n: \alpha \in \R\}$.
+\gray{\\False. This is only true if $\|n\| = 1$.}
+\\
+\\
+\\
+(e) An orthogonal matrix must have linearly independent columns.
+\gray{\\True}
+\\
+\\
+\\
+(f) $A \in \R^{m\x n}, B \in \R^{n\x k}$, then $im(AB) \subseteq im(A)$.
+\gray{\\True}
+\\
+\\
+\\
+(g) \textbf{(3 points)} Write down the Rank-nullity theorem. 
+\gray{\\For $n\x m$ matrix $A$, 
+    $$\dim(ker(A)) + \dim(im(A)) = m$$
+}
+\\
+\\
+\\
+(h) \textbf{(2 points)} If $\{u_1, u_2, \cdots, u_m\}$ is a set of orthonormal vectors of $\R^n$ and $x \in \R^n$ is an arbitrary vector. What is the relation between $p = (u_1\cdot x)^2 + (u_2 \cdot x)^2 + \cdots + (u_m\cdot x)^2$ and $\|x\|^2$ (equal, greater than or equal to, less than or equal to)? 
+\gray{\\
+$(u_1\cdot x)^2 + (u_2 \cdot x)^2 + \cdots + (u_m\cdot x)^2 \leq \|x\|^2$}
+\\
+\\
+\\
+(i) \textbf{(3 points)} Write down the definition of the least-squares solution of a linear system $Ax = b$ where $A\in\R^{m\x n}$ and $b\in\R^m$. 
+\gray{\\$x^\ast$ is a least-squares solution to $Ax=b$ if $\|b-Ax^\ast\| \leq \|b-Ax\|$ for all $x \in \R^n$.}
+\\
+\\
+\\
+
+\newpage
+\noindent2. Consider the linear map $T: \R^4 \ra1 \R^4$ given by 
+$$
+T(x) = 
+	\/14 \l[
+	\begin{array}{rr}
+	    1 & 1\\
+	    1 & -1\\
+	    -1 & 1\\
+	    -1 & -1
+	\end{array}
+	\r]
+	\l[
+	\begin{array}{rrrr}
+		1 & 1 & -1 & -1 \\
+		1 & -1 & 1 & -1
+	\end{array}
+	\r]
+	\l[
+	\begin{array}{c}
+		x_1\\
+		x_2\\
+		x_3\\
+		x_4
+	\end{array}
+	\r].
+$$
+% (a) \textbf{(6 points)} 
+Find an orthonormal bases for $ker(T)$ and $im(T)$. \\ 
+\\
+% (b) \textbf{(4 points)} Show that the combination of the two bases forms an orthonormal basis of $\R^4$. \\
+\\
+\gray{
+    This is the orthogonal projection onto the plane spanned by $(1, 1, -1, -1)$ and $(1, -1, 1, -1)$. An orthonormal basis for $im(T)$ is naturally $\/12(1, 1, -1, -1), \/12(1, -1, 1, -1)$. By inspection, an orthonormal basis for $ker(T)$ is $\/1{\sqrt2}(1, 0, 0, 1), \/1{\sqrt2}(0, 1, 1, 0)$ (or can be found by first finding a basis for $ker(T)$ then apply Gram-Schmidt process). Since $ker(T) = im(T)^\perp$, the combination of basis forms a orthonormal basis or $\R^4$.
+}
+
+
+\newpage
+\noindent3. Consider a subspace $V$ spanned by the basis $\mathcal B = \l\{v_1, v_2\}$, where
+$$v_1 =
+    \l[
+    \begin{array}{c}
+	1\\ 1\\ 1
+    \end{array}
+    \r],  v_2 =
+    \l[
+    \begin{array}{c}
+	1\\ 2\\ 3
+    \end{array}
+    \r]
+    % \l[
+    % \begin{array}{c}
+	% 1\\ 3\\ 6
+    % \end{array}
+    % \r]
+.$$
+Determine whether the following vectors are in V. If the vector is in $V$, compute its coordinates with respect to $\mathcal B$.\\ 
+(a) \textbf{(3 points)} $x = \l[
+\begin{array}{c}
+    3\\ -4 \\ -11
+\end{array}\r]$. \\
+\\
+(b) \textbf{(3 points)} $y = \l[
+\begin{array}{c}
+    1\\ 1\\ -1
+\end{array}\r]$. \\
+\\
+(c) \textbf{(4 points)} Find a vector $v_3$ such that $\mathcal C = \{v_1, v_2, v_3\}$ forms a basis of $\R^3$. Compute the coordinates with respect to $\mathcal C$ for the vectors in (a) and (b). \\
+\\
+\gray{
+    (a) $x = 10v_1 - 7 v_2$, and $[x]_{\mathcal B} = (10, -7)$. \\
+    \\
+    (b) $y = 2v_1 - v_2 + (0, 1, 0)$, and $y \notin V$. \\
+    \\
+    (c) Let $v_3 = (0, 1, 0)$, then $[x]_{\mathcal C} = (10, -7, 0), [y]_{\mathcal C} = (2, -1, 1)$.
+}
+
+
+\newpage
+\noindent4. (a) \textbf{(7 points)} Compute the QR factorization of the matrix 
+$$A = \l[
+\begin{array}{cc}
+    1 & 6\\
+    1 & 4\\
+    1 & 6\\
+    1 & 4
+\end{array}
+\r]$$
+% (b) \textbf{(5 points)} Find the least-squares solution $x^\ast$ to $Ax = b$, where 
+% $$b = \l[
+% \begin{array}{c}
+% 	-3\\ 5\\ -3\\ 5
+% \end{array}\r].$$
+% $$B = \l[
+% \begin{array}{ccc}
+%     2& -1& 18\\
+%     2 & 1& 0\\
+%     1 & 2& 0
+% \end{array}
+% \r]$$
+(b) \textbf{(3 points)} Show for the above matrix $A$ and its QR factorization $A = QR$, $\|Ax\|^2 = \|Rx\|^2$ for all $x \in \R^2$. (Note the difference that $Ax \in \R^4$ and $Rx \in \R^2$.) \\
+\\
+% (b) \textbf{(3 points)} Compute the determinant of the matrix 
+% $$B = \l[
+% \begin{array}{ccc}
+%     6&-1&0\\
+%     5&4&0\\
+%     3&2&1
+% \end{array}
+% \r].$$
+% Is $B$ invertible? \\
+% \\
+\gray{
+    (a) 
+    $$Q = \/12\l[
+\begin{array}{cc}
+    1& 1\\
+    1& -1\\
+    1& 1\\
+    1& -1
+\end{array}
+\r], \quad
+R = \l[
+\begin{array}{cc}
+    2& 10\\
+    0& 2
+\end{array}
+\r]$$
+    % (b) 
+    % $$Q = \/13\l[
+% \begin{array}{ccc}
+    % 2& -2& 1\\
+    % 2& 1& -2\\
+    % 1& 2& 2
+% \end{array}
+% \r], \quad
+% R = \l[
+% \begin{array}{ccc}
+    % 3 & 0 & 12 \\
+    % 0 & 3 & -12\\
+    % 0 & 0 & 6
+% \end{array}
+% \r]$$
+% (b) 
+% $$x^\ast = (R^TR)^{-1} R^TQ^Tb = \/1{16}\l[
+% \begin{array}{cc}
+%     104& -20\\
+%     -20 & 4
+% \end{array}
+% \r]\l[
+% \begin{array}{c}
+%    4\\ 4
+% \end{array}
+% \r] = \l[
+% \begin{array}{c}
+%    10.5\\ -2 
+% \end{array}
+% \r].$$ \\
+The bonus problem follows from $A^TA = R^TR$.\\
+% \\
+% (b) $\det(B) = 29 \neq 0$ and $B$ is invertible.
+}
+
+\newpage
+\noindent5. \textbf{(Bonus problem. 5 points.)} Let $V$ be a subspace in $\R^m$. For the orthogonal projection $proj_V(x)$ for $x \in \R^m$, the following property always holds:
+$$x - proj_V(x) \in V^\perp.$$
+Use Pythagorean Theorem to show that 
+$$\|x-proj_V(x)\|^2 \leq \|x - y\|^2 \mbox{ for all } y \in V.$$
+\textit{Hint:} Since $y-proj_V(x) \in V$, we know that $x-proj_V(x)$ is perpendicular to $y - proj_V(x)$. Apply Pythagorean Theorem to the right triangle formed by these two vectors. 
+
+\end{document}
