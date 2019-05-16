@@ -1,0 +1,2 @@
+Sec.6.1. #1,9,21,29,35,43,49,51,57,63
+Sec.6.2. #9,15,29,31,37,39,41,55(This is a great problem!),56(Another great problem!),61
