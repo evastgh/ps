@@ -1,0 +1,217 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify Course title, instructor name, semester here %%%%%%%%
+
+\title{Syllabus of Math 156: Machine Learning}
+\author{Stephanie Wang}
+\date{Spring, 2020}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % Palatino needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+\usepackage[mmddyyyy]{datetime}% http://ctan.org/pkg/datetime
+\usepackage{advdate}% http://ctan.org/pkg/advdate
+\newdateformat{syldate}{\twodigit{\THEMONTH}/\twodigit{\THEDAY}}
+\newsavebox{\MONDAY}\savebox{\MONDAY}{Mon}% Mon
+\newcommand{\week}[1]{%
+%  \cleardate{mydate}% Clear date
+% \newdate{mydate}{\the\day}{\the\month}{\the\year}% Store date
+  \paragraph*{\kern-2ex\quad #1, \syldate{\today} - \AdvanceDate[4]\syldate{\today}:}% Set heading  \quad #1
+%  \setbox1=\hbox{\shortdayofweekname{\getdateday{mydate}}{\getdatemonth{mydate}}{\getdateyear{mydate}}}%
+  \ifdim\wd1=\wd\MONDAY
+    \AdvanceDate[7]
+  \else
+    \AdvanceDate[7]
+  \fi%
+}
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+
+\lhead{}
+\chead{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify header here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\rhead{\footnotesize Syllabus of Math 156: Machine Learning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\definecolor{clemsonorange}{HTML}{EA6A20}
+\hypersetup{colorlinks,breaklinks,linkcolor=clemsonorange,urlcolor=clemsonorange,anchorcolor=clemsonorange,citecolor=black}
+
+\begin{document}
+
+\maketitle
+
+\begin{tabular*}{.92\textwidth}{@{\extracolsep{\fill}}lr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+ & \\
+ Class Hours: MWF 3-3:50pm & Class Room: in the cloud via Zoom \\
+ Office Hours: MWF 4-4:50pm & Office: in the cloud via Zoom\\
+ E-mail: \texttt{evast@g.ucla.edu} & CCLE: \href{https://ccle.ucla.edu/course/view/20S-MATH156-1}{ccle.ucla.edu/course/view/20S-MATH156-1}\\ 
+ & \\
+\hline
+\end{tabular*}
+\vspace{5 mm}
+
+% First Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{General Informations}
+\begin{itemize}
+
+  \item \textbf{Prerequisites:} Math 115A (linear algebra), Math 164 (optimization), Math 170E \textit{or} Math 170A \textit{or} Stat 100A (intro to probability and statistics), CS31 \textit{or} PIC 10A (intro to programming).
+  
+  \item \textbf{Textbook:} \textit{Pattern Recognition and Machine Learning} by Christopher M. Bishop, Springer 2006.
+  
+  \item \textbf{Course outline:} Detailed course description and tentative lecture schedule at \\ \href{https://www.math.ucla.edu/ugrad/courses/math/156}{https://www.math.ucla.edu/ugrad/courses/math/156}.
+
+  \item \textbf{Midterm exam:} 
+   The midterm exam will be posted on May 4th 3:00pm PST.
+  You will have 24 hours to finish and upload your solution to CCLE by May 5th 2:59pm PST. 
+  You can use the textbook, any course material posted on CCLE, and your hand-written notes; you are \textbf{not allowed} to use calculators nor the Internet, and you \textbf{cannot} work with anyone else (classmate, family member, private tutor, etc.). 
+  You can scan or take high-resolution photos of your hand-written solutions, but the uploaded submission must be a single PDF file.
+  
+  \item\textbf{Final exam:}
+  The final exam will be posted on June 8th 3:00pm PST and is subject to the same regulations as the midterm exam. You have 24 hours to finish and upload your solution to CCLE by June 9th 2:59pm PST.
+  
+  \item \textbf{Working in groups:} 
+  A list of groups of five people will be randomly generated at the end of first week. You will work in groups for your final project, and you are strongly encouraged to work with the same group on term projects, too. \textbf{You are not allowed to collaborate on midterm and final exams. }
+
+  \item \textbf{Term projects:}
+  Five term projects will be posted throughout the quarter, each due in 10 days. 
+  Project tasks include theoretical exercises, programming practice, problem analysis, model comparison, and cost analysis of the method(s). 
+  You are encouraged to collaborate with your group on term projects; however, you must each write your solution in your own words and document the external source (reference, other collaborators, etc.).
+  Compile your report into a PDF file for submission. 
+  Each submission compiled in \LaTeX~receives 10\% extra credit. 
+  Late homework is subject to a 20\% penalty if submitted within two days. 
+  No submission is accepted after 48 hours past the original deadline. 
+  
+  \item \textbf{Final project:} 
+  Collaborate with your group to select and work on a machine learning problem. 
+  Submit the topic chosen by your group and a brief plan before May 4th 11:59pm to CCLE (one submission per group).
+  During the last two lectures of the quarter (June 3rd and June 5th), each group will give a 10-minute presentation and answer one question about their work. 
+  The group presentation will follow a randomly generated order, which will be posted on May 25th.
+  Every member of the group needs to give a part of the oral presentation. 
+  Submit the slides to CCLE (one submission per group) by June 1st 11:59pm. 
+  Submit a group report to CCLE (one submission per group) by June 7th 11:59pm. 
+  Group report must be four to eight pages long (excluding the data and programming code), formatted with single-space and in PDF file. \textbf{No late submission is accepted. }
+  
+  \item \textbf{Notice about academic integrity:} The instructor reserves the right to contact you for additional explanations of any work you submit (including group project). See \href{https://www.deanofstudents.ucla.edu/Individual-Student-Code#academicdis7}{Student Conduct Code \S 102.01} on academic dishonesty.
+  
+  \item \textbf{Notice about privacy protection during remote teaching:} The instructor, the TA, and the course coordinator (\href{https://www.math.ucla.edu/~deanna/}{Deanna Needell}) might record the lecture/discussion Zoom meetings. 
+  Enrolled students and participants of the course will receive advance notice of any such recording and can always opt out of video/audio/chat participation. 
+  \textbf{Students are not allowed to record any part of the lecture or discussion sessions, including video, audio, chat messages, and shared contents.} 
+  Disability accommodations relating to recordings are subject to specific regulations. 
+\end{itemize}
+
+\section*{Grading Policy}
+Course grades are given based on the higher of the following two schemes:
+\begin{itemize}
+  \item 50\% all five term projects + 20\% final project + 10\% midterm exam + 20\% final exam
+  \item 40\% four highest term projects + 25\% final project + 10\% midterm exam + 25\% final exam
+  \end{itemize}
+If any curving takes place, the curving will preserve percentiles and your curved grade is guaranteed to be larger than or equal to your original one.
+
+\section*{Tentative Schedule of Lectures}
+\begin{tabular*}{\textwidth}{cccc}
+
+Week & Date & Section & Topic \\
+\hline
+% Building theoretical foundation
+1 & M Mar 30 &   n/a   & Syllabus \\
+  & W Apr 1  &   1.1   & Polynomial Fitting \\
+  & F Apr 3  & 1.2.1-1.2.4   & Probability Theory \\
+ 
+\hline
+
+2 & M Apr 6  & 1.2.5   & Frequentist Curve Fitting \\
+  & W Apr 8  & 1.2.5   & Bayesian Curve Fitting \\
+  & F Apr 10 &   1.5   & Decision Theory \\
+  % 1.6 Information Theory
+  % 2.5 Nonparametric Methods
+  % 2.2-2.3 Gaussian \& Exponential Distribution
+ 
+\hline
+
+3 & M Apr 13 &   3.1   & Regression: Linear Basis Function Models \\
+  & W Apr 15 &   3.3   & Regression: Bayesian Linear Regression \\
+  & F Apr 17 & 6.1-6.2 & Dual Representation \& Kernels \\
+ 
+\hline
+
+4 & M Apr 20 &   3.5   & Regression: Evidence Approximation \\ % might be too challenging
+  & W Apr 22 &   4.1   & Classification: Discriminant Functions \\
+  & F Apr 24 &   4.2   & Classification: Probabilistic Generative Models \\
+  
+  %3   & Classification: Probabilistic Discriminative Models \\
+ 
+\hline
+
+5 & M Apr 27 &   4.3   & Classification: Probabilistic Discriminative Models \\
+% 7.1   & Classification: Maximum Margin Classifiers \\
+  & W Apr 29 & 4.1.7, 5.1 & Neural Network: Perceptron \& Feed-forward Networks \\
+  & F May 1  & 5.2-5.3 & Neural Network: Network Training \& Error Backpropagation\\
+  % Neural Network: Supervised v.s. Unsupervised Learning \\
+ 
+\hline
+
+6 & M May 4  &    -    & \textbf{Midterm} \\
+  & W May 6  &   12.1  & Dimension Reduction: Principal Component Analysis \\
+  & F May 8  &   12.2  & Dimension Reduction: Probabilistic PCA \\ % might be challenging
+ 
+\hline
+
+7 & M May 11 &   12.3  & Dimension Reduction: Kernel PCA \\
+  & W May 13 &   12.4  & Dimension Reduction: Nonlinear Latent Variable Models \\
+  & F May 15 &   n/a   & Dimension Reduction: Neural Network \& Autoencoders \\
+ 
+\hline
+
+8 & M May 18 &   9.1   & Clustering: $K$-means Clustering \\  
+  & W May 20 &   9.2   & Clustering: Mixtures of Gaussians \\
+  & F May 22 &  6.4.5  & Clustering: Gaussian Processes for Classification \\
+ 
+\hline
+
+9 & M May 25 &    -    & \textbf{Memorial Day} \\
+  & W May 27 &   n/a   & Clustering: Neural Network Clustering \\
+  & F May 29 &   14.3  & Advanced Topics: Boosting \\ % and Bagging?
+ 
+\hline
+
+10& M Jun 1  &  6.4.2  & Advanced Topics: TBD \\ %  Gaussian Processes Regression?
+  & W Jun 3  &    -    & \textbf{Final Project Presentation} \\
+  & F Jun 5  &    -    & \textbf{Final Project Presentation} \\
+ 
+\hline
+\end{tabular*}
+\end{document}

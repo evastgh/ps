@@ -1,0 +1,81 @@
+
+
+
+
+
+
+
+%Consider a two-layer neural network with no activation function,
+%\begin{equation*}
+%	\begin{split}
+%		\mathbf z^{(0)} &= \v x \in \R^D \\
+%		\mathbf z^{(1)} &= \v b + \v A \v z^{(0)} \in \R^M \\
+%		\mathbf z^{(2)} &= \v y(\v x, \v A, \v B, \v b, \v d) = \v d + \v B \v z^{(1)} \in \R^D.
+%	\end{split}
+%\end{equation*}
+%Notice the input and output dimension are both $D$. Now consider using this network for regression problem to approximate the input data set $\mathcal D = \{\v x^{(i)} \}_{i=1}^N$ itself, i.e.
+%\begin{equation*}
+%	\min_{\v A, \v B, \v b, \v d} \/12 \SUM{i=1}N \| \v x^{(i)} - \v y(\v x^{(i)}, \v A, \v B, \v b, \v d) \|^2.
+%\end{equation*}
+%\begin{enumerate}[label=(\alph*)]
+%	\item Show that there's a redundancy and the problem is equivalent to 
+%		\begin{equation*}
+%			\min_{\v A, \v B, \v b} \/12 \SUM{i=1}N \| \v x^{(i)} - (\v B\v A \v x^{(i)} + \v b)\|^2,
+%		\end{equation*}
+%		where $\v A \in \R^{M\x D}, \v B \in \R^{D \x M}, \v d \in \R^D$. (10 points)
+%	%
+%	\item Principal Component Analysis (PCA) takes the orthogonal eigendecomposition of the sample covariance 
+%\begin{equation*}
+%	\v S = \/1N \SUM{i=1}N \v x^{(i)} {\v x^{(i)}}^T - \bar{\v x} {\bar {\v x}}^T = \v U\v L\v U^T,
+%\end{equation*}
+%and take the first $M$ columns of $\v U$ as principal components. Consider the following block matrix form,
+%\begin{equation*}
+%	\v U = [\v U_1, \v U_2], \hskip20pt \v L = \l[
+%	\begin{array}{cc}
+%		\mathbf L_1 & \mathbf O \\
+%		\mathbf O &   \mathbf L_2
+%	\end{array}
+%	\r]
+%\end{equation*}
+%where $\v U_1 \in \R^{D\x M}, \v U_2 \in \R^{D\x (D-M)}$ and $\v L_1 \in \R^{M\x M}, \v L_2 \in \R^{(D-M)\x (D-M)}$ are diagonal such that eigenvalues in $\v L_1$ are the $M$ largest ones. Show that 
+%\begin{equation*}
+%	\v U \l[
+%	\begin{array}{cc}
+%		\mathbf L_1 & \mathbf O \\
+%		\mathbf O & \mathbf O
+%	\end{array}
+%	\r]\v U^T = \v U_1 \v L_1 \v U_1^T. \text{(10 points)}
+%\end{equation*}
+%Thus $\v U_1 \v L_1 \v U_1^T$ approximates $\v S$. (This is true even in the rigorous manner $\|\v S - \v U_1 \v L_1 \v U_1^T \|_{2}$ is less than or equal to the smallest eigenvalue in $\v L_1$, where $\|\cdot\|_2$ denotes the Euclidean operator norm. You don't need to prove this.)
+%%
+%\item PCA compresses data $\v x^{(i)}$ ($D \x N$ entries) into $\v z^{(i)} = \v U_1^T (\v x^{(i)} - \bar{\v x}) \in \R^M$ ($M \x N$ entries) and $\bar{\v x} \in \R^D$ ($D$ entries) and the matrix $\v U_1 \in \R^{D\x M}$ for recovery ($D\x M$ entries).
+
+%\end{enumerate}
+
+
+
+
+
+
+classifies the point to $K$ clusters by the iterating the following update until convergence:
+\begin{equation*}
+\begin{split}
+\boldsymbol\mu_k &\leftarrow \frac{\SUM{i=1}N \gamma_k^{(i)} \v x^{(i)} }{\SUM{i=1}N \gamma_k^{(i)}} \text{ (average $\v x^{(i)}$ in cluster)} \\
+\boldsymbol\gamma^{(i)} &\leftarrow \v e_k, \text{ where } k = \argmin_{j}\|\v x^{(i)} - \boldsymbol\mu_j\|^2 \text{ (nearest cluster)}.
+\end{split}
+\end{equation*}
+%
+\begin{enumerate}[label=(\alph*)]
+	\item
+	Denote $\v M = [\boldsymbol\mu_1, \cdots, \boldsymbol\mu_K] \in\R^{D\x K}$ and $\boldsymbol\Gamma = [\boldsymbol\gamma^{(1)}, \cdots, \boldsymbol\gamma^{(N)}] \in \R^{K\x D}$. Show that the above iteration is equivalent to 
+	\begin{equation*}
+	\begin{split}
+		\mathbf M^{\tau+1} &\leftarrow \argmin_{\v M} J(\v M, \boldsymbol\Gamma^\tau) \\
+		\boldsymbol\Gamma^{\tau+1} &\leftarrow \argmin_{\boldsymbol\Gamma} J(\v M^{\tau+1}, \boldsymbol\Gamma), 
+	\end{split}
+	\end{equation*}
+	where $\tau$ is the index for each iteration, and 
+	\begin{equation*}
+		J([\boldsymbol\mu_1, \cdots, \boldsymbol\mu_K], [\boldsymbol\gamma^{(1)}, \cdots, \boldsymbol\gamma^{(N)}]) = 
+	\end{equation*}
+\end{enumerate}

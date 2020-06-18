@@ -1,0 +1,195 @@
+\documentclass[12pt,a4paper]{article}
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{University of California -- Los Angeles Spring 2020}\lhead{Math 156 Term Project 2}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx} \graphicspath{{}}
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[4]{\left \{ \begin{array}{ll} {#1},&{#2}\\{#3},&{#4} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+\newcommand\ie{{\it i.e. }}
+\newcommand\wrt{{w.r.t. }}
+\newcommand\dom{\mathbf{dom\:}}
+
+%%% --Frequently used VARIABLES shorthand
+\newcommand{\R}{\ifmmode\mathbb R\fi}
+\newcommand{\N}{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\w}{\wedge}
+\newcommand{\ome}{\omega}
+\newcommand{\lam}{\lambda}
+\newcommand{\im}{\mbox{im}}
+
+\newcommand{\B}{\mathcal B}
+\newcommand{\var}{\mbox{var}}
+\newcommand{\E}{\mathbb{E}}
+
+%\usepackage{showkeys}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Math 156 Term Project 2}
+\author{\textbf{Deadline:} Tuesday May 5th 11:59pm}
+\date{}
+\maketitle
+
+\subsubsection*{Problem 1}
+Recall in linear Bayesian regression, we assume the data set $\mathcal D = \{ (\v x_i, t_i) \}_{i=1}^N$ satisfies a pattern
+\begin{equation*}
+t_i = f(\v x_i) + \epsilon_i
+\end{equation*}
+for some function $f: \R^D \ra1 \R$. We assume the noises $\{\epsilon_i\}_{i=1}^N$ are i.i.d. $\sim \mathcal N(0, \beta^{-1})$. 
+We wish to approximate the function $f(\v x)$ with a function $y(\v x, \v w)$,
+\begin{equation*}
+y(\v x, \v w) = \v w^T \boldsymbol\phi(\v x),
+\end{equation*}
+where $\v x\in \R^M$ is a coefficient vector, and $\boldsymbol\phi(\v x) = (1, \v x)$ (the \textit{basis function}). We then view $\v w$ as a random variable and assume the distribution $\v w \sim N(\mathbf 0, \alpha^{-1}\mathbf I)$ (the \textit{prior}). By Bayes' Theorem, the probability of the coefficients $\v w$ given the training data set $\mathcal D = \{ (\v x_i, t_i) \}_{i=1}^N$ (the \textit{posterior probability}) is 
+\begin{equation}
+p(\v w \vert \mathcal D) = \frac{p(\mathcal D \vert \v w) p(\v w)}{p(\mathcal D)}.
+\label{posterior}
+\end{equation}
+To approximate $f(\v x)$ with $y(\v x, \v w)$, we search for the optimal coefficient $\v w^\ast$ that maximizes the posterior probability. 
+\begin{enumerate}[label=(\alph*)]
+\item Explain why we can search for $\v w^\ast$ that maximizes $p(\mathcal D \vert \v w) p(\v w)$ instead of the expression in Equation~\eqref{posterior}. (5 points)
+\item The \textit{likelihood function}, as a result of the noise distribution, is given by
+\begin{align*}
+p(\mathcal D \vert \v w) 
+%&= \PROD{i=1}N p(t_i = y(\v x_i, \v w) + \epsilon_i) = \PROD{i=1}N p(\epsilon_i = t_i - y(\v x_i, \v w)) \\
+%&= \PROD{i=1}N \mathcal N(t_i - y(\v x_i, \v w) \vert 0, \beta^{-1}) 
+= \PROD{i=1}N \/1{\sqrt{2\pi \beta^{-1}}} \exp\l(\/{|t_i - y(\v x_i, \v w)|^2}{2\beta^{-1}} \r).
+\end{align*}
+Combine this and the distribution of $\v w$, find the conditional expectation $\mathbb E[\v w \vert \mathcal D]$ and conditional covariance matrix $\mbox{Var}[\v w \vert \mathcal D]$. (15 points) \\
+Hint: Multiplying two Gaussian $p(\mathcal D \vert \v w)$ and $p(\v w)$ results to an Gaussian p.d.f.-like function, hence the posterior $p(\v w \vert \mathcal D)$ is also Gaussian. Try to write $p(\mathcal D \vert \v w)p(\v w)$ into the form of a Gaussian p.d.f. and complete the squares to figure out the mean and covariance matrix.
+\end{enumerate}
+
+\subsubsection*{Problem 2}
+In Section 4.1, we explore classification with linear discriminants, that is, the decision boundary are hypersurfaces. For a $K$-class classification problem, we construct $K$ linear functions
+\begin{equation*}
+y_{[k]}(\v x) = \v w_{[k]}^T \v x + w_{0, [k]}
+\end{equation*}
+where the weights $\v w_{[k]}$ and biases $w_{0, [k]}$ (for each class $k = 1, \cdots, K$) are to be determined. The decision regions $\mathcal R_{[k]}$ are given by
+\begin{equation*}
+\mathcal R_{[k]} = \l\{ \v x \in \R^D \vert \argmax_{\kappa} y_{[\kappa]}(\v x) = k \r\}. 
+\end{equation*}
+(Note that $\kappa$ and $k$ are two different symbols though visually very similar.) Prove that these decision regions $\mathcal R_{[k]}$ are convex. (10 points)
+
+\subsubsection*{Problem 3}
+Visit the \href{https://archive.ics.uci.edu/ml/index.php}{\textbf{UCI Machine Learning Repository}}. The UCI Machine Learning Repository is a collection of databases (and more) that are used by the machine learning community for the empirical analysis of machine learning algorithms. It is strongly suggested that you find inspiration for your final project from this repository. (Be mindful of their \href{https://archive.ics.uci.edu/ml/citation_policy.html}{citation policy}.) Look for \href{https://archive.ics.uci.edu/ml/datasets.php?format=&task=cla&att=&area=&numAtt=&numIns=&type=&sort=instUp&view=table}{data sets with Classification as their Default Task}. Select a data set with \#instances $\leq$ 1000 (this is to ensure the task doesn't get harder than the scope of term projects) and make sure you \textbf{cite the data set at the end of your submission}. I suggest you use the \href{https://archive.ics.uci.edu/ml/datasets/Breast+Tissue}{Breast Tissue Data Set} unless you're specifically motivated for any particular data set. 
+
+\begin{enumerate}[label=(\alph*)]
+\item Write down the mathematical plan for your regression/classification on the data set. You can use the basis function $\boldsymbol\phi (\v x) = (1, \v x)$ from linear regression and an estimator $y(\v x, \v w) = \v w^T \boldsymbol\phi(\v x)$. What is your minimization problem? Provide a statistical model behind it. (30 points)
+
+\item Download and read the data into your program. (10 points)
+
+\item Solve the problem numerically. That is, solve the optimization problem and find the optimal parameter $\v w^\ast$. (15 points) Use the firsts 50\% of data for training and the rest 50\% for validation. Verify the your result using the test data and report your accuracy rate. You can use any existing library to perform this task as long as you can explain its mathematical structure in task (a). (15 points)
+
+\item \textbf{(Bonus)} Use different strategies to divide the data set into training and validation sets. How does your accuracy rate change? (up to 15 points)
+\end{enumerate}
+%
+\textbf{Important submission note: (same as term project \# 1)}
+You can use any programming language to accomplish the coding tasks. The university now provides MATLAB access to all UCLA students, see \href{https://www.it.ucla.edu/news/matlab-software-now-available}{https://www.it.ucla.edu/news/matlab-software-now-available}. Other high-level programming languages suitable for our tasks include Python, R, Julia, Octave, and more. The instructor and the TA guarantee assistance with MATLAB programming and can potentially help you trouble shoot your code in other programming languages (not guaranteed). If you wish to email us asking for programming assistance, please attach your code, highlight the part in question, and articulate your problems. Please attach your code at the end of your pdf submission as plain text and document a list of your collaborators and external resource. This document is created with \LaTeX{} and you can find the source .tex file on CCLE. For more \LaTeX{} help, check out \href{https://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/}{this \LaTeX{} tutorial link}, or take a look at my \href{https://raw.githubusercontent.com/evastgh/ps/master/template.tex}{template .tex file}.
+
+
+
+
+
+\end{document}
+
+
+

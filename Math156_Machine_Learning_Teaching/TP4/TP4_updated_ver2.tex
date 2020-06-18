@@ -1,0 +1,202 @@
+\documentclass[12pt,a4paper]{article}
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=2in, bottom=1in, left=1in, right=1in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{University of California -- Los Angeles Spring 2020}\lhead{Math 156 Term Project 4}
+
+\usepackage{enumitem}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+\usepackage{graphicx} \graphicspath{{}}
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=blue,breaklinks=true}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}\renewcommand{\r}{\right}
+
+\newcommand{\casebrak}[4]{\left \{ \begin{array}{ll} {#1},&{#2}\\{#3},&{#4} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+\newcommand\ie{{\it i.e. }}
+\newcommand\wrt{{w.r.t. }}
+\newcommand\dom{\mathbf{dom\:}}
+
+%%% --Frequently used VARIABLES shorthand
+\newcommand{\R}{\ifmmode\mathbb R\fi}
+\newcommand{\N}{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\w}{\wedge}
+\newcommand{\ome}{\omega}
+\newcommand{\lam}{\lambda}
+\newcommand{\im}{\mbox{im}}
+
+\newcommand{\B}{\mathcal B}
+\newcommand{\var}{\mbox{var}}
+\newcommand{\E}{\mathbb{E}}
+
+%\usepackage{showkeys}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Math 156 Term Project 4}
+\author{\textbf{Deadline:} Friday May 29th 11:59pm}
+\date{}
+\maketitle
+
+\subsubsection*{Problem 1}
+Let $\mathcal{D}=\{\v x^{(i)}\}_{i=1}^N\subset \R^D$ be a dataset of $N$ points.  Recall that the sample mean is given by
+\begin{equation*}
+	\bar{\v x} = \/1N \SUM{i=1}N \v x^{(i)},
+\end{equation*}
+and the sample covariance matrix is given by
+\begin{equation*}
+	\v S = \/1N \SUM{i=1}N \v x^{(i)} {\v x^{(i)}}^T - \bar{\v x} {\bar {\v x}}^T \in \R^{D \x D}.
+\end{equation*}
+Take the orthogonal eigendecomposition of the sample covariance matrix $\v S = \v U \v L \v U^T$, where $\v U = [\v u_1, \cdots, \v u_D ]$ consisting of the orthonormal eigenbasis, arranged in the order so that their associated eigenvalues $\v L = \text{diag}(\lambda_1, \ldots, \lambda_D)$ are in descending order, i.e. $\lambda_1\geq \lambda_2\geq \cdots \geq \lambda_D\geq 0$. These eigenvectors are called the \textit{principal components of the dataset}.
+\begin{enumerate}[label=(\alph*)]
+	\item Show that every data point $\v x^{(i)}\in\mathcal D$ can be written in the form
+\begin{equation*}
+	\v x^{(i)} = \bar{\v x} + \SUM{j=1}D \v u_j^T(\v x^{(i)} - \bar{\v x}) \v u_j. \hskip20pt \text{(10 points)}
+\end{equation*}
+	Further more, show that this identity can be expressed in matrix form,
+	\begin{equation*}
+		\v x^{(i)} = \bar{\v x} + \v U \v U^T(\v x^{(i)} - \bar{\v x}). \hskip20pt \text{(5 points)}
+	\end{equation*}
+	%
+	\item Let $V \subset \R^d$ be an arbitrary $M$-dimensional subspace spanned by the orthonormal vectors $\{\v v_1,\cdots, \v v_M\}$. The orthogonal projection $\pi_V$ of a vector $\v x \in \R^D$ onto $V$ is given by 
+	\begin{equation*}
+		\pi_V(\v x) = \SUM{j=1}M \v v_j^T \v x \v v_j. \hskip20pt.
+	\end{equation*}
+	Let $\v V = [\v v_1, \cdots, \v v_M] \in \R^{D\x M}$, show that $\pi_V(\v x) = \v V\v V^T \v x$ (10 points).
+	%
+\item Principal Component Analysis (PCA) reduces the dimensionality of the data by projecting the data onto the subspace spanned by the first $M$ principal components ($M \leq D$). In particular, the first $M$ eigenvectors $\v u_1, \cdots, \v u_M$ of the sample covariance matrix $\v S$ spans the \textit{principal subspace} $\mathcal P_M$. PCA projects the data points onto this $M$-dimensional subspace $\mathcal P_M$ by utilizing the orthogonal projection discussed in part (b).
+	\begin{equation*}
+		\tilde {\v x}^{(i)} = 
+		\bar{\v x} + \pi_{\mathcal P_M}(\v x^{(i)} - \bar{\v x}).
+	\end{equation*}
+The mean squared error of the PCA projection onto the $M$-dimensional principal subspace $\mathcal P_M$ is
+\begin{equation*}
+	E_M = \/1N\SUM{i=1}N \| \tilde{\v x}^{(i)} - \v x^{(i)} \|^2.
+\end{equation*}
+Show that 
+\begin{equation*}
+	E_M = \SUM{j=M+1}D \lambda_j. \hskip20pt \text{(25 points)}
+\end{equation*}
+Hence by looking at the eigenvalues of the sample covariance matrix $\v S$ we can decide how to choose the cutoff value $M$ for the dimension. \\
+Hint: There's a chance that you might like the following block matrix form
+\begin{equation*}
+	\v U = [\v u_1, \cdots, \v u_D] = [\  \v U_1\  \vert \ \v U_2\ ]
+\end{equation*}
+where $\v U_1 = [\v u_1 \cdots, \v u_M] \in \R^{D\x M}$ consists of the first $M$ columns of $\v U$, and $\v U_2 = [\v u_{M+1}, \cdots, \v u_D] \in \R^{D \x (D-M)}$ consists of the other columns of $\v U$. 
+\end{enumerate}
+
+
+
+
+
+
+
+
+\subsubsection*{Problem 2}
+In this problem, you will implement PCA and use it for high-dimensional data visualization. There are a few components in this problem that you can make it with your own style. First, as usual, you can use any programming language and any external, openly available library to finish our tasks. Secondly, you can select the data set that you're using. For example, you can use the \href{https://archive.ics.uci.edu/ml/datasets/iris}{Iris Data Set from UCI Machine Learning Repository}. Perform PCA on the data set with effective dimension $M = 2$. Plot the result as Figure 12.8 in the textbook (p. 569) while coloring data points from different class in different color/shape. (50 points)
+
+\subsubsection*{Problem 3 (Bonus)}
+Generate your own data set $\mathcal D = \{ \v x^{(i)} \}_{i=1}^N$ with $N = 600$ data points and $\v x^{(i)} \in \R^D, D = 56$ (56 attributes). The data set should consist of three blobs,
+\begin{align*}
+	\mathbf x^{(i)} &\sim \mathcal N(\v 0, 0.25\v I) \text{ for } i = 1, \cdots, 200, \\
+	\mathbf x^{(i)} &\sim \mathcal N(\v u, 0.25\v I) \text{ for } i = 201, \cdots, 400, \\
+	\mathbf x^{(i)} &\sim \mathcal N(-\v u, 0.25\v I) \text{ for } i = 401, \cdots, 600,
+\end{align*}
+where $\v u \in \R^D$ is a random unit vector. (I'm okay with you using uniform distribution in the cube $[0, 1]^D$ and normalize. The process of generating an unit vector in a true random manner is not important to our task.) Perform the same task of high-dimensional data visualization as in Problem 2. Explain your result. (up to 20 points)
+
+
+\end{document}
+
+
+

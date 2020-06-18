@@ -1,0 +1,267 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=1.1in, bottom=.9in, left=.9in, right=.9in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{May 4, 2019}\lhead{Math 156 -- Midterm}
+
+\usepackage{nicefrac, tabularx}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+
+\newcommand{\solution}[1]{\gray{#1}}
+
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+%\usepackage{graphicx} \graphicspath{ {/path/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+
+%\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+% \newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+% \newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\noindent\textbf{Instructions:}
+\begin{itemize}
+	\item This midterm is designed to be finished \textbf{within 50 minutes}. 
+		The additional 20 minutes are designed for scanning and uploading your submission and any potential technical difficulty. 
+    \item Follow directions and answer questions with requested supporting work.
+    \item Clearly indicate your answer in the allotted space or by putting a box around it.
+    \item The midterm exam will be posted on May 4th 3:00pm PST. You will have 24 hours to finish and upload your solution to CCLE by May 5th 2:59pm PST. You can use the textbook, any course material posted on CCLE, and your hand-written notes; you are not allowed to use calculators nor the Internet, and you cannot work with anyone else (classmate, family member, private tutor, etc.). You can scan or take high-resolution photos of your hand-written solutions, but the uploaded submission must be a single PDF file.
+\end{itemize}
+
+\newpage
+\subsubsection*{Problem 1}
+Given a data set 
+\begin{equation*}
+\mathcal D = \{ (\v x^{(i)}, t^{(i)}) \}_{i=1}^N, \hskip10pt \v x^{(i)} \in \R^D, t^{(i)} \in \R.
+\end{equation*}
+Fixing an integer $M \in \N$ and a basis function $\boldsymbol\phi: \R^D \ra1 \R^M$. The regression problem is about finding the best parameter $\v w \in \R^M$ so
+\begin{equation*}
+t^{(i)} = \v w^T \boldsymbol\phi(\v x^{(i)}) + \boldsymbol \epsilon^{(i)}
+\end{equation*}
+where $\epsilon^{(i)} \sim \mathcal N(0, \beta^{-1})$ are independent identical (unbiased) Gaussian noise. \\
+\\
+(a) Write down a formula for the likelihood function $p(\mathcal D \vert \v w, \beta)$. (10 points) \\
+\\
+(b) Show that the maximum likelihood solution 
+\begin{equation*}
+\v w^\ast_\beta = \argmax_{\v w} p(\mathcal D \vert \v w, \beta)
+\end{equation*} for any value of $\beta > 0$ is the same as the least square solution 
+\begin{equation*}
+\overline {\v w} = \argmin_{\v w} \frac12 \l|t_i - y(x^{(i)}, \v w)\r|^2. \hskip20pt\text{(10 points)}
+\end{equation*}
+(c) Fixing the model complexity $M \in \N$, give three examples of the basis function $\boldsymbol\phi(\v x)$. (10 points)
+
+
+\newpage
+\subsubsection*{Problem 2}
+Suppose a data set $\mathcal D = \{ (\v x^{(i)}, t^{(i)})\}_{i=1}^N$ is given. $\v x^{(i)} \in \R^D, t^{(i)} \in \R$ for $i = 1, \cdots, N$. \\
+\\
+(a) Show that the optimal solution $\v w^\ast = \argmin J(\v w)$ for a regularized sum-of-squares error function
+\begin{equation*}
+J(\v w) = \/12 \SUM{i=1}N \l(t^{(i)} - \v w^T \boldsymbol\phi(\v x^{(i)}) \r)^2 + \/\lambda2\|\v w\|^2,
+\end{equation*}
+where $\lambda > 0$, is a linear combination of the vectors $\{\boldsymbol \phi(\v x^{(i)}) \}_{i=1}^N$. In other words, show that 
+\begin{equation*}
+\v w^\ast = \SUM{i=1}N a^{(i)} \boldsymbol\phi(\v x^{(i)})
+\end{equation*}
+for some scalars $a^{(i)} \in \R, i = 1, \cdots, N$. (10 points) \\
+\\
+(b) We define the Gram matrix 
+\begin{equation*}
+\v K = [\ K_{ij}\ ] = [\ \boldsymbol\phi(\v x^{(i)})^T \boldsymbol\phi(\v x^{(j)}) \ ] \in \R^{N \x N}.
+\end{equation*}
+Show that $\v K$ is symmetric semi-positive definite. (10 points) \\
+%hence $\v K + \lambda \v I$ is always invertible for any $\lambda > 0$ (5 points). \\
+\\
+(c) Show that the coefficients from part (a) satisfy
+\begin{equation*}
+(\v K + \lambda \v I) \l[
+\begin{array}{c}
+a^{(1)} \\
+a^{(2)} \\
+\vdots \\
+a^{(N)}
+\end{array}
+\r] =  
+\l[
+\begin{array}{c}
+t^{(1)} \\
+t^{(2)} \\
+\vdots \\
+t^{(N)}
+\end{array}
+\r]. \hskip20pt \text{(10 points)}
+\end{equation*}
+
+
+
+
+
+
+\newpage
+\subsubsection*{Problem 3}
+Consider the two-class classification problem. Denote the data set $\mathcal D = \{(\v x^{(i)}, t^{(i)}) \}_{i=1}^N$ where 
+\begin{equation*}
+t^{(i)} = \l\{{1, \;\; i \in C_{[1]} \atop 0, \;\; i \in C_{[2]}} \r.
+\end{equation*}
+is the target variable encoding the class membership. \\
+\\
+(a) Suppose $p(\v x \vert C_{[1]}) \sim \mathcal N(\boldsymbol\mu_{[1]}, \boldsymbol\Sigma)$ and $p(\v x \vert C_{[2]}) \sim \mathcal N(\boldsymbol\mu_{[2]}, \boldsymbol\Sigma)$, that is, data from two classes scatter around different class-specific mean but share the same covariance matrix. Denote $p(C_{[1]}) = \pi$, hence $p(C_{[2]}) = 1-\pi$. The likelihood function is given by 
+\begin{equation*}
+\begin{split}
+p(\mathcal D \vert \pi, \boldsymbol\mu_{[1]}, \boldsymbol\mu_{[2]}, \boldsymbol\Sigma) 
+% & = \l(\prod_{i\in C_{[1]}} p(C_{[1]}) p(\v x^{(i)} \vert C_{[1]}) \r)
+%\cdot \l(\prod_{i\in C_{[2]}}  p(C_{[2]}) p(\v x^{(i)} \vert C_{[2]}) \r)\\
+& = \l(\prod_{i\in C_{[1]}} \pi \mathcal N(\v x^{(i)} \vert \boldsymbol\mu_{[1]}, \boldsymbol\Sigma)  \r) 
+\cdot \l(\prod_{i\in C_{[2]}} (1-\pi)  \mathcal N(\v x^{(i)} \vert \boldsymbol\mu_{[2]}, \boldsymbol\Sigma)\r)
+\end{split}
+\end{equation*}
+Show that the maximum likelihood estimate of the class probability $\pi$ is given by the fraction of data points in $C_{[1]}$, i.e.
+\begin{equation*}
+\argmax_{\pi} p(\mathcal D \vert \pi, \boldsymbol\mu_{[1]}, \boldsymbol\mu_{[2]}, \boldsymbol\Sigma) = \frac{ \#\{i : i \in C_{[1]} \} 
+}N. \hskip20pt \text{(10 points)}
+\end{equation*}
+(b) The \textit{logistic sigmoid} function is defined by
+\begin{equation*}
+\sigma(b) = \frac1{1+e^{-b}}.
+\end{equation*}
+Show that (i) $\sigma(-b) = 1-\sigma(b)$, (ii) $\sigma$ is a monotonically increasing function, and (iii) $\sigma$ maps all of $\R$ onto the interval $(0, 1)$. (15 points) \\
+\\
+(c) In an approach different from part (a), we suppose that $p(C_{[1]} \vert \v x) = \sigma(\v w^T \boldsymbol\phi(\v x))$ where $\v w \in \R^M$ is a coefficient vector to be trained. According to part (b), $p(C_{[2]} \vert \v x) = \sigma(-\v w^T \boldsymbol\phi(\v x))$. The likelihood function is then given by this different formula,
+\begin{equation*}
+p(\mathcal D \vert \v w) = \l(\prod_{i\in C_{[1]}} \sigma(\v w^T \boldsymbol\phi(\v x^{(i)}))\r) \cdot \l(\prod_{i\in C_{[2]}} \sigma( - \v w^T \boldsymbol\phi(\v x^{(i)}))\r).
+\end{equation*}
+Define the error function $E(\v w) = -\log p(\mathcal D \vert \v w)$ to be the negative logarithm of the likelihood. Compute $\nabla E(\v w)$ and explain why the maximum likelihood estimate $\nabla E(\v w^\ast) = 0$ doesn't have an analytical solution. (15 points) \\
+\\
+(d) \textbf{(Bonus)} Provide a strategy to compute the optimal solution $\v w^\ast$ numerically. (up to 10 points)
+
+\end{document}
+
+
+
+
+
+
+
+
+Write down the definition for a \textit{kernel} function $k: \R^D \x \R^D \ra1 \R$. (5 points) \\
+\\
+(b) Show that 
+\begin{equation*}
+k(\v x, \v x') = e^{-\/12 \| \v x - \v x'\|^2}
+\end{equation*}
+defines a kernel function. You can assume if $k_1(\v x, \v x')$ is a kernel, then $k_2(\v x, \v x') := \exp(k_1(\v x, \v x'))$ is a kernel, too. (10 points) \\
+\\
+
+
+
+
+(Non-uniqueness of weight vector and bias) Suppose the following linear discriminant 
+\begin{equation*}
+y(\v x, \v w^\ast, w_0^\ast) = (\v w^\ast)^T \v x + w_0^\ast, 
+\end{equation*}
+\begin{equation*}
+\v x \in \l\{ {
+C_{[1]}, \text{ if } y(\v x, \v w^\ast, w_0^\ast) > 0 
+\atop
+C_{[2]}, \text{ if } y(\v x, \v w^\ast, w_0^\ast) < 0
+} \r.
+\end{equation*}
+separates the two classes on the data set. Show that for any $\alpha >0$, $(\alpha \v w^\ast, \alpha w_0^\ast)$ separates the data set as well. (5 points)
+
+

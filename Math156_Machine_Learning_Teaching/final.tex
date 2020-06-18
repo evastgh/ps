@@ -1,0 +1,299 @@
+\documentclass[12pt,a4paper]{article}
+	%[fleqn] %%% --to make all equation left-algned--
+
+% \usepackage[utf8]{inputenc}
+% \DeclareUnicodeCharacter{1D12A}{\doublesharp}
+% \DeclareUnicodeCharacter{2693}{\anchor}
+% \usepackage{dingbat}
+% \DeclareRobustCommand\dash\unskip\nobreak\thinspace{\textemdash\allowbreak\thinspace\ignorespaces}
+\usepackage[top=1.1in, bottom=.9in, left=.9in, right=.9in]{geometry}
+%\usepackage{fullpage}
+
+\usepackage{fancyhdr}\pagestyle{fancy}\rhead{June 8, 2020}\lhead{Math 156 -- Final}
+\usepackage{enumitem}
+
+\usepackage{nicefrac, tabularx}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts,microtype,stmaryrd}
+	%{mathtools,wasysym,yhmath}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\fgreen}[1]{\textcolor{ForestGreen}{#1}}
+
+
+\newcommand{\solution}[1]{\gray{#1}}
+
+
+\usepackage{mdframed}
+	%\newtheorem{mdexample}{Example}
+	\definecolor{warmgreen}{rgb}{0.8,0.9,0.85}
+	% --Example:
+	% \begin{center}
+	% \begin{minipage}{0.7\textwidth}
+	% \begin{mdframed}[backgroundcolor=warmgreen, 
+	% skipabove=4pt,skipbelow=4pt,hidealllines=true, 
+	% topline=false,leftline=false,middlelinewidth=10pt, 
+	% roundcorner=10pt] 
+	%%%% --CONTENTS-- %%%%
+	% \end{mdframed}\end{minipage}\end{center}	
+
+%\usepackage{graphicx} \graphicspath{ {/path/} }
+	% --Example:
+	% \includegraphics[scale=0.5]{picture name}
+%\usepackage{caption} %%% --some awful package to make caption...
+
+%\usepackage{hyperref}\hypersetup{linktocpage,colorlinks}\hypersetup{citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+%%% --Text Fonts
+%\usepackage{times} %%% --Times New Roman for LaTeX
+%\usepackage{fontspec}\setmainfont{Times New Roman} %%% --Times New Roman; XeLaTeX only
+
+%%% --Math Fonts
+\renewcommand{\v}[1]{\ifmmode\mathbf{#1}\fi}
+%\renewcommand{\mbf}[1]{\mathbf{#1}} %%% --vector
+%\newcommand{\ca}[1]{\mathcal{#1}} %%% --"bigO"
+%\newcommand{\bb}[1]{\mathbb{#1}} %%% --"Natural, Real numbers"
+%\newcommand{\rom}[1]{\romannumeral{#1}} %%% --Roman numbers
+
+%%% --Quick Arrows
+\newcommand{\ra}[1]{\ifnum #1=1\rightarrow\fi\ifnum #1=2\Rightarrow\fi\ifnum #1=3\Rrightarrow\fi\ifnum #1=4\rightrightarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsto\fi\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadrightarrow\fi\ifnum #1=9\rightharpoonup\fi\ifnum #1=0\rightharpoondown\fi}
+
+%\newcommand{\la}[1]{\ifnum #1=1\leftarrow\fi\ifnum #1=2\Leftarrow\fi\ifnum #1=3\Lleftarrow\fi\ifnum #1=4\leftleftarrows\fi\ifnum #1=5\rightleftarrows\fi\ifnum #1=6\mapsfrom\ifnum #1=7\iffalse\fi\fi\ifnum #1=8\twoheadleftarrow\fi\ifnum #1=9\leftharpoonup\fi\ifnum #1=0\leftharpoondown\fi}
+
+%\newcommand{\ua}[1]{\ifnum #1=1\uparrow\fi\ifnum #1=2\Uparrow\fi}
+%\newcommand{\da}[1]{\ifnum #1=1\downarrow\fi\ifnum #1=2\Downarrow\fi}
+
+%%% --Special Editor Config
+\renewcommand{\ni}{\noindent}
+\newcommand{\onum}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1pt} {#1}}}}
+
+\newcommand{\claim}[1]{\underline{``{#1}":}}
+
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+
+%\newcommand{\casebrak}[2]{\left \{ \begin{array}{l} {#1}\\{#2} \end{array} \right.}
+%\newcommand{\ttm}[4]{\l[\begin{array}{cc}{#1}&{#2}\\{#3}&{#4}\end{array}\r]} %two-by-two-matrix
+%\newcommand{\tv}[2]{\l[\begin{array}{c}{#1}\\{#2}\end{array}\r]}
+
+\def\dps{\displaystyle}
+
+\let\italiccorrection=\/
+\def\/{\ifmmode\expandafter\frac\else\italiccorrection\fi}
+
+
+%%% --General Math Symbols
+\def\bc{\because}
+\def\tf{\therefore}
+
+%%% --Frequently used OPERATORS shorthand
+\newcommand{\INT}[2]{\int_{#1}^{#2}}
+% \newcommand{\UPINT}{\bar\int}
+% \newcommand{\UPINTRd}{\overline{\int_{\bb R ^d}}}
+\newcommand{\SUM}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\PROD}[2]{\prod\limits_{#1}^{#2}}
+% \newcommand{\CUP}[2]{\bigcup\limits_{#1}^{#2}}
+% \newcommand{\CAP}[2]{\bigcap\limits_{#1}^{#2}}
+% \newcommand{\SUP}[1]{\sup\limits_{#1}}
+% \newcommand{\INF}[1]{\inf\limits_{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\def\tr{\text{tr}}
+
+\renewcommand{\o}{\circ}
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+
+%%% --Frequently used VARIABLES shorthand
+\def\R{\ifmmode\mathbb R\fi}
+\def\N{\ifmmode\mathbb N\fi}
+\renewcommand{\O}{\mathcal{O}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\noindent\textbf{Instructions:}
+\begin{itemize}
+	\item This final exam is designed to be finished \textbf{within 180 minutes}. The 24 hours period are designed to accommodate time zone difference. It includes time for scanning and uploading your submission and any potential technical difficulty. \textbf{No late submission is accepted.}
+    \item Follow directions and answer questions with requested supporting work. Be careful not to jump steps. 
+    \item Clearly indicate your answer in the allotted space or by putting a box around it.
+    \item The final exam will be posted on June 8th 3:00pm PST. You will have 24 hours to finish and upload your solution to CCLE by June 9th 2:59pm PST. You can use the textbook, any course material posted on CCLE, and your hand-written notes; you are not allowed to use calculators nor the Internet, and you cannot work with anyone else (classmate, family member, private tutor, etc.). You can scan or take high-resolution photos of your hand-written solutions, but the uploaded submission must be a single PDF file.
+\end{itemize}
+
+
+\newpage
+\subsubsection*{Problem 1}
+Given a data set $\mathcal D = \{\v x^{(1)}, \cdots, \v x^{(N)} \} \subseteq \R^D$, it contains $D \x N$ real number entries. 
+\begin{enumerate}[label=(\alph*)]
+	\item (10 points)
+	Consider an integer $M < D$. PCA takes an $M$-dimensional subspace $\mathcal P_M \subseteq \R^D$ and decomposes each data point
+	\begin{equation*}
+		\v x^{(i)} \approx \pi_{\mathcal P_M}(\v x^{(i)} - \bar {\v x}) + \bar{\v x}.
+	\end{equation*}
+	Here $\bar{\v x} = \frac1N\SUM{i=1}N\v x^{(i)}$ denotes the sample mean, and $\pi_{\mathcal P_M}$ denotes the orthogonal projection onto the subspace $\mathcal P_M$. What is the choice of $\mathcal P_M$ for performing PCA? What is the reason behind this choice? (Hint: This is partially discussed in TP\#4 Problem 1 (c) except the reasoning part.)
+	\item (10 points)
+	Explain how to use PCA to compress the data. Write the total count of real number entries in the compressed result in terms of $D$, $N$ and $M$.
+\end{enumerate} 
+
+
+
+\newpage
+\subsubsection*{Problem 2}
+Let $\mathcal D = \{\v x^{(i)} \}_{i=1}^N \subset \R^D$ be a set of $N$ data points drawn independently from a unknown probability distribution $p$. 
+\begin{enumerate}[label=(\alph*)]
+	\item (5 points)
+	Write down the expressions for the sample mean $\bar{\v x}$ and sample covariance matrix $\v S$ of the data set $\mathcal D$.
+	\item (10 points)
+	Find a linear transformation 
+	\begin{equation*}
+	\v z^{(i)} = \v A\v x^{(i)} + \v b
+	\end{equation*}
+	such that the resulting data set $\mathcal D' = \{ \v z^{(i)} \}_{i=1}^N$ has zero mean and identity covariance matrix. Write down the sample mean $\bar{\v z}$ and sample covariance matrix $\v S'$ of the data set $\mathcal D'$ in terms of $\bar{\v x}, \v S, \v A$, and $\v b$. Setting $\bar{\v z}$ to zero and $\v S' = \v I$, find the condition on $\v A$ and $\v b$ for data whitening.
+	\item (5 points)
+	Give an example of how data whitening can help a machine learning algorithm.
+\end{enumerate}
+
+
+
+
+
+\newpage
+\subsubsection*{Problem 3}
+Consider the following two-layer feed-forward neural network
+\begin{equation*}
+y(\v x, \v W^{(1)}, \v W^{(2)}, \v v^{(1)}, \v v^{(2)}) = \sigma \o \psi^{(2)} \o \sigma \o \psi^{(1)}  (\v x),
+\end{equation*}
+where the logistic sigmoid function $\sigma(b) = (1+\exp(-b))^{-1}$ is chosen as the activation, and the affine map for layer $l = 1, 2$ is given by
+\begin{equation*}
+	\psi^{(l)}(\v z) = \v v^{(l)} + \v W^{(l)} \v z.
+\end{equation*}
+Denote the hidden units 
+\begin{align*}
+	\mathbf z^{(0)} &= \v x \in \R^{D} \\
+	\mathbf a^{(1)} &= \v v^{(1)} + \v W^{(1)} \v z^{(0)} \in \R^{M} \\
+	\mathbf z^{(1)} &= \sigma(\v a^{(1)}) \in \R^{M} \\
+	\mathbf a^{(2)} &= \v v^{(2)} + \v W^{(2)} \v z^{(1)} \in \R^1 \\
+	\mathbf z^{(2)} &= \sigma(\v a^{(2)}) \in \R^1.
+\end{align*}
+Specifically, the input $\v x\in\R^D$ is a $D$-dimensional vector, and the output $y(\v x) \in [0, 1]$ is a scalar. Note that the vector-valued sigmoid function $\sigma(\v a) = \sigma(a_1, \cdots, a_M) = (\sigma(a_1), \cdots, \sigma(a_M))$ is defined entry-wise. 
+\begin{enumerate}[label=(\alph*)]
+	\item (10 points)
+	Using chain rule, compute the following derivatives.
+	\begin{equation*}
+	\begin{split}
+		&\frac{\partial y}{\partial \v v^{(1)}}(\v x, \v W^{(1)}, \v W^{(2)}, \v v^{(1)}, \v v^{(2)}), \\
+		&\frac{\partial y}{\partial \v W^{(1)}}(\v x, \v W^{(1)}, \v W^{(2)}, \v v^{(1)}, \v v^{(2)}).
+	\end{split}
+	\end{equation*}
+	\item (10 points)
+	Consider using this network for a binary classification problem on a data set $\mathcal D = \{(\v x^{(i)}, t^{(i)}\}_{i=1}^N$ where $t^{(i)} = 1$ denotes class $C_{[1]}$ and $t^{(i)} = 0$ denotes class $C_{[2]}$. The likelihood function is given by
+	\begin{align*}
+		p(\mathcal D\vert \v W^{(1)}, \v W^{(2)}, \v v^{(1)}, \v v^{(2)}) 
+		&= \PROD{i\in C_{[1]}}{} y(\v x^{(i)}) \PROD{i\in C_{[2]}}{} (1-y(\v x^{(i)})) \\
+		&= \PROD{i=1}N y(\v x^{(i)})^{t^{(i)}} (1-y(\v x^{(i)}))^{1-t^{(i)}}.
+	\end{align*}
+	Compute the derivative of the log-likelihood function with respect to $\v v^{(1)}$ and $\v W^{(1)}$. Is there a closed form for the optimal values that maximize the log-likelihood function?
+\end{enumerate}
+
+
+
+
+
+
+
+\newpage
+\subsubsection*{Problem 4}
+Given a data set $\mathcal D = \{\v x^{(1)}, \cdots, \v x^{(N)} \} \subseteq \R^D$ sampled from a Gaussian mixture
+\begin{equation*}
+p\l( \v x \vert \{ \pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k\}_{k=1}^K \r) = \SUM{k=1}K \pi_k \mathcal N(\v x \vert \boldsymbol\mu_k, \boldsymbol\Sigma_k),
+\end{equation*}
+where $\{ \pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k, k = 1, \cdots, K\}$ are parameters to be determined. Let $\v z^{(i)} \in \{\v e_1, \cdots, \v e_K \}$ denote the latent variable such that $\v z^{(i)} = \v e_k$ if $\v x^{(i)}$ is sampled from the $k$-th Gaussian. The EM (\textit{expectation-maximization}) algorithm consists of two steps, E step and M step. 
+\begin{enumerate}[label=(\alph*)]
+	\item (5 points)
+	The E step treats the variables $\{ \pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k, k = 1, \cdots, K\}$ as constant and updates the posterior probability for cluster membership
+	\begin{equation*}
+	\gamma^{(i)}_k \approx p(\v z^{(i)} = \v e_k \vert \v x^{(i)}).
+	\end{equation*}
+	Using the Gaussian mixture model and Bayes theorem, give the formula for updating $\gamma_k^{(i)}$ in terms of $\v x^{(i)}$ and $\pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k, k = 1, \cdots, K$.
+\end{enumerate}
+The M step uses the $\gamma^{(i)}_k$ values computed in part (a) and updates the parameters $\{ \pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k, k = 1, \cdots, K\}$. The following problems will take you through M step for updating $\boldsymbol\mu_k$. 
+\begin{enumerate}[label=(\alph*)]
+	\setcounter{enumi}{1}
+	\item (5 points)
+	The likelihood function is given by
+	\begin{align*}
+		p\l( \mathcal D \vert \{ \pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k\}_{k=1}^K \r) 
+		& = \PROD{i=1}N p\l( \v x^{(i)} \vert \{ \pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k\}_{k=1}^K \r)  \\
+		& = \PROD{i=1}N  \l(\SUM{k=1}K \pi_k \mathcal N(\v x^{(i)} \vert \boldsymbol\mu_k, \boldsymbol\Sigma_k) \r).
+	\end{align*}
+	Compute the derivative of the log-likelihood function $\log p\l( \mathcal D \vert \{ \pi_k , \boldsymbol\mu_k, \boldsymbol\Sigma_k\}_{k=1}^K \r) $ with respect to $\boldsymbol\mu_k$ and express the result in terms of $\v x^{(i)}, i = 1, \cdots, N, \pi_j, \boldsymbol\mu_j, \boldsymbol\Sigma_j, j = 1, \cdots, K$. 
+	%
+	\item (5 points)
+	Indicate the appropriate term in the result in part (b) that can be approximated by $\gamma^{(i)}_k$ computed in part (a).
+	\item (5 points)
+	Set the approximated derivative of the log-likelihood function to zero and find the approximated optimal $\boldsymbol\mu_k$ for maximizing the log-likelihood function.
+
+\end{enumerate}
+
+
+
+
+
+\newpage
+\subsubsection*{Problem 5}
+Let $V \subseteq \R^D$ be an $M$-dimensional subspace with $M < D$. Let $p$ be the probability distribution of a random variable $\v x \in \R^D$ such that 
+\begin{equation*}
+p(\v x) = \l\{ 
+\begin{array}{ll}
+(2\pi\sigma^2)^{-\/M2}\exp\l(-\frac{\|\v x\|^2}{2\sigma^2}\r) & \text{ if } \v x \in V \\
+0 & \text{ otherwise.}
+\end{array}
+\r.
+\end{equation*}
+%
+\begin{enumerate}[label=(\alph*)]
+	\item (5 points)
+	Let $\v q_1, \cdots, \v q_M \in \R^D$ be an orthonormal basis of $V$. Show that the random variable $\v x$ defined above satisfies that $\v x = \v Q \v z$ where 
+	\begin{equation*}
+	\begin{split}
+		\mathbf Q = \l[\v q_1, \cdots, \v q_M\r] \in \R^{D\x  M}, \\
+		\mathbf z \in \R^M,\ \  \mathbf z \sim \mathcal N(\v 0, \sigma^2\v I_M).
+	\end{split}
+	\end{equation*}
+	You can show this by considering a vector valued random variable $\v y = \v Q\v z \in \R^D$ with $\v Q$ and $\v z$ defined above. Write down the probability distribution of $\v y$ (in terms of the p.d.f. of $\v z$ and $\v Q$) and verify that it's indeed the same as $p(\v x)$.
+	%
+	\item (5 points)
+	Let $\mathcal D = \{\v x^{(1)}, \cdots, \v x^{(N)} \}$ be a set of $N$ data points drawn independently from the probability distribution $p$. Suppose that you do not know the value of $M$. Explain how you could use PCA on $\mathcal D$ to estimate $M$. 
+	%
+	\item (10 points)
+	Now consider a noisy data set $\mathcal D_{\text{noisy}} = \{\v y^{(1)}, \cdots, \v y^{(N)} \}$. Each $\v y^{(i)}$ is given by
+	\begin{equation*}
+		\v y^{(i)} = \v x^{(i)} + \boldsymbol\epsilon^{(i)} \in \R^D,
+	\end{equation*}
+	where $\v x^{(i)}$ is an independent sample from $p$, and $\boldsymbol\epsilon^{(i)}$ is an independent sample from $\mathcal N(\v 0, \eta^2\v I_D)$. Can you still estimate the value of $M$ using PCA on $\mathcal D_{noisy}$? (HINT: your answer may depend on $\sigma$ and $\eta$.)
+	%
+	\item \textbf{(Bonus, up to 10 points)} 
+	Suppose the random variable $\v g  \in \R^D$ is given by 
+	\begin{equation*}
+		\v g = \v A \v z + \boldsymbol\epsilon,
+	\end{equation*}
+	where $\v A \in \R^{D\x M}$ is a full rank matrix, $\v z \in \R^M$, $\v z \sim \mathcal N(\v 0, \sigma^2 \v I_M)$, and $\boldsymbol\epsilon\in\R^D$, $\boldsymbol\epsilon \sim \mathcal N(\v 0, \eta^2 \v I_D)$. Let $\mathcal D'_{\text{noisy}} = \{\v g^{(1)}, \cdots, \v g^{(N)} \}$ be a data set individually drawn from the probability distribution of $\v g$. What is the necessary condition so we can use PCA on $\mathcal D'_{\text{noisy}}$ to estimate $M$?
+\end{enumerate}
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
